@@ -9,7 +9,6 @@
 import SpriteKit
 
 class GameScene: SKScene {
-    
     let hero = SKSpriteNode(imageNamed: "Hero")
     
     override func didMoveToView(view: SKView) {
@@ -53,4 +52,11 @@ class GameScene: SKScene {
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
     }
+
+    func random() -> CGFloat {
+        return CGFloat(Float(arc4random())/0xFFFFFFFF)
+    }
+    
+
+
 }
