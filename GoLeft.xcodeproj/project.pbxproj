@@ -18,7 +18,7 @@
 		61E4AE681A86C8B700F81B74 /* stickman.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 61E4AE661A86C8B700F81B74 /* stickman.jpg */; };
 		61E4AE6E1A86CEB200F81B74 /* SuperCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E4AE6D1A86CEB200F81B74 /* SuperCharacter.swift */; };
 		61E4AE701A86CEC800F81B74 /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E4AE6F1A86CEC800F81B74 /* Hero.swift */; };
-		6DCC130F1A86CDB500F97D29 /* stick-man pro.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DCC130E1A86CDB500F97D29 /* stick-man pro.png */; };
+		6DCC13131A86D2DF00F97D29 /* stick-man pro.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DCC13121A86D2DF00F97D29 /* stick-man pro.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +47,7 @@
 		61E4AE661A86C8B700F81B74 /* stickman.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = stickman.jpg; sourceTree = "<group>"; };
 		61E4AE6D1A86CEB200F81B74 /* SuperCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperCharacter.swift; sourceTree = "<group>"; };
 		61E4AE6F1A86CEC800F81B74 /* Hero.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
-		6DCC130E1A86CDB500F97D29 /* stick-man pro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stick-man pro.png"; sourceTree = "<group>"; };
+		6DCC13121A86D2DF00F97D29 /* stick-man pro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stick-man pro.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,7 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				61E4AE651A86C8B700F81B74 /* BrickPattern_0.png */,
-				6DCC130E1A86CDB500F97D29 /* stick-man pro.png */,
+				6DCC13121A86D2DF00F97D29 /* stick-man pro.png */,
 				61E4AE661A86C8B700F81B74 /* stickman.jpg */,
 				611BE7B51A7F2EF1000CF5B4 /* Info.plist */,
 			);
@@ -212,9 +212,9 @@
 			files = (
 				61E4AE671A86C8B700F81B74 /* BrickPattern_0.png in Resources */,
 				611BE7C51A7F2EF1000CF5B4 /* LaunchScreen.xib in Resources */,
-				6DCC130F1A86CDB500F97D29 /* stick-man pro.png in Resources */,
 				611BE7C21A7F2EF1000CF5B4 /* Images.xcassets in Resources */,
 				611BE7C01A7F2EF1000CF5B4 /* Main.storyboard in Resources */,
+				6DCC13131A86D2DF00F97D29 /* stick-man pro.png in Resources */,
 				61E4AE681A86C8B700F81B74 /* stickman.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
