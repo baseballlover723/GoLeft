@@ -15,6 +15,8 @@
 		611BE7C21A7F2EF1000CF5B4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 611BE7C11A7F2EF1000CF5B4 /* Images.xcassets */; };
 		611BE7C51A7F2EF1000CF5B4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 611BE7C31A7F2EF1000CF5B4 /* LaunchScreen.xib */; };
 		611BE7D11A7F2EF1000CF5B4 /* GoLeftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611BE7D01A7F2EF1000CF5B4 /* GoLeftTests.swift */; };
+		61E4AE671A86C8B700F81B74 /* BrickPattern_0.png in Resources */ = {isa = PBXBuildFile; fileRef = 61E4AE651A86C8B700F81B74 /* BrickPattern_0.png */; };
+		61E4AE681A86C8B700F81B74 /* stickman.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 61E4AE661A86C8B700F81B74 /* stickman.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,8 @@
 		611BE7CA1A7F2EF1000CF5B4 /* GoLeftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoLeftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		611BE7CF1A7F2EF1000CF5B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		611BE7D01A7F2EF1000CF5B4 /* GoLeftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoLeftTests.swift; sourceTree = "<group>"; };
+		61E4AE651A86C8B700F81B74 /* BrickPattern_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BrickPattern_0.png; sourceTree = "<group>"; };
+		61E4AE661A86C8B700F81B74 /* stickman.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = stickman.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +100,8 @@
 		611BE7B41A7F2EF1000CF5B4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				61E4AE651A86C8B700F81B74 /* BrickPattern_0.png */,
+				61E4AE661A86C8B700F81B74 /* stickman.jpg */,
 				611BE7B51A7F2EF1000CF5B4 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -198,10 +204,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61E4AE671A86C8B700F81B74 /* BrickPattern_0.png in Resources */,
 				611BE7C51A7F2EF1000CF5B4 /* LaunchScreen.xib in Resources */,
 				611BE7C21A7F2EF1000CF5B4 /* Images.xcassets in Resources */,
 				611BE7B91A7F2EF1000CF5B4 /* GameScene.sks in Resources */,
 				611BE7C01A7F2EF1000CF5B4 /* Main.storyboard in Resources */,
+				61E4AE681A86C8B700F81B74 /* stickman.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,6 +423,7 @@
 				611BE7D61A7F2EF1000CF5B4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		611BE7D71A7F2EF1000CF5B4 /* Build configuration list for PBXNativeTarget "GoLeftTests" */ = {
 			isa = XCConfigurationList;
@@ -423,6 +432,7 @@
 				611BE7D91A7F2EF1000CF5B4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
