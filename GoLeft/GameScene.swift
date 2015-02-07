@@ -9,13 +9,13 @@
 import SpriteKit
 
 // GLOBAL CONSTANTS
-let PLATFORM_SCALING = CGFloat(1/1000)
+let PLATFORM_SCALING = CGFloat(1/1)
 
 
 
 class GameScene: SKScene {
     let hero = SKSpriteNode(imageNamed: "Hero")
-    
+    var count = 1;
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         backgroundColor = SKColor.whiteColor()
@@ -41,7 +41,8 @@ class GameScene: SKScene {
             default:
                 abort()
             }
-            addPlatform()
+            addPlatform(CGFloat(count))
+            count++
             sprite.xScale = 0.5
             sprite.yScale = 0.5
             sprite.position = location
@@ -66,13 +67,12 @@ class GameScene: SKScene {
         return random() * (max - min) + min
     }
     
-    func addPlatform() {
-        let length = CGFloat(5);
+    func addPlatform(length: (CGFloat)) {
         let platform = SKSpriteNode(imageNamed: "BrickPlatform")
         platform.size = CGSize(width: platform.size.width * PLATFORM_SCALING * length, height: platform.size.height)
         let platformY = random(min: platform.size.height / 2, max: size.height - platform.size.height / 2)
         
-        platform.position = CGPoint(x: size.width - platform.size.width * 2, y: platformY)
+        platform.position = CGPoint(x: size.width - platform.size.width, y: platformY)
         
         self.addChild(platform)
         println("window = (\(size.width), \(size.height))")
