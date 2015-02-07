@@ -25,7 +25,18 @@ class GameScene: SKScene {
         for touch: AnyObject in touches {
             let location = touch.locationInNode(self)
             
-            let sprite = SKSpriteNode(imageNamed:"Spaceship")
+            var rand = arc4random_uniform(3)
+            var sprite : SKSpriteNode
+            switch (rand) {
+            case 0:
+                sprite = SKSpriteNode(imageNamed:"Spaceship")
+            case 1:
+                sprite = SKSpriteNode(imageNamed: "Hero")
+            case 2:
+                sprite = SKSpriteNode(imageNamed: "BrickPlatform")
+            default:
+                abort()
+            }
             
             sprite.xScale = 0.5
             sprite.yScale = 0.5
