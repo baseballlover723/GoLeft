@@ -17,6 +17,7 @@
 		611BE7D11A7F2EF1000CF5B4 /* GoLeftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611BE7D01A7F2EF1000CF5B4 /* GoLeftTests.swift */; };
 		61E4AE671A86C8B700F81B74 /* BrickPattern_0.png in Resources */ = {isa = PBXBuildFile; fileRef = 61E4AE651A86C8B700F81B74 /* BrickPattern_0.png */; };
 		61E4AE681A86C8B700F81B74 /* stickman.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 61E4AE661A86C8B700F81B74 /* stickman.jpg */; };
+		6DCC130F1A86CDB500F97D29 /* stick-man pro.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DCC130E1A86CDB500F97D29 /* stick-man pro.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		611BE7D01A7F2EF1000CF5B4 /* GoLeftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoLeftTests.swift; sourceTree = "<group>"; };
 		61E4AE651A86C8B700F81B74 /* BrickPattern_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BrickPattern_0.png; sourceTree = "<group>"; };
 		61E4AE661A86C8B700F81B74 /* stickman.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = stickman.jpg; sourceTree = "<group>"; };
+		6DCC130E1A86CDB500F97D29 /* stick-man pro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stick-man pro.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				61E4AE651A86C8B700F81B74 /* BrickPattern_0.png */,
+				6DCC130E1A86CDB500F97D29 /* stick-man pro.png */,
 				61E4AE661A86C8B700F81B74 /* stickman.jpg */,
 				611BE7B51A7F2EF1000CF5B4 /* Info.plist */,
 			);
@@ -206,6 +209,7 @@
 			files = (
 				61E4AE671A86C8B700F81B74 /* BrickPattern_0.png in Resources */,
 				611BE7C51A7F2EF1000CF5B4 /* LaunchScreen.xib in Resources */,
+				6DCC130F1A86CDB500F97D29 /* stick-man pro.png in Resources */,
 				611BE7C21A7F2EF1000CF5B4 /* Images.xcassets in Resources */,
 				611BE7B91A7F2EF1000CF5B4 /* GameScene.sks in Resources */,
 				611BE7C01A7F2EF1000CF5B4 /* Main.storyboard in Resources */,
