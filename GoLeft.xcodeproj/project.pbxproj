@@ -17,7 +17,7 @@
 		61E4AE6E1A86CEB200F81B74 /* SuperCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E4AE6D1A86CEB200F81B74 /* SuperCharacter.swift */; };
 		61E4AE701A86CEC800F81B74 /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E4AE6F1A86CEC800F81B74 /* Hero.swift */; };
 		6DCC13131A86D2DF00F97D29 /* stick-man pro.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DCC13121A86D2DF00F97D29 /* stick-man pro.png */; };
-		6DCC13191A86DA0400F97D29 /* BrickPattern_0.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DCC13181A86DA0400F97D29 /* BrickPattern_0.png */; };
+		6DCC131B1A86DB0000F97D29 /* BrickPattern_0.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DCC131A1A86DB0000F97D29 /* BrickPattern_0.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,7 +45,7 @@
 		61E4AE6D1A86CEB200F81B74 /* SuperCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperCharacter.swift; sourceTree = "<group>"; };
 		61E4AE6F1A86CEC800F81B74 /* Hero.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
 		6DCC13121A86D2DF00F97D29 /* stick-man pro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stick-man pro.png"; sourceTree = "<group>"; };
-		6DCC13181A86DA0400F97D29 /* BrickPattern_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BrickPattern_0.png; sourceTree = "<group>"; };
+		6DCC131A1A86DB0000F97D29 /* BrickPattern_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BrickPattern_0.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,7 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				6DCC13121A86D2DF00F97D29 /* stick-man pro.png */,
-				6DCC13181A86DA0400F97D29 /* BrickPattern_0.png */,
+				6DCC131A1A86DB0000F97D29 /* BrickPattern_0.png */,
 				611BE7B51A7F2EF1000CF5B4 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -207,11 +207,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DCC131B1A86DB0000F97D29 /* BrickPattern_0.png in Resources */,
 				611BE7C51A7F2EF1000CF5B4 /* LaunchScreen.xib in Resources */,
 				611BE7C21A7F2EF1000CF5B4 /* Images.xcassets in Resources */,
 				611BE7C01A7F2EF1000CF5B4 /* Main.storyboard in Resources */,
 				6DCC13131A86D2DF00F97D29 /* stick-man pro.png in Resources */,
-				6DCC13191A86DA0400F97D29 /* BrickPattern_0.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
