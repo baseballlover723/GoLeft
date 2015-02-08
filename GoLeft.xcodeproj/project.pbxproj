@@ -14,6 +14,8 @@
 		611BE7C21A7F2EF1000CF5B4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 611BE7C11A7F2EF1000CF5B4 /* Images.xcassets */; };
 		611BE7C51A7F2EF1000CF5B4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 611BE7C31A7F2EF1000CF5B4 /* LaunchScreen.xib */; };
 		611BE7D11A7F2EF1000CF5B4 /* GoLeftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611BE7D01A7F2EF1000CF5B4 /* GoLeftTests.swift */; };
+		61469DFF1A88202300E3F202 /* SuperPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61469DFE1A88202300E3F202 /* SuperPlatform.swift */; };
+		61469E011A88204200E3F202 /* BrickPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61469E001A88204200E3F202 /* BrickPlatform.swift */; };
 		61E4AE6E1A86CEB200F81B74 /* SuperCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E4AE6D1A86CEB200F81B74 /* SuperCharacter.swift */; };
 		61E4AE701A86CEC800F81B74 /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E4AE6F1A86CEC800F81B74 /* Hero.swift */; };
 		6DCC13131A86D2DF00F97D29 /* stick-man pro.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DCC13121A86D2DF00F97D29 /* stick-man pro.png */; };
@@ -42,6 +44,8 @@
 		611BE7CA1A7F2EF1000CF5B4 /* GoLeftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoLeftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		611BE7CF1A7F2EF1000CF5B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		611BE7D01A7F2EF1000CF5B4 /* GoLeftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoLeftTests.swift; sourceTree = "<group>"; };
+		61469DFE1A88202300E3F202 /* SuperPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperPlatform.swift; sourceTree = "<group>"; };
+		61469E001A88204200E3F202 /* BrickPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrickPlatform.swift; sourceTree = "<group>"; };
 		61E4AE6D1A86CEB200F81B74 /* SuperCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperCharacter.swift; sourceTree = "<group>"; };
 		61E4AE6F1A86CEC800F81B74 /* Hero.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
 		6DCC13121A86D2DF00F97D29 /* stick-man pro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stick-man pro.png"; sourceTree = "<group>"; };
@@ -92,6 +96,8 @@
 				611BE7BA1A7F2EF1000CF5B4 /* GameScene.swift */,
 				61E4AE6F1A86CEC800F81B74 /* Hero.swift */,
 				611BE7BC1A7F2EF1000CF5B4 /* GameViewController.swift */,
+				61469DFE1A88202300E3F202 /* SuperPlatform.swift */,
+				61469E001A88204200E3F202 /* BrickPlatform.swift */,
 				611BE7BE1A7F2EF1000CF5B4 /* Main.storyboard */,
 				611BE7C11A7F2EF1000CF5B4 /* Images.xcassets */,
 				611BE7C31A7F2EF1000CF5B4 /* LaunchScreen.xib */,
@@ -230,7 +236,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				61E4AE701A86CEC800F81B74 /* Hero.swift in Sources */,
+				61469E011A88204200E3F202 /* BrickPlatform.swift in Sources */,
 				611BE7BB1A7F2EF1000CF5B4 /* GameScene.swift in Sources */,
+				61469DFF1A88202300E3F202 /* SuperPlatform.swift in Sources */,
 				611BE7BD1A7F2EF1000CF5B4 /* GameViewController.swift in Sources */,
 				611BE7B71A7F2EF1000CF5B4 /* AppDelegate.swift in Sources */,
 				61E4AE6E1A86CEB200F81B74 /* SuperCharacter.swift in Sources */,

@@ -49,12 +49,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             case 0:
                 sprite = Hero()
             case 1:
-                sprite = SKSpriteNode(imageNamed: "BrickPlatform")
-                sprite.physicsBody = SKPhysicsBody(rectangleOfSize: sprite.size) // make rectangle aprox
-                sprite.physicsBody?.dynamic = false // no gravity
-                sprite.physicsBody?.categoryBitMask = PhysicsCategory.Platform
-                sprite.physicsBody?.contactTestBitMask = PhysicsCategory.Hero
-                sprite.physicsBody?.collisionBitMask = PhysicsCategory.Hero
+                sprite = BrickPlatform()
            default:
                 abort()
             }
@@ -101,5 +96,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         platform.physicsBody?.contactTestBitMask = PhysicsCategory.Hero
         platform.physicsBody?.collisionBitMask = PhysicsCategory.Hero
         
+    }
+    
+    func getSize() -> CGSize{
+        return size;
     }
 }
