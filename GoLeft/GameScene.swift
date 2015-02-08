@@ -30,8 +30,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         backgroundColor = SKColor.whiteColor()
         hero.position = CGPoint(x: size.width * 0.9, y: size.height * 0.9)
         
-        
         self.addChild(hero)
+        
+        self.addChild(BrickPlatform(length: 16, x: 0, y: 0))
+        self.addChild(BrickPlatform(length: 12, x: 50, y: 50))
+        self.addChild(BrickPlatform(length: 8, x: 175, y: 250))
+        
         
         physicsWorld.gravity = (CGVectorMake(0, -1))
         physicsWorld.contactDelegate = self
@@ -44,19 +48,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             let location = touch.locationInNode(self)
             
             var rand = arc4random_uniform(2)
-            var sprite : SKSpriteNode
-            switch (rand) {
-            case 0:
-                sprite = Hero()
-            case 1:
-                sprite = BrickPlatform()
-           default:
-                abort()
-            }
-            addPlatform(CGFloat(count))
+            var sprite = Hero()
+//            var sprite : SKSpriteNode
+//            switch (rand) {
+//            case 0:
+//                sprite = Hero()
+//            case 1:
+//                sprite = BrickPlatform()
+//           default:
+//                abort()
+//            }
+            addPlatform(random(min: 1, max: 7))
             count++
-            sprite.xScale = 0.5
-            sprite.yScale = 0.5
+//            sprite.xScale = 0.5
+//            sprite.yScale = 0.5
             sprite.position = location
             
 //            let action = SKAction.rotateByAngle(CGFloat(M_PI), duration:1)
@@ -80,25 +85,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     }
     
     func addPlatform(length: (CGFloat)) {
-        let platform = SKSpriteNode(imageNamed: "BrickPlatform")
-        platform.size = CGSize(width: platform.size.width * length, height: platform.size.height)
-        let platformY = random(min: platform.size.height / 2, max: size.height - platform.size.height / 2)
-        
-        platform.position = CGPoint(x: size.width - platform.size.width/2, y: platformY)
-        
+        let platform = BrickPlatform(length: length)
         self.addChild(platform)
         println("window = (\(size.width), \(size.height))")
         println("added platform \(platform.position.x), \(platform.position.y) length = \(platform.size.width)")
     
-        platform.physicsBody = SKPhysicsBody(rectangleOfSize: platform.size) // make rectangle aprox
-        platform.physicsBody?.dynamic = false // no gravity
-        platform.physicsBody?.categoryBitMask = PhysicsCategory.Platform
-        platform.physicsBody?.contactTestBitMask = PhysicsCategory.Hero
-        platform.physicsBody?.collisionBitMask = PhysicsCategory.Hero
+//        platform.physicsBody = SKPhysicsBody(rectangleOfSize: platform.size) // make rectangle aprox
+//        platform.physicsBody?.dynamic = false // no gravity
+//        platform.physicsBody?.categoryBitMask = PhysicsCategory.Platform
+//        platform.physicsBody?.contactTestBitMask = PhysicsCategory.Hero
+//        platform.physicsBody?.collisionBitMask = PhysicsCategory.Hero
         
-    }
-    
-    func getSize() -> CGSize{
-        return size;
     }
 }
