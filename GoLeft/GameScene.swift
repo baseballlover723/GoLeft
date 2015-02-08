@@ -13,7 +13,7 @@ struct PhysicsCategory {
     static let None : UInt32 = 0
     static let All : UInt32 = UInt32.max
     static let Platform : UInt32 = 0b1 // 1
-    static let Projectile : UInt32 = 0b10 // 2
+    static let Hero: UInt32 = 0b10 // 2
 }
 
 // GLOBAL CONSTANTS
@@ -28,7 +28,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         backgroundColor = SKColor.whiteColor()
-        hero.position = CGPoint(x: size.width * 0.1, y: size.height * 0.5)
+        hero.position = CGPoint(x: size.width * 0.9, y: size.height * 0.9)
+        
+        hero.physicsBody = SKPhysicsBody(rectangleOfSize: hero.size) // make rectangle aprox
+        hero.physicsBody?.dynamic = true // want gravity
+        hero.physicsBody?.categoryBitMask = PhysicsCategory.Hero
+        hero.physicsBody?.contactTestBitMask = PhysicsCategory.Platform
+        hero.physicsBody?.collisionBitMask = PhysicsCategory.Platform
+        
         self.addChild(hero)
         
         physicsWorld.gravity = (CGVectorMake(0, -1))
@@ -48,9 +55,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
                 sprite = SKSpriteNode(imageNamed:"Spaceship")
             case 1:
                 sprite = SKSpriteNode(imageNamed: "Hero")
+                sprite.physicsBody = SKPhysicsBody(rectangleOfSize: sprite.size) // make rectangle aprox
+                sprite.physicsBody?.dynamic = true // want gravity
+                sprite.physicsBody?.categoryBitMask = PhysicsCategory.Hero
+                sprite.physicsBody?.contactTestBitMask = PhysicsCategory.Platform
+                sprite.physicsBody?.collisionBitMask = PhysicsCategory.Platform
             case 2:
                 sprite = SKSpriteNode(imageNamed: "BrickPlatform")
-            default:
+                sprite.physicsBody = SKPhysicsBody(rectangleOfSize: sprite.size) // make rectangle aprox
+                sprite.physicsBody?.dynamic = false // no gravity
+                sprite.physicsBody?.categoryBitMask = PhysicsCategory.Platform
+                sprite.physicsBody?.contactTestBitMask = PhysicsCategory.Hero
+                sprite.physicsBody?.collisionBitMask = PhysicsCategory.Hero
+           default:
                 abort()
             }
             addPlatform(CGFloat(count))
@@ -89,12 +106,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         self.addChild(platform)
         println("window = (\(size.width), \(size.height))")
         println("added platform \(platform.position.x), \(platform.position.y) length = \(platform.size.width)")
-        
-//        platform.physicsBody = SKPhysicsBody(rectangleOfSize: platform.size) // 1
-//        platform.physicsBody?.dynamic = true // 2
-//        platform.physicsBody?.categoryBitMask = PhysicsCategory.Platform
-//        platform.physicsBody?.contactTestBitMask = PhysicsCategory.Platform
-//        platform.physicsBody?.collisionBitMask = PhysicsCategory.None
+    
+        platform.physicsBody = SKPhysicsBody(rectangleOfSize: platform.size) // make rectangle aprox
+        platform.physicsBody?.dynamic = false // no gravity
+        platform.physicsBody?.categoryBitMask = PhysicsCategory.Platform
+        platform.physicsBody?.contactTestBitMask = PhysicsCategory.Hero
+        platform.physicsBody?.collisionBitMask = PhysicsCategory.Hero
         
     }
 }
