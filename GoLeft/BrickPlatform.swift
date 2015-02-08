@@ -29,9 +29,15 @@ class BrickPlatform: SuperPlatform {
     init(length: (CGFloat)) {
         super.init(imageName: "BrickPlatform")
         self.size = CGSize(width: self.size.width * length, height: self.size.height)
+        let bounds = UIScreen.mainScreen().bounds
+        let screenWidth = bounds.width
+        let screenHeight = bounds.height
         
 
-        let x = random(min: -self.size.width, max:
+        let x = random(min: -self.size.width, max: screenWidth)
+        let y = random(min: -self.size.height, max: screenHeight)
+        
+        self.position = CGPoint(x: x, y: y)
         initPhysics()
     }
     
