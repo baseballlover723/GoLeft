@@ -32,9 +32,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         
         self.addChild(hero)
         
-        self.addChild(BrickPlatform(length: 16, x: 0, y: 0))
-        self.addChild(BrickPlatform(length: 12, x: 50, y: 50))
-        self.addChild(BrickPlatform(length: 8, x: 175, y: 250))
+        self.addChild(BrickPlatform(length: 8, x: 0, y: 10))
+        self.addChild(BrickPlatform(length: 6, x: 75, y: 50))
+        self.addChild(BrickPlatform(length: 2, x: 175, y: 250))
         
         
         physicsWorld.gravity = (CGVectorMake(0, -1))

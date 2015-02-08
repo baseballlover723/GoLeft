@@ -22,7 +22,7 @@ class BrickPlatform: SuperPlatform {
 
 //        self.size = CGSize(width: self.size.width * length, height: self.size.height)
         self.xScale = length
-        self.position = CGPoint(x: x, y: y)
+        self.position = CGPoint(x: x+self.size.width / 2, y: y-self.size.height/2)
         
         initPhysics()
     }
@@ -39,7 +39,7 @@ class BrickPlatform: SuperPlatform {
         let x = random(min: -self.size.width, max: screenWidth)
         let y = random(min: -self.size.height, max: screenHeight)
         
-        self.position = CGPoint(x: x, y: y)
+        self.position = CGPoint(x: x+self.size.width/2, y: y-self.size.height/2)
         initPhysics()
     }
     
