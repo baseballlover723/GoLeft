@@ -22,7 +22,7 @@ struct PhysicsCategory {
 
 class GameScene: SKScene, SKPhysicsContactDelegate{
 
-    let hero = SKSpriteNode(imageNamed: "Hero")
+    let hero = Hero()
     var count = 1;
     
     override func didMoveToView(view: SKView) {
@@ -30,11 +30,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         backgroundColor = SKColor.whiteColor()
         hero.position = CGPoint(x: size.width * 0.9, y: size.height * 0.9)
         
-        hero.physicsBody = SKPhysicsBody(rectangleOfSize: hero.size) // make rectangle aprox
-        hero.physicsBody?.dynamic = true // want gravity
-        hero.physicsBody?.categoryBitMask = PhysicsCategory.Hero
-        hero.physicsBody?.contactTestBitMask = PhysicsCategory.Platform
-        hero.physicsBody?.collisionBitMask = PhysicsCategory.Platform
         
         self.addChild(hero)
         
@@ -48,19 +43,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         for touch: AnyObject in touches {
             let location = touch.locationInNode(self)
             
-            var rand = arc4random_uniform(3)
+            var rand = arc4random_uniform(2)
             var sprite : SKSpriteNode
             switch (rand) {
             case 0:
-                sprite = SKSpriteNode(imageNamed:"Spaceship")
+                sprite = Hero()
             case 1:
-                sprite = SKSpriteNode(imageNamed: "Hero")
-                sprite.physicsBody = SKPhysicsBody(rectangleOfSize: sprite.size) // make rectangle aprox
-                sprite.physicsBody?.dynamic = true // want gravity
-                sprite.physicsBody?.categoryBitMask = PhysicsCategory.Hero
-                sprite.physicsBody?.contactTestBitMask = PhysicsCategory.Platform
-                sprite.physicsBody?.collisionBitMask = PhysicsCategory.Platform
-            case 2:
                 sprite = SKSpriteNode(imageNamed: "BrickPlatform")
                 sprite.physicsBody = SKPhysicsBody(rectangleOfSize: sprite.size) // make rectangle aprox
                 sprite.physicsBody?.dynamic = false // no gravity
@@ -76,9 +64,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             sprite.yScale = 0.5
             sprite.position = location
             
-            let action = SKAction.rotateByAngle(CGFloat(M_PI), duration:1)
+//            let action = SKAction.rotateByAngle(CGFloat(M_PI), duration:1)
             
-            sprite.runAction(SKAction.repeatActionForever(action))
+//            sprite.runAction(SKAction.repeatActionForever(action))
             
             self.addChild(sprite)
         }
