@@ -8,19 +8,31 @@
 
 import SpriteKit
 
+//Physics
+struct PhysicsCategory {
+    static let None : UInt32 = 0
+    static let All : UInt32 = UInt32.max
+    static let Platform : UInt32 = 0b1 // 1
+    static let Projectile : UInt32 = 0b10 // 2
+}
+
 // GLOBAL CONSTANTS
-let PLATFORM_SCALING = CGFloat(1/1)
 
 
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate{
+
     let hero = SKSpriteNode(imageNamed: "Hero")
     var count = 1;
+    
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         backgroundColor = SKColor.whiteColor()
         hero.position = CGPoint(x: size.width * 0.1, y: size.height * 0.5)
         self.addChild(hero)
+        
+        physicsWorld.gravity = (CGVectorMake(0, -1))
+        physicsWorld.contactDelegate = self
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
@@ -54,11 +66,11 @@ class GameScene: SKScene {
             self.addChild(sprite)
         }
     }
-   
+    
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
     }
-
+    
     func random() -> CGFloat {
         return CGFloat(Float(arc4random())/0xFFFFFFFF)
     }
@@ -69,14 +81,20 @@ class GameScene: SKScene {
     
     func addPlatform(length: (CGFloat)) {
         let platform = SKSpriteNode(imageNamed: "BrickPlatform")
-        platform.size = CGSize(width: platform.size.width * PLATFORM_SCALING * length, height: platform.size.height)
+        platform.size = CGSize(width: platform.size.width * length, height: platform.size.height)
         let platformY = random(min: platform.size.height / 2, max: size.height - platform.size.height / 2)
         
-        platform.position = CGPoint(x: size.width - platform.size.width, y: platformY)
+        platform.position = CGPoint(x: size.width - platform.size.width/2, y: platformY)
         
         self.addChild(platform)
         println("window = (\(size.width), \(size.height))")
         println("added platform \(platform.position.x), \(platform.position.y) length = \(platform.size.width)")
+        
+//        platform.physicsBody = SKPhysicsBody(rectangleOfSize: platform.size) // 1
+//        platform.physicsBody?.dynamic = true // 2
+//        platform.physicsBody?.categoryBitMask = PhysicsCategory.Platform
+//        platform.physicsBody?.contactTestBitMask = PhysicsCategory.Platform
+//        platform.physicsBody?.collisionBitMask = PhysicsCategory.None
         
     }
 }
