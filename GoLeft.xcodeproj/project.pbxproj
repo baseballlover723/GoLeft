@@ -20,6 +20,8 @@
 		61E4AE701A86CEC800F81B74 /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E4AE6F1A86CEC800F81B74 /* Hero.swift */; };
 		6DCC13131A86D2DF00F97D29 /* stick-man pro.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DCC13121A86D2DF00F97D29 /* stick-man pro.png */; };
 		6DCC131B1A86DB0000F97D29 /* BrickPattern_0.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DCC131A1A86DB0000F97D29 /* BrickPattern_0.png */; };
+		6DCC131F1A88377B00F97D29 /* Score.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6DCC131D1A88377B00F97D29 /* Score.xcdatamodeld */; };
+		6DCC13231A88382500F97D29 /* Score.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DCC13221A88382500F97D29 /* Score.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,10 @@
 		61E4AE6F1A86CEC800F81B74 /* Hero.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
 		6DCC13121A86D2DF00F97D29 /* stick-man pro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stick-man pro.png"; sourceTree = "<group>"; };
 		6DCC131A1A86DB0000F97D29 /* BrickPattern_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BrickPattern_0.png; sourceTree = "<group>"; };
+		6DCC131E1A88377B00F97D29 /* Score.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Score.xcdatamodel; sourceTree = "<group>"; };
+		6DCC13201A88382400F97D29 /* GoLeft-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GoLeft-Bridging-Header.h"; sourceTree = "<group>"; };
+		6DCC13211A88382500F97D29 /* Score.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Score.h; sourceTree = "<group>"; };
+		6DCC13221A88382500F97D29 /* Score.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Score.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +108,10 @@
 				611BE7C11A7F2EF1000CF5B4 /* Images.xcassets */,
 				611BE7C31A7F2EF1000CF5B4 /* LaunchScreen.xib */,
 				611BE7B41A7F2EF1000CF5B4 /* Supporting Files */,
+				6DCC131D1A88377B00F97D29 /* Score.xcdatamodeld */,
+				6DCC13211A88382500F97D29 /* Score.h */,
+				6DCC13221A88382500F97D29 /* Score.m */,
+				6DCC13201A88382400F97D29 /* GoLeft-Bridging-Header.h */,
 			);
 			path = GoLeft;
 			sourceTree = "<group>";
@@ -238,9 +248,11 @@
 				61E4AE701A86CEC800F81B74 /* Hero.swift in Sources */,
 				61469E011A88204200E3F202 /* BrickPlatform.swift in Sources */,
 				611BE7BB1A7F2EF1000CF5B4 /* GameScene.swift in Sources */,
+				6DCC13231A88382500F97D29 /* Score.m in Sources */,
 				61469DFF1A88202300E3F202 /* SuperPlatform.swift in Sources */,
 				611BE7BD1A7F2EF1000CF5B4 /* GameViewController.swift in Sources */,
 				611BE7B71A7F2EF1000CF5B4 /* AppDelegate.swift in Sources */,
+				6DCC131F1A88377B00F97D29 /* Score.xcdatamodeld in Sources */,
 				61E4AE6E1A86CEB200F81B74 /* SuperCharacter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -366,9 +378,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = GoLeft/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "GoLeft/GoLeft-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -376,9 +391,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = GoLeft/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "GoLeft/GoLeft-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -447,6 +464,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		6DCC131D1A88377B00F97D29 /* Score.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				6DCC131E1A88377B00F97D29 /* Score.xcdatamodel */,
+			);
+			currentVersion = 6DCC131E1A88377B00F97D29 /* Score.xcdatamodel */;
+			path = Score.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 611BE7A91A7F2EF1000CF5B4 /* Project object */;
 }
