@@ -37,6 +37,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         
         self.addChild(BrickPlatform(length: 8, x: 0, y: 10))
         self.addChild(BrickPlatform(length: 6, x: 75, y: 50))
+        self.addChild(BrickPlatform(length: 1, x: 75, y: 300))
+        self.addChild(BrickPlatform(length: 3, x: 335, y: 300))
+        self.addChild(BrickPlatform(length: 1, x: 235, y: 150))
         self.addChild(BrickPlatform(length: 2, x: 175, y: 250))
         
         
@@ -55,8 +58,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         
         var delta = touchXLocation / heroXLocation
         println("moving at \(delta)")
+        // start moving hero
         movingHero = true;
-    
+        //jump
+        println("jump = \(hero.canJump)")
+        if hero.canJump {
+            hero.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 10))
+            hero.canJump = false
+        }
         
 //        for touch: AnyObject in touches {
 //            let location = touch.locationInNode(self)
@@ -92,6 +101,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     
     override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
         if movingHero {
+            // move hero
             var touch = touches.anyObject() as UITouch!
             var touchLocation =  touch.locationInNode(self)
             var previousLocation = touch.previousLocationInNode(self)
@@ -103,6 +113,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             hero.position = CGPointMake(heroX, hero.position.y)
             
         }
+    }
+    
+    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+        movingHero = false
     }
 
     override func update(currentTime: CFTimeInterval) {
@@ -152,5 +166,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     
     func characterDidCollideWithPlatform(character: (SuperCharacter), platform: (SuperPlatform)) {
         println("A Character hit a Platform")
+        character.canJump = true
     }
 }

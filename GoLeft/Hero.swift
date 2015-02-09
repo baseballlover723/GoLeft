@@ -10,7 +10,6 @@ import UIKit
 import SpriteKit
 
 class Hero: SuperCharacter {
-   
     
     init() {
         super.init(imageName: "Hero")

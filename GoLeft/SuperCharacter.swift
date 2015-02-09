@@ -10,11 +10,12 @@ import UIKit
 import SpriteKit
 
 class SuperCharacter: SKSpriteNode {
-   
+    var canJump : Bool
+ 
     init(imageName: (String)) {
         let texture = SKTexture(imageNamed: imageName)
+        self.canJump = false
         super.init(texture: texture, color: UIColor.clearColor(), size: texture.size())
-        
     }
 
     required init?(coder aDecoder: NSCoder) {
