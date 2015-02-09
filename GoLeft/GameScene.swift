@@ -14,9 +14,10 @@ struct PhysicsCategory {
     static let All : UInt32 = UInt32.max
     static let SuperCharacter: UInt32 = 0b1 // 1
     static let SuperPlatform : UInt32 = 0b10 // 2
-    static let SuperPowerUp : UInt32 = 0b100 // 3
+    static let SuperPowerup : UInt32 = 0b100 // 3
     static let Hero : UInt32 = 0b1001 // 4
     static let BrickPlatform : UInt32 = 0b10010 // 5
+    static let Coin : UInt32 = 0b100100 // 6
 }
 
 // GLOBAL CONSTANTS
@@ -41,6 +42,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         self.addChild(BrickPlatform(length: 3, x: 335, y: 300))
         self.addChild(BrickPlatform(length: 1, x: 235, y: 150))
         self.addChild(BrickPlatform(length: 2, x: 175, y: 250))
+        self.addChild(Coin(x: 50, y: 50))
         
         
         physicsWorld.gravity = (CGVectorMake(0, -1))
@@ -159,13 +161,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         }
         
         if (firstBody.categoryBitMask & PhysicsCategory.SuperCharacter != 0) && (secondBody.categoryBitMask & PhysicsCategory.SuperPlatform != 0) {
-            // hero and platform
+            // character and generic platform
             characterDidCollideWithPlatform(firstBody.node as SuperCharacter, platform: secondBody.node as SuperPlatform)
         }
+        if (firstBody.categoryBitMask & PhysicsCategory.SuperCharacter != 0) && (secondBody.categoryBitMask & PhysicsCategory.SuperPowerup != 0) {
+            // character and generic powerup
+            characterDidCollideWithPowerup(firstBody.node as SuperCharacter, powerup: secondBody.node as SuperPowerup)
+        }
+        
     }
     
     func characterDidCollideWithPlatform(character: (SuperCharacter), platform: (SuperPlatform)) {
         println("A Character hit a Platform")
         character.canJump = true
+    }
+    
+    func characterDidCollideWithPowerup(character: (SuperCharacter), powerup: (SuperPowerup)) {
+        println("Character hit a powerup")
     }
 }
