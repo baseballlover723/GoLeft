@@ -45,7 +45,7 @@ class Coin: SuperPowerup {
         self.physicsBody = SKPhysicsBody(circleOfRadius: self.size.width / 2) // make circle approx
         self.physicsBody?.dynamic = false // don't want gravity
         self.physicsBody?.categoryBitMask = PhysicsCategory.Coin
-        self.physicsBody?.contactTestBitMask = PhysicsCategory.None
+        self.physicsBody?.contactTestBitMask = PhysicsCategory.SuperCharacter
         self.physicsBody?.collisionBitMask = PhysicsCategory.SuperCharacter
     }
     
