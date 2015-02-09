@@ -12,12 +12,15 @@ import SpriteKit
 struct PhysicsCategory {
     static let None : UInt32 = 0
     static let All : UInt32 = UInt32.max
-    static let Platform : UInt32 = 0b1 // 1
-    static let Hero: UInt32 = 0b10 // 2
+    static let SuperCharacter: UInt32 = 0b1 // 1
+    static let SuperPlatform : UInt32 = 0b10 // 2
+    static let SuperPowerUp : UInt32 = 0b100 // 3
+    static let Hero : UInt32 = 0b1001 // 4
+    static let BrickPlatform : UInt32 = 0b10010 // 5
 }
 
 // GLOBAL CONSTANTS
-
+var movingHero = false
 
 
 class GameScene: SKScene, SKPhysicsContactDelegate{
@@ -44,11 +47,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         /* Called when a touch begins */
         
-        for touch: AnyObject in touches {
-            let location = touch.locationInNode(self)
-            
-            var rand = arc4random_uniform(2)
-            var sprite = Hero()
+        var touch = touches.anyObject() as UITouch!
+        var touchLocation = touch.locationInNode(self)
+        var touchXLocation = touchLocation.x
+        
+        var heroXLocation = hero.position.x
+        
+        var delta = touchXLocation / heroXLocation
+        println("moving at \(delta)")
+        movingHero = true;
+    
+        
+//        for touch: AnyObject in touches {
+//            let location = touch.locationInNode(self)
+        
+//            var rand = arc4random_uniform(2)
+//            var sprite = Hero()
 //            var sprite : SKSpriteNode
 //            switch (rand) {
 //            case 0:
@@ -58,20 +72,39 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
 //           default:
 //                abort()
 //            }
-            addPlatform(random(min: 1, max: 7))
-            count++
+//            addPlatform(random(min: 1, max: 7))
+//            count++
 //            sprite.xScale = 0.5
 //            sprite.yScale = 0.5
-            sprite.position = location
+//            sprite.position = location
             
 //            let action = SKAction.rotateByAngle(CGFloat(M_PI), duration:1)
             
 //            sprite.runAction(SKAction.repeatActionForever(action))
             
-            self.addChild(sprite)
-        }
+//            self.addChild(sprite)
+            
+            
+//        }
+//    }
+    
     }
     
+    override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
+        if movingHero {
+            var touch = touches.anyObject() as UITouch!
+            var touchLocation =  touch.locationInNode(self)
+            var previousLocation = touch.previousLocationInNode(self)
+        
+            var heroX = hero.position.x + (touchLocation.x - previousLocation.x)
+            heroX = max(heroX, hero.size.width / 2)
+            heroX = min(heroX, size.width - hero.size.width/2)
+            
+            hero.position = CGPointMake(heroX, hero.position.y)
+            
+        }
+    }
+
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
     }
@@ -96,5 +129,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
 //        platform.physicsBody?.contactTestBitMask = PhysicsCategory.Hero
 //        platform.physicsBody?.collisionBitMask = PhysicsCategory.Hero
         
+    }
+    
+    func didBeginContact(contact: SKPhysicsContact) {
+        println("contact")
+        var firstBody : SKPhysicsBody
+        var secondBody : SKPhysicsBody
+        
+        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
+            firstBody = contact.bodyA
+            secondBody = contact.bodyB
+        } else {
+            firstBody = contact.bodyB
+            secondBody = contact.bodyA
+        }
+        
+        if (firstBody.categoryBitMask & PhysicsCategory.SuperCharacter != 0) && (secondBody.categoryBitMask & PhysicsCategory.SuperPlatform != 0) {
+            // hero and platform
+            characterDidCollideWithPlatform(firstBody.node as SuperCharacter, platform: secondBody.node as SuperPlatform)
+        }
+    }
+    
+    func characterDidCollideWithPlatform(character: (SuperCharacter), platform: (SuperPlatform)) {
+        println("A Character hit a Platform")
     }
 }
