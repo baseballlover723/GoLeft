@@ -17,8 +17,8 @@ class Hero: SuperCharacter {
         self.physicsBody = SKPhysicsBody(rectangleOfSize: self.size) // make rectangle aprox
         self.physicsBody?.dynamic = true // want gravity
         self.physicsBody?.categoryBitMask = PhysicsCategory.Hero
-        self.physicsBody?.contactTestBitMask = PhysicsCategory.Platform
-        self.physicsBody?.collisionBitMask = PhysicsCategory.Platform
+        self.physicsBody?.contactTestBitMask = PhysicsCategory.SuperPlatform
+        self.physicsBody?.collisionBitMask = PhysicsCategory.SuperPlatform
 
     }
 

@@ -50,9 +50,9 @@ class BrickPlatform: SuperPlatform {
     func initPhysics() {
         self.physicsBody = SKPhysicsBody(rectangleOfSize: self.size) // make rectangle aprox
         self.physicsBody?.dynamic = false // no gravity
-        self.physicsBody?.categoryBitMask = PhysicsCategory.Platform
-        self.physicsBody?.contactTestBitMask = PhysicsCategory.Hero
-        self.physicsBody?.collisionBitMask = PhysicsCategory.Hero
+        self.physicsBody?.categoryBitMask = PhysicsCategory.BrickPlatform
+        self.physicsBody?.contactTestBitMask = PhysicsCategory.SuperCharacter
+        self.physicsBody?.collisionBitMask = PhysicsCategory.SuperCharacter
         
     }
     
