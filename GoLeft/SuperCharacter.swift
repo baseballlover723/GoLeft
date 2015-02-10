@@ -9,7 +9,11 @@
 import UIKit
 import SpriteKit
 
-class SuperCharacter: SKSpriteNode {
+protocol RequiredCharacter {
+    func initPhysics()
+}
+
+class SuperCharacter: SKSpriteNode, RequiredCharacter {
     var canJump : Bool
     var score : Int32
     
@@ -19,7 +23,11 @@ class SuperCharacter: SKSpriteNode {
         self.score = 0
         super.init(texture: texture, color: UIColor.clearColor(), size: texture.size())
     }
-
+    
+    func initPhysics() {
+        assert(false, "Method must be overriden")
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

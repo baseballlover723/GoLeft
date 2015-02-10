@@ -9,7 +9,7 @@
 import UIKit
 import SpriteKit
 
-class BrickPlatform: SuperPlatform {
+class BrickPlatform: SuperPlatform, RequiredPlatform {
    
     init() {
         super.init(imageName: "BrickPlatform")
