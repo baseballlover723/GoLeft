@@ -8,32 +8,16 @@
 
 import UIKit
 import SpriteKit
-class Coin: SuperPowerup {
+class Coin: SuperPowerup, RequiredPowerup {
 
  
     init() {
         super.init(imageName: "Coin")
-        //        self.size = CGSize(width: self.size.width * length, height: self.size.height)
-        let bounds = UIScreen.mainScreen().bounds
-        let screenWidth = bounds.width
-        let screenHeight = bounds.height
-        
-        
-        let x = random(min: -self.size.width, max: screenWidth)
-        let y = random(min: -self.size.height, max: screenHeight)
-        
-        self.position = CGPoint(x: x, y: y)
-        initPhysics()
     }
     
     // specify the location
     init(x: (CGFloat), y: (CGFloat)) {
-        super.init(imageName: "Coin")
-        
-        //        self.size = CGSize(width: self.size.width * length, height: self.size.height)
-        self.position = CGPoint(x: x, y: y)
-        
-        initPhysics()
+        super.init(imageName: "Coin", x: x, y: y)
     }
     
 
@@ -41,20 +25,15 @@ class Coin: SuperPowerup {
         fatalError("init(coder:) has not been implemented")
     }
   
-    func initPhysics() {
+    override func initPhysics() {
         self.physicsBody = SKPhysicsBody(circleOfRadius: self.size.width / 2) // make circle approx
         self.physicsBody?.dynamic = false // don't want gravity
         self.physicsBody?.categoryBitMask = PhysicsCategory.Coin
         self.physicsBody?.contactTestBitMask = PhysicsCategory.SuperCharacter
         self.physicsBody?.collisionBitMask = PhysicsCategory.SuperCharacter
     }
-    
-    func random() -> CGFloat {
-        return CGFloat(Float(arc4random())/0xFFFFFFFF)
-    }
-    
-    func random(#min: CGFloat, max: CGFloat) -> CGFloat {
-        return random() * (max - min) + min
+    override func applyPowerupTo(hero: SuperCharacter) {
+        hero.score++
     }
     
 

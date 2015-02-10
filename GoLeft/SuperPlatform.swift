@@ -12,7 +12,7 @@ import SpriteKit
 protocol RequiredPlatform {
     func initPhysics();
 }
-class SuperPlatform: SKSpriteNode {
+class SuperPlatform: SKSpriteNode, RequiredPlatform {
 
     init(imageName: (String)) {
         let texture = SKTexture(imageNamed: imageName)
