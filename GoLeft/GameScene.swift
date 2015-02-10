@@ -39,10 +39,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         self.addChild(BrickPlatform(length: 8, x: 0, y: 10))
         self.addChild(BrickPlatform(length: 6, x: 75, y: 50))
         self.addChild(BrickPlatform(length: 1, x: 75, y: 300))
-        self.addChild(BrickPlatform(length: 3, x: 335, y: 300))
-        self.addChild(BrickPlatform(length: 1, x: 235, y: 150))
-        self.addChild(BrickPlatform(length: 2, x: 175, y: 250))
-        self.addChild(Coin(x: 350, y: 50))
+        self.addChild(BrickPlatform(length: 3, x: 275, y: 300))
+        self.addChild(BrickPlatform(length: 1, x: 35, y: 150))
+        self.addChild(BrickPlatform(length: 1, x: 350, y: 150))
+        self.addChild(BrickPlatform(length: 2, x: 200, y: 225))
+        self.addChild(Coin(x: 350, y: 75))
         
         
         physicsWorld.gravity = (CGVectorMake(0, -1))
@@ -59,7 +60,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         var heroXLocation = hero.position.x
         
         var delta = touchXLocation / heroXLocation
-        println("moving at \(delta)")
+//        println("moving at \(delta)")
         // start moving hero
         movingHero = true;
         //jump
@@ -147,7 +148,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     }
     
     func didBeginContact(contact: SKPhysicsContact) {
-        println("contact")
+//        println("contact")
         var firstBody : SKPhysicsBody
         var secondBody : SKPhysicsBody
         
@@ -171,11 +172,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     }
     
     func characterDidCollideWithPlatform(character: (SuperCharacter), platform: (SuperPlatform)) {
-        println("A Character hit a Platform")
+//        println("A Character hit a Platform")
         
     }
     
     func characterDidCollideWithPowerup(character: (SuperCharacter), powerup: (SuperPowerup)) {
-        println("Character hit a powerup")
+//        println("Character hit a powerup")
     }
 }

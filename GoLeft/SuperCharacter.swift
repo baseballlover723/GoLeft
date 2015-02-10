@@ -20,7 +20,14 @@ class SuperCharacter: SKSpriteNode, RequiredCharacter {
 //        bool = bool.node!!
 //        bool = bool.physicsBody!!
 //        bool = (bool.categoryBitMask & PhysicsCategory.SuperPlatform) != 0
-        return self.physicsBody?.velocity.dy <= CGFloat(abs(0.01)) && inContact!.count == 1 && ((inContact![0].categoryBitMask & PhysicsCategory.SuperPlatform) != 0)
+        if inContact?.count == 0 {
+            return false
+        }
+        
+        var isPlatform = (inContact![0].categoryBitMask & PhysicsCategory.SuperPlatform) != 0
+        var isBelow = inContact![0].position!.y < (self.position.y - self.size.height/2)
+        println("isPlatform = \(isPlatform), isBelow = \(isBelow)")
+        return self.physicsBody?.velocity.dy <= CGFloat(abs(0.01)) && inContact!.count == 1 && isPlatform && isBelow
     }
     var score : Int32
     
