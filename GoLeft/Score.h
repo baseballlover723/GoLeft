@@ -15,4 +15,8 @@
 @property (nonatomic, retain) NSNumber * score;
 @property (nonatomic, retain) NSString * userName;
 
+- (id) initWithName:(NSString *)nameObj andScore:(NSNumber *)scoreObj;
++ (void) saveHighScore:(NSNumber *)score withName:(NSString *)score;
++ (NSArray *) getTopHighScores:(NSUInteger)numberOfScores;
+
 @end
