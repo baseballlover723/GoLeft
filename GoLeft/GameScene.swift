@@ -66,7 +66,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         println("jump = \(hero.canJump)")
         if hero.canJump {
             hero.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 10))
-            hero.canJump = false
         }
         
 //        for touch: AnyObject in touches {
@@ -173,7 +172,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     
     func characterDidCollideWithPlatform(character: (SuperCharacter), platform: (SuperPlatform)) {
         println("A Character hit a Platform")
-        character.canJump = true
+        
     }
     
     func characterDidCollideWithPowerup(character: (SuperCharacter), powerup: (SuperPowerup)) {

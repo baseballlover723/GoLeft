@@ -26,6 +26,7 @@ class Hero: SuperCharacter, RequiredCharacter {
         self.physicsBody?.categoryBitMask = PhysicsCategory.Hero
         self.physicsBody?.contactTestBitMask = PhysicsCategory.SuperPlatform
         self.physicsBody?.collisionBitMask = PhysicsCategory.SuperPlatform
+        self.physicsBody?.allowsRotation = false
     }
     
 }

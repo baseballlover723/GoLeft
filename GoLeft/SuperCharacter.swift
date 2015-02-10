@@ -14,12 +14,18 @@ protocol RequiredCharacter {
 }
 
 class SuperCharacter: SKSpriteNode, RequiredCharacter {
-    var canJump : Bool
+    var canJump : Bool {
+        var inContact = self.physicsBody?.allContactedBodies()
+//        var bool = inContact![0]
+//        bool = bool.node!!
+//        bool = bool.physicsBody!!
+//        bool = (bool.categoryBitMask & PhysicsCategory.SuperPlatform) != 0
+        return self.physicsBody?.velocity.dy <= CGFloat(abs(0.01)) && inContact!.count == 1 && ((inContact![0].categoryBitMask & PhysicsCategory.SuperPlatform) != 0)
+    }
     var score : Int32
     
     init(imageName: (String)) {
         let texture = SKTexture(imageNamed: imageName)
-        self.canJump = false
         self.score = 0
         super.init(texture: texture, color: UIColor.clearColor(), size: texture.size())
     }
