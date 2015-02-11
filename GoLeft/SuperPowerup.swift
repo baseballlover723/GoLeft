@@ -13,6 +13,7 @@ protocol RequiredPowerup {
     func initPhysics()
     func applyPowerupTo(hero: SuperCharacter)
     func collisionConsumesSelf() -> Bool
+    func isOnScreen() -> Bool
 }
 
 class SuperPowerup: SKSpriteNode, RequiredPowerup {
@@ -73,5 +74,13 @@ class SuperPowerup: SKSpriteNode, RequiredPowerup {
     
     func collisionConsumesSelf() -> Bool {
         assert(false, "SuperPowerup consumesSelf must be overriden")
+    }
+    
+    func isOnScreen() -> Bool {
+        // may override
+        var posX = self.position.x
+        var width = self.size.width
+        var edgeX = UIScreen.mainScreen().bounds.width
+        return posX - width / 2 < edgeX
     }
 }
