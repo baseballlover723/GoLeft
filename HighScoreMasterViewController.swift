@@ -55,7 +55,8 @@ import CoreData
 
 class HighScoreMasterViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
-    var managedObjectContext: NSManagedObjectContext? = nil
+    var managedObjectContext: NSManagedObjectContext?
+    
     
     
     override func awakeFromNib() {
