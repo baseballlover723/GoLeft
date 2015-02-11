@@ -35,7 +35,12 @@ class BrickPlatform: SuperPlatform, RequiredPlatform {
         self.physicsBody?.categoryBitMask = PhysicsCategory.BrickPlatform
         self.physicsBody?.contactTestBitMask = PhysicsCategory.SuperCharacter
         self.physicsBody?.collisionBitMask = PhysicsCategory.SuperCharacter
-        
     }
     
+    override func applyContactEffects(hero: (SuperCharacter)) {
+        println("Applyed brick effects")
+    }
+    override func collisionConsumesSelf() -> Bool {
+        return false
+    }
 }

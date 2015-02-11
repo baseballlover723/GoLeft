@@ -34,6 +34,11 @@ class Coin: SuperPowerup, RequiredPowerup {
     }
     override func applyPowerupTo(hero: SuperCharacter) {
         hero.score++
+        println("score = \(hero.score)")
+    }
+    
+    override func collisionConsumesSelf() -> Bool {
+        return true
     }
     
 

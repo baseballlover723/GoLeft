@@ -12,6 +12,7 @@ import SpriteKit
 protocol RequiredPowerup {
     func initPhysics()
     func applyPowerupTo(hero: SuperCharacter)
+    func collisionConsumesSelf() -> Bool
 }
 
 class SuperPowerup: SKSpriteNode, RequiredPowerup {
@@ -55,10 +56,14 @@ class SuperPowerup: SKSpriteNode, RequiredPowerup {
     }
     
     func initPhysics() {
-        assert(false, "function must be overriden")
+        assert(false, "SuperPowerup initPhysics must be overriden")
     }
     
     func applyPowerupTo(hero: SuperCharacter) {
-        assert(false, "function must be overriden")
+        assert(false, "SuperPowerup applyPowerupTo must be overriden")
+    }
+    
+    func collisionConsumesSelf() -> Bool {
+        assert(false, "SuperPowerup consumesSelf must be overriden")
     }
 }

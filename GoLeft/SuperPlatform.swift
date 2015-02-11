@@ -10,7 +10,9 @@ import UIKit
 import SpriteKit
 
 protocol RequiredPlatform {
-    func initPhysics();
+    func initPhysics()
+    func applyContactEffects(hero: (SuperCharacter))
+    func collisionConsumesSelf() -> Bool
 }
 class SuperPlatform: SKSpriteNode, RequiredPlatform {
 
@@ -62,6 +64,14 @@ class SuperPlatform: SKSpriteNode, RequiredPlatform {
     
     func initPhysics() {
         assert(false, "This method must be overridden")
+    }
+    
+    func applyContactEffects(hero: (SuperCharacter)) {
+        assert(false, "SuperPlatform Contact Effects must be overidden")
+    }
+    
+    func collisionConsumesSelf() -> Bool {
+        assert(false, "SuperPlatform collisionConsumesSelf must be overridden")
     }
 
     

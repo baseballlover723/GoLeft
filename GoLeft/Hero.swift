@@ -10,6 +10,9 @@ import UIKit
 import SpriteKit
 
 class Hero: SuperCharacter, RequiredCharacter {
+    override var HERO_JUMP_FORCE : CGVector {
+        return CGVector(dx: 0, dy: 10)
+    }
     
     init() {
         super.init(imageName: "Hero")
@@ -27,6 +30,10 @@ class Hero: SuperCharacter, RequiredCharacter {
         self.physicsBody?.contactTestBitMask = PhysicsCategory.SuperPlatform
         self.physicsBody?.collisionBitMask = PhysicsCategory.SuperPlatform
         self.physicsBody?.allowsRotation = false
+    }
+    
+    override func applyJumpEffects() {
+        
     }
     
 }

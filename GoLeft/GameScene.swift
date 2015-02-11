@@ -22,7 +22,7 @@ struct PhysicsCategory {
 
 // GLOBAL CONSTANTS
 var movingHero = false
-
+var GRAVITY = CGVector(dx: 0, dy: -1)
 
 class GameScene: SKScene, SKPhysicsContactDelegate{
 
@@ -45,8 +45,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         self.addChild(BrickPlatform(length: 2, x: 200, y: 225))
         self.addChild(Coin(x: 350, y: 75))
         
-        
-        physicsWorld.gravity = (CGVectorMake(0, -1))
+    
+        physicsWorld.gravity = GRAVITY
         physicsWorld.contactDelegate = self
     }
     
@@ -66,7 +66,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         //jump
         println("jump = \(hero.canJump)")
         if hero.canJump {
-            hero.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 10))
+            hero.jump()
         }
         
 //        for touch: AnyObject in touches {
@@ -133,22 +133,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         return random() * (max - min) + min
     }
     
-    func addPlatform(length: (CGFloat)) {
-        let platform = BrickPlatform(length: length)
-        self.addChild(platform)
-        println("window = (\(size.width), \(size.height))")
-        println("added platform \(platform.position.x), \(platform.position.y) length = \(platform.size.width)")
-    
-//        platform.physicsBody = SKPhysicsBody(rectangleOfSize: platform.size) // make rectangle aprox
-//        platform.physicsBody?.dynamic = false // no gravity
-//        platform.physicsBody?.categoryBitMask = PhysicsCategory.Platform
-//        platform.physicsBody?.contactTestBitMask = PhysicsCategory.Hero
-//        platform.physicsBody?.collisionBitMask = PhysicsCategory.Hero
-        
-    }
+//    func addPlatform(length: (CGFloat)) {
+//        let platform = BrickPlatform(length: length)
+//        self.addChild(platform)
+//        println("window = (\(size.width), \(size.height))")
+//        println("added platform \(platform.position.x), \(platform.position.y) length = \(platform.size.width)")
+//    
+////        platform.physicsBody = SKPhysicsBody(rectangleOfSize: platform.size) // make rectangle aprox
+////        platform.physicsBody?.dynamic = false // no gravity
+////        platform.physicsBody?.categoryBitMask = PhysicsCategory.Platform
+////        platform.physicsBody?.contactTestBitMask = PhysicsCategory.Hero
+////        platform.physicsBody?.collisionBitMask = PhysicsCategory.Hero
+//        
+//    }
     
     func didBeginContact(contact: SKPhysicsContact) {
 //        println("contact")
+        // get the bodies a predictible order
         var firstBody : SKPhysicsBody
         var secondBody : SKPhysicsBody
         
@@ -171,12 +172,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         
     }
     
-    func characterDidCollideWithPlatform(character: (SuperCharacter), platform: (SuperPlatform)) {
-//        println("A Character hit a Platform")
+    func characterDidCollideWithPlatform(hero: (SuperCharacter), platform: (SuperPlatform)) {
+        println("A Character hit a Platform")
+        platform.applyContactEffects(hero)
+        if platform.collisionConsumesSelf() {
+            platform.removeFromParent()
+        }
         
     }
     
-    func characterDidCollideWithPowerup(character: (SuperCharacter), powerup: (SuperPowerup)) {
-//        println("Character hit a powerup")
+    func characterDidCollideWithPowerup(hero: (SuperCharacter), powerup: (SuperPowerup)) {
+        println("Character hit a powerup")
+        powerup.applyPowerupTo(hero)
+        if powerup.collisionConsumesSelf() {
+            powerup.removeFromParent()
+        }
     }
 }
