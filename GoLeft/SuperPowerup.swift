@@ -55,8 +55,16 @@ class SuperPowerup: SKSpriteNode, RequiredPowerup {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // defualt physics, able to override
     func initPhysics() {
-        assert(false, "SuperPowerup initPhysics must be overriden")
+        self.physicsBody = SKPhysicsBody(circleOfRadius: self.size.width / 2) // make circle approx
+        self.physicsBody?.dynamic = true // do want to move coin if it is in a platform
+        self.physicsBody?.affectedByGravity = false // don't want gravity
+        self.physicsBody?.categoryBitMask = PhysicsCategory.Coin
+        
+        self.physicsBody?.contactTestBitMask = PhysicsCategory.SuperCharacter
+        // to avoid collisions with platforms
+        self.physicsBody?.collisionBitMask = PhysicsCategory.SuperCharacter | PhysicsCategory.SuperPlatform
     }
     
     func applyPowerupTo(hero: SuperCharacter) {

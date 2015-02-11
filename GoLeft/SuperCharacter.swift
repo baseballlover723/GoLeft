@@ -47,8 +47,14 @@ class SuperCharacter: SKSpriteNode, RequiredCharacter {
         super.init(texture: texture, color: UIColor.clearColor(), size: texture.size())
     }
     
+    //Defualt physics
     func initPhysics() {
-        assert(false, "Supercharacter physics must be overriden")
+        self.physicsBody = SKPhysicsBody(rectangleOfSize: self.size) // make rectangle aprox
+        self.physicsBody?.dynamic = true // want gravity
+        self.physicsBody?.categoryBitMask = PhysicsCategory.Hero
+        self.physicsBody?.contactTestBitMask = PhysicsCategory.SuperPlatform
+        self.physicsBody?.collisionBitMask = PhysicsCategory.SuperPlatform
+        self.physicsBody?.allowsRotation = false
     }
     
     func applyJumpEffects() {

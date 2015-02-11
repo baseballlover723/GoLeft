@@ -25,13 +25,6 @@ class Coin: SuperPowerup, RequiredPowerup {
         fatalError("init(coder:) has not been implemented")
     }
   
-    override func initPhysics() {
-        self.physicsBody = SKPhysicsBody(circleOfRadius: self.size.width / 2) // make circle approx
-        self.physicsBody?.dynamic = false // don't want gravity
-        self.physicsBody?.categoryBitMask = PhysicsCategory.Coin
-        self.physicsBody?.contactTestBitMask = PhysicsCategory.SuperCharacter
-        self.physicsBody?.collisionBitMask = PhysicsCategory.SuperCharacter
-    }
     override func applyPowerupTo(hero: SuperCharacter) {
         hero.score++
         println("score = \(hero.score)")

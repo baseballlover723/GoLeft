@@ -63,7 +63,13 @@ class SuperPlatform: SKSpriteNode, RequiredPlatform {
     }
     
     func initPhysics() {
-        assert(false, "This method must be overridden")
+        self.physicsBody = SKPhysicsBody(rectangleOfSize: self.size) // make rectangle aprox
+        self.physicsBody?.dynamic = false //not effected by the physcis engine
+//        self.physicsBody?.affectedByGravity = false
+//        self.physicsBody?.allowsRotation = false
+        self.physicsBody?.categoryBitMask = PhysicsCategory.BrickPlatform
+        self.physicsBody?.contactTestBitMask = PhysicsCategory.SuperCharacter
+        self.physicsBody?.collisionBitMask = PhysicsCategory.SuperCharacter
     }
     
     func applyContactEffects(hero: (SuperCharacter)) {

@@ -28,15 +28,7 @@ class BrickPlatform: SuperPlatform, RequiredPlatform {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    override func initPhysics() {
-        self.physicsBody = SKPhysicsBody(rectangleOfSize: self.size) // make rectangle aprox
-        self.physicsBody?.dynamic = false // no gravity
-        self.physicsBody?.categoryBitMask = PhysicsCategory.BrickPlatform
-        self.physicsBody?.contactTestBitMask = PhysicsCategory.SuperCharacter
-        self.physicsBody?.collisionBitMask = PhysicsCategory.SuperCharacter
-    }
-    
+        
     override func applyContactEffects(hero: (SuperCharacter)) {
         println("Applyed brick effects")
     }

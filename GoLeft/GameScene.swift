@@ -24,10 +24,12 @@ struct PhysicsCategory {
 var movingHero = false
 var GRAVITY = CGVector(dx: 0, dy: -1)
 
+
 class GameScene: SKScene, SKPhysicsContactDelegate{
 
     let hero = Hero()
     var count = 1;
+    var plat = BrickPlatform(length: 1, x: 350, y: 175)
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -35,7 +37,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         hero.position = CGPoint(x: size.width * 0.9, y: size.height * 0.9)
         
         self.addChild(hero)
-        
+        self.addChild(plat)
         self.addChild(BrickPlatform(length: 8, x: 0, y: 10))
         self.addChild(BrickPlatform(length: 6, x: 75, y: 50))
         self.addChild(BrickPlatform(length: 1, x: 75, y: 300))
@@ -43,7 +45,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         self.addChild(BrickPlatform(length: 1, x: 35, y: 150))
         self.addChild(BrickPlatform(length: 1, x: 350, y: 150))
         self.addChild(BrickPlatform(length: 2, x: 200, y: 225))
-        self.addChild(Coin(x: 350, y: 75))
+        self.addChild(Coin(x: 350, y: 50))
         
     
         physicsWorld.gravity = GRAVITY
@@ -123,6 +125,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
 
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
+        println("*")
+        println(self.children.count)
+        // TODO figure out how to remove things outside of the screen
+        plat.position = CGPoint(x: plat.position.x - 0.5, y: plat.position.y)
+//        plat.physicsBody?.applyForce(CGVector(dx: -0.1, dy: 0))
     }
     
     func random() -> CGFloat {
