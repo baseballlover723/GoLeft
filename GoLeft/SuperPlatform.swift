@@ -13,7 +13,9 @@ protocol RequiredPlatform {
     func initPhysics()
     func applyContactEffects(hero: (SuperCharacter))
     func collisionConsumesSelf() -> Bool
+    func isOnScreen() -> Bool
 }
+
 class SuperPlatform: SKSpriteNode, RequiredPlatform {
 
     init(imageName: (String)) {
@@ -72,6 +74,14 @@ class SuperPlatform: SKSpriteNode, RequiredPlatform {
         self.physicsBody?.collisionBitMask = PhysicsCategory.SuperCharacter
     }
     
+    func isOnScreen() -> Bool {
+        // may override
+        var posX = self.position.x
+        var width = self.size.width
+        var edgeX = UIScreen.mainScreen().bounds.width
+        return posX - width / 2 < edgeX
+    }
+
     func applyContactEffects(hero: (SuperCharacter)) {
         assert(false, "SuperPlatform Contact Effects must be overidden")
     }

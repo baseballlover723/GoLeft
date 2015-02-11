@@ -26,7 +26,7 @@ var GRAVITY = CGVector(dx: 0, dy: -1)
 
 
 class GameScene: SKScene, SKPhysicsContactDelegate{
-
+    var moveConstant = CGFloat(0.1)
     let hero = Hero()
     var count = 1;
     var platforms = [SuperPlatform]()
@@ -132,18 +132,35 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
 
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
-        println("*")
-        println(self.children.count)
         movePlatformsAndPowerups()
+        println("*   \(self.children.count) *  \(self.moveConstant)")
         // TODO figure out how to remove things outside of the screen
 //        plat.position = CGPoint(x: plat.position.x - 0.5, y: plat.position.y)
 //        plat.physicsBody?.applyForce(CGVector(dx: -0.1, dy: 0))
     }
     
     func movePlatformsAndPowerups() {
+        self.moveConstant += 0.00001
+        for platform in self.platforms  {
+            if platform.isOnScreen() {
+                // if platform is on the screen move it to the left
+                platform.position = CGPoint(x: platform.position.x + self.moveConstant, y: platform.position.y)
+            } else {
+                platform.removeFromParent()
+            }
+        }
         
+        for powerup in self.powerups {
+            if powerup.isOnScreen() {
+                // if the powerup is on the screen move it to the right
+                powerup.position = CGPoint(x: powerup.position.x + self.moveConstant, y: powerup.position.y)
+            } else {
+                powerup.removeFromParent()
+            }
+        }
+      
     }
-    
+        
     func random() -> CGFloat {
         return CGFloat(Float(arc4random())/0xFFFFFFFF)
     }
