@@ -29,7 +29,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
 
     let hero = Hero()
     var count = 1;
-    var plat = BrickPlatform(length: 1, x: 350, y: 175)
+    var platforms = [SuperPlatform]()
+    var powerups = [SuperPowerup]()
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -37,15 +38,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         hero.position = CGPoint(x: size.width * 0.9, y: size.height * 0.9)
         
         self.addChild(hero)
-        self.addChild(plat)
-        self.addChild(BrickPlatform(length: 8, x: 0, y: 10))
-        self.addChild(BrickPlatform(length: 6, x: 75, y: 50))
-        self.addChild(BrickPlatform(length: 1, x: 75, y: 300))
-        self.addChild(BrickPlatform(length: 3, x: 275, y: 300))
-        self.addChild(BrickPlatform(length: 1, x: 35, y: 150))
-        self.addChild(BrickPlatform(length: 1, x: 350, y: 150))
-        self.addChild(BrickPlatform(length: 2, x: 200, y: 225))
-        self.addChild(Coin(x: 350, y: 50))
+        platforms.append(BrickPlatform(length: 8, x: 0, y: 10))
+        platforms.append(BrickPlatform(length: 6, x: 75, y: 50))
+        platforms.append(BrickPlatform(length: 1, x: 75, y: 300))
+        platforms.append(BrickPlatform(length: 3, x: 275, y: 300))
+        platforms.append(BrickPlatform(length: 1, x: 35, y: 150))
+        platforms.append(BrickPlatform(length: 1, x: 350, y: 150))
+        platforms.append(BrickPlatform(length: 2, x: 200, y: 225))
+        powerups.append(Coin(x: 350, y: 50))
+        
+        for platform in platforms {
+            self.addChild(platform)
+        }
+        for powerup in powerups {
+            self.addChild(powerup)
+        }
         
     
         physicsWorld.gravity = GRAVITY
@@ -127,9 +134,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         /* Called before each frame is rendered */
         println("*")
         println(self.children.count)
+        movePlatformsAndPowerups()
         // TODO figure out how to remove things outside of the screen
-        plat.position = CGPoint(x: plat.position.x - 0.5, y: plat.position.y)
+//        plat.position = CGPoint(x: plat.position.x - 0.5, y: plat.position.y)
 //        plat.physicsBody?.applyForce(CGVector(dx: -0.1, dy: 0))
+    }
+    
+    func movePlatformsAndPowerups() {
+        
     }
     
     func random() -> CGFloat {
