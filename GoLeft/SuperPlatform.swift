@@ -19,6 +19,13 @@ protocol RequiredPlatform {
 class SuperPlatform: SKSpriteNode, RequiredPlatform {
     var maxLength = UInt32(UIScreen.mainScreen().bounds.width / 60)
     
+    // nil object
+    override init() {
+        let texture = SKTexture(imageNamed: "Hero")
+        super.init(texture: texture, color: UIColor.clearColor(), size: texture.size())
+    }
+    
+    // generate the platform with random length and random location at the left side of the game
     init(imageName: (String)) {
         let texture = SKTexture(imageNamed: imageName)
         super.init(texture: texture, color: UIColor.clearColor(), size: texture.size())
@@ -27,16 +34,41 @@ class SuperPlatform: SKSpriteNode, RequiredPlatform {
         let bounds = UIScreen.mainScreen().bounds
         let screenWidth = bounds.width
         let screenHeight = bounds.height
+        let y = random(min: 0, max: screenHeight)
         
-        
-        //        let x = random(min: -self.size.width, max: screenWidth)
-        let y = random(min: -self.size.height, max: screenHeight)
-        
-        //        self.position = CGPoint(x: x+self.size.width/2, y: y-self.size.height/2)
-        self.position = CGPoint(x: -self.size.width/2, y: y-self.size.height/2)
+        self.position = CGPoint(x: -self.size.width/2, y: y)
         initPhysics()
     }
     
+    // generate platform that is possible to jump to, but favors farther away
+    init(imageName: (String), lastPlatformRightAnchor: (CGPoint), heroJumpHeight: (CGFloat)) {
+        let texture = SKTexture(imageNamed: imageName)
+        super.init(texture: texture, color: UIColor.clearColor(), size: texture.size())
+        
+        self.xScale = CGFloat(arc4random_uniform(self.maxLength))
+        
+        println("last plat Right Anchor = \(lastPlatformRightAnchor)")
+        var deltaX = lastPlatformRightAnchor.x
+        var heroJumpHeight = heroJumpHeight * 0.95
+        var calc = deltaX > heroJumpHeight ? 0 : sqrt(heroJumpHeight * heroJumpHeight - deltaX * deltaX)
+        var maxY = max(heroJumpHeight/3, calc) + lastPlatformRightAnchor.y
+        println("deltaX = \(deltaX), maxY = \(maxY), calc = \(calc)")
+        let bounds = UIScreen.mainScreen().bounds
+        let screenWidth = bounds.width
+        let screenHeight = bounds.height
+        var boo = random() > ((4/3)*lastPlatformRightAnchor.y / screenHeight)
+        let y = boo ? randomUpper(11 * lastPlatformRightAnchor.y / 10, max: maxY): random(min: 0, max: (9/10) * lastPlatformRightAnchor.y)
+        if boo {
+            println("Went UP")
+        } else {
+            println("Went DOWN")
+        }
+        println("Y = \(y)")
+
+        self.position = CGPoint(x: -self.size.width/2, y: y)
+        initPhysics()
+    }
+
     // specify the location
     init(imageName: (String), length: (CGFloat), x: (CGFloat), y: (CGFloat)) {
         let texture = SKTexture(imageNamed: imageName)
@@ -44,11 +76,12 @@ class SuperPlatform: SKSpriteNode, RequiredPlatform {
         
         //        self.size = CGSize(width: self.size.width * length, height: self.size.height)
         self.xScale = length
-        self.position = CGPoint(x: x+self.size.width / 2, y: y-self.size.height/2)
+        self.position = CGPoint(x: x+self.size.width / 2, y: y)
         
         initPhysics()
     }
     
+    // generate platform with a given length at a random Y at the left side of the game
     init(imageName: (String), length: (CGFloat)) {
         let texture = SKTexture(imageNamed: imageName)
         super.init(texture: texture, color: UIColor.clearColor(), size: texture.size())
@@ -57,15 +90,14 @@ class SuperPlatform: SKSpriteNode, RequiredPlatform {
         let bounds = UIScreen.mainScreen().bounds
         let screenWidth = bounds.width
         let screenHeight = bounds.height
-        
-        
 //        let x = random(min: -self.size.width, max: screenWidth)
-        let y = random(min: -self.size.height, max: screenHeight)
+        let y = random(min: 0, max: screenHeight)
         
 //        self.position = CGPoint(x: x+self.size.width/2, y: y-self.size.height/2)
-        self.position = CGPoint(x: -self.size.width/2, y: y-self.size.height/2)
+        self.position = CGPoint(x: -self.size.width/2, y: y)
         initPhysics()
     }
+        
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -76,6 +108,11 @@ class SuperPlatform: SKSpriteNode, RequiredPlatform {
     
     func random(#min: CGFloat, max: CGFloat) -> CGFloat {
         return random() * (max - min) + min
+    }
+    
+    func randomUpper(min: (CGFloat), max: (CGFloat)) -> CGFloat {
+        var rand = random() * random()
+        return max - (max - min) * rand
     }
     
     func initPhysics() {

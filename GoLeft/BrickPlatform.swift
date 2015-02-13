@@ -11,7 +11,7 @@ import SpriteKit
 
 class BrickPlatform: SuperPlatform, RequiredPlatform {
    
-    init() {
+    override init() {
         super.init(imageName: "BrickPlatform")
         initPhysics()
     }
@@ -21,8 +21,13 @@ class BrickPlatform: SuperPlatform, RequiredPlatform {
         super.init(imageName: "BrickPlatform", length: length, x: x, y: y)
     }
     
+    // specify length, but randomly placed
     init(length: (CGFloat)) {
         super.init(imageName: "BrickPlatform", length: length)
+    }
+    
+    init(lastPlatformRightAnchor: (CGPoint), heroJumpHeight: (CGFloat)) {
+        super.init(imageName: "BrickPlatform", lastPlatformRightAnchor: lastPlatformRightAnchor, heroJumpHeight: heroJumpHeight)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -30,7 +35,7 @@ class BrickPlatform: SuperPlatform, RequiredPlatform {
     }
         
     override func applyContactEffects(hero: (SuperCharacter)) {
-        println("Applyed brick effects")
+//        println("Applyed brick effects")
     }
     override func collisionConsumesSelf() -> Bool {
         return false

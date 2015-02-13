@@ -34,6 +34,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     var powerups = [SuperPowerup]()
     var platformThreshhold = CGFloat(0);
     var powerupThreshhold = CGFloat(0);
+    var lastPlatform = SuperPlatform()
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -41,7 +42,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         hero.position = CGPoint(x: size.width * 0.9, y: size.height * 0.9)
         
         self.addChild(hero)
-        platforms.append(BrickPlatform(length: 8, x: 0, y: 10))
+//        platforms.append(BrickPlatform(length: 8, x: 0, y: 10))
         platforms.append(BrickPlatform(length: 6, x: 75, y: 50))
         platforms.append(BrickPlatform(length: 1, x: 75, y: 300))
         platforms.append(BrickPlatform(length: 3, x: 275, y: 300))
@@ -50,6 +51,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         platforms.append(BrickPlatform(length: 2, x: 200, y: 225))
         powerups.append(Coin(x: 350, y: 50))
         
+        self.lastPlatform = platforms[0]
         for platform in platforms {
             self.addChild(platform)
         }
@@ -135,6 +137,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
 
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
+//        println("hero y = \(hero.position.y)")
         maybeMoveHero()
         movePlatformsAndPowerups()
         maybeAddPlatformsAndPowerups()
@@ -181,7 +184,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         self.platformThreshhold += THRESHHOLD_INCREMENT + self.moveConstant * SPEED_SCALING
         //        var threshhold = self.moveConstant * 0.1
         //        println("rand = \(rand)")
-        println("threshhold = \(threshhold)")
+//        println("threshhold = \(threshhold)")
         if rand < threshhold || self.platforms.count < 4{
             self.platformThreshhold = CGFloat(0)
             addRandomPlatform()
@@ -193,7 +196,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         self.powerupThreshhold += THRESHHOLD_INCREMENT + self.moveConstant * SPEED_SCALING
         //        var threshhold = self.moveConstant * 0.1
         //        println("rand = \(rand)")
-        println("threshhold = \(threshhold)")
+//        println("threshhold = \(threshhold)")
         if rand < threshhold {
             self.powerupThreshhold = CGFloat(0)
             addRandomPowerup()
@@ -201,17 +204,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     }
     
     func addRandomPlatform() {
-        var newPlatform = BrickPlatform()
+        println("\nstart")
+        println("last platform position (before) = \(self.lastPlatform.position)")
+        var newPlatform = BrickPlatform(lastPlatformRightAnchor: getPlatformRightAnchor(self.lastPlatform), heroJumpHeight: getHeroJumpHeight())
         self.platforms.append(newPlatform)
         self.addChild(newPlatform)
-        println("Add new platform")
+        self.lastPlatform = newPlatform
+        //        println("Add new platform")
     }
     
     func addRandomPowerup() {
         var newPowerup = Coin()
         self.powerups.append(newPowerup)
         self.addChild(newPowerup)
-        println("added new powerup")
+//        println("added new powerup")
+    }
+    
+    func getHeroJumpHeight() -> CGFloat {
+        return hero.HERO_JUMP_FORCE.dy * hero.HERO_JUMP_FORCE.dy
     }
     
     func random() -> CGFloat {
@@ -262,7 +272,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     }
     
     func characterDidCollideWithPlatform(hero: (SuperCharacter), platform: (SuperPlatform)) {
-        println("A Character hit a Platform")
+//        println("A Character hit a Platform")
         platform.applyContactEffects(hero)
         if platform.collisionConsumesSelf() {
             platform.removeFromParent()
@@ -271,10 +281,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     }
     
     func characterDidCollideWithPowerup(hero: (SuperCharacter), powerup: (SuperPowerup)) {
-        println("Character hit a powerup")
+//        println("Character hit a powerup")
         powerup.applyPowerupTo(hero)
         if powerup.collisionConsumesSelf() {
             powerup.removeFromParent()
         }
     }
+    
+    func getPlatformRightAnchor(platform: (SuperPlatform)) -> CGPoint {
+        return platform.position + platform.size.width / 2
+    }
+    
+    func getPlatformLeftAnchor(platform: (SuperPlatform)) -> CGPoint {
+        return platform.position - platform.size.width / 2
+    }
+    
+}
+func +(left: CGPoint, right: CGFloat) -> CGPoint {
+    return CGPoint(x: left.x + right , y: left.y)
+}
+func -(left: CGPoint, right: CGFloat) -> CGPoint {
+    return CGPoint(x: left.x - right , y: left.y)
 }
