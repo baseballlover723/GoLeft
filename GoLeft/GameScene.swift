@@ -26,11 +26,13 @@ var GRAVITY = CGVector(dx: 0, dy: -1)
 
 
 class GameScene: SKScene, SKPhysicsContactDelegate{
-    var moveConstant = CGFloat(0.1)
+    var moveConstant = CGFloat(0.5)
     let hero = Hero()
     var count = 1;
     var platforms = [SuperPlatform]()
     var powerups = [SuperPowerup]()
+    var platformThreshhold = CGFloat(0);
+    var powerupThreshhold = CGFloat(0);
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -132,11 +134,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
 
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
+        maybeMoveHero()
         movePlatformsAndPowerups()
-        println("*   \(self.children.count) *  \(self.moveConstant)")
+        maybeAddPlatformsAndPowerups()
+//        println("*   \(self.children.count) *  \(self.moveConstant)")
         // TODO figure out how to remove things outside of the screen
 //        plat.position = CGPoint(x: plat.position.x - 0.5, y: plat.position.y)
 //        plat.physicsBody?.applyForce(CGVector(dx: -0.1, dy: 0))
+    }
+    
+    func maybeMoveHero() {
+        if hero.canJump {
+            // if the hero can jump, he's on a platform and should move with the platform
+            hero.position = CGPoint(x: hero.position.x + self.moveConstant, y: hero.position.y)
+        }
     }
     
     func movePlatformsAndPowerups() {
@@ -158,9 +169,50 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
                 powerup.removeFromParent()
             }
         }
-      
     }
-        
+    
+    func maybeAddPlatformsAndPowerups() {
+        // TODO make platforms made up of unit platforms
+        // TODO make platforms be within a jump from the previous platform
+        var rand = random()
+        //        var threshhold = self.moveConstant * 0.0001 / CGFloat(self.children.count) + self.platformThreshhold
+        var threshhold = self.platformThreshhold / CGFloat(self.platforms.count)
+        self.platformThreshhold += 0.00002 + self.moveConstant * 0.001
+        //        var threshhold = self.moveConstant * 0.1
+        //        println("rand = \(rand)")
+        println("threshhold = \(threshhold)")
+        if rand < threshhold || self.platforms.count < 4{
+            self.platformThreshhold = CGFloat(0)
+            addRandomPlatform()
+        }
+
+        rand = random()
+        //        var threshhold = self.moveConstant * 0.0001 / CGFloat(self.children.count) + self.platformThreshhold
+        threshhold = self.powerupThreshhold / CGFloat(self.powerups.count)
+        self.powerupThreshhold += 0.00002 + self.moveConstant * 0.001
+        //        var threshhold = self.moveConstant * 0.1
+        //        println("rand = \(rand)")
+        println("threshhold = \(threshhold)")
+        if rand < threshhold {
+            self.powerupThreshhold = CGFloat(0)
+            addRandomPowerup()
+        }
+    }
+    
+    func addRandomPlatform() {
+        var newPlatform = BrickPlatform()
+        self.platforms.append(newPlatform)
+        self.addChild(newPlatform)
+        println("Add new platform")
+    }
+    
+    func addRandomPowerup() {
+        var newPowerup = Coin()
+        self.powerups.append(newPowerup)
+        self.addChild(newPowerup)
+        println("added new powerup")
+    }
+    
     func random() -> CGFloat {
         return CGFloat(Float(arc4random())/0xFFFFFFFF)
     }

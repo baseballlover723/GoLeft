@@ -27,10 +27,10 @@ class SuperPowerup: SKSpriteNode, RequiredPowerup {
         let screenHeight = bounds.height
         
         
-        let x = random(min: -self.size.width, max: screenWidth)
-        let y = random(min: -self.size.height, max: screenHeight)
+//        let x = random(min: -self.size.width, max: screenWidth)
+        let y = random(min: self.size.height, max: screenHeight-self.size.height)
         
-        self.position = CGPoint(x: x, y: y)
+        self.position = CGPoint(x: -self.size.width/2, y: y)
         initPhysics()
     }
     

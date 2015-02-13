@@ -17,11 +17,24 @@ protocol RequiredPlatform {
 }
 
 class SuperPlatform: SKSpriteNode, RequiredPlatform {
-
+    var maxLength = UInt32(UIScreen.mainScreen().bounds.width / 60)
+    
     init(imageName: (String)) {
         let texture = SKTexture(imageNamed: imageName)
         super.init(texture: texture, color: UIColor.clearColor(), size: texture.size())
         
+        self.xScale = CGFloat(arc4random_uniform(self.maxLength))
+        let bounds = UIScreen.mainScreen().bounds
+        let screenWidth = bounds.width
+        let screenHeight = bounds.height
+        
+        
+        //        let x = random(min: -self.size.width, max: screenWidth)
+        let y = random(min: -self.size.height, max: screenHeight)
+        
+        //        self.position = CGPoint(x: x+self.size.width/2, y: y-self.size.height/2)
+        self.position = CGPoint(x: -self.size.width/2, y: y-self.size.height/2)
+        initPhysics()
     }
     
     // specify the location
@@ -46,10 +59,11 @@ class SuperPlatform: SKSpriteNode, RequiredPlatform {
         let screenHeight = bounds.height
         
         
-        let x = random(min: -self.size.width, max: screenWidth)
+//        let x = random(min: -self.size.width, max: screenWidth)
         let y = random(min: -self.size.height, max: screenHeight)
         
-        self.position = CGPoint(x: x+self.size.width/2, y: y-self.size.height/2)
+//        self.position = CGPoint(x: x+self.size.width/2, y: y-self.size.height/2)
+        self.position = CGPoint(x: -self.size.width/2, y: y-self.size.height/2)
         initPhysics()
     }
     required init?(coder aDecoder: NSCoder) {

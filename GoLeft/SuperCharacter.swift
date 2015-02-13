@@ -35,7 +35,7 @@ class SuperCharacter: SKSpriteNode, RequiredCharacter {
         
         var isPlatform = (inContact![0].categoryBitMask & PhysicsCategory.SuperPlatform) != 0
         var isBelow = inContact![0].position!.y < (self.position.y - self.size.height/2)
-        println("isPlatform = \(isPlatform), isBelow = \(isBelow)")
+//        println("isPlatform = \(isPlatform), isBelow = \(isBelow)")
         return self.physicsBody?.velocity.dy <= CGFloat(abs(0.01)) && inContact!.count == 1 && isPlatform && isBelow
     }
     var score : Int32
