@@ -54,8 +54,13 @@ import UIKit
 import CoreData
 
 class HighScoreMasterViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     var managedObjectContext: NSManagedObjectContext?
+    let HighScoreCellIdentifier = "HighScoreCell"
     
     
     
@@ -65,17 +70,23 @@ class HighScoreMasterViewController: UITableViewController, NSFetchedResultsCont
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        self.navigationItem.leftBarButtonItem = self.editButtonItem()
         
-        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "insertNewObject:")
-        self.navigationItem.rightBarButtonItem = addButton
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+        
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        navigationItem.leftBarButtonItem = editButtonItem()
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "showAddQuoteDialog")
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
+        
+    
+    
+    
     
     func insertNewObject(sender: AnyObject) {
         let context = self.fetchedResultsController.managedObjectContext

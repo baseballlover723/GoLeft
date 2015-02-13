@@ -123,7 +123,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableViewCell contentMode="scaleToFill" fixedFrame="YES" selectionStyle="default" indentationWidth="10" translatesAutoresizingMaskIntoConstraints="NO" id="O1e-Ts-cTv">
+                            <tableViewCell contentMode="scaleToFill" fixedFrame="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HighScoreCell" translatesAutoresizingMaskIntoConstraints="NO" id="O1e-Ts-cTv">
                                 <rect key="frame" x="0.0" y="0.0" width="584" height="44"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="O1e-Ts-cTv" id="0oq-Gr-7yA">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -150,7 +150,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="46c-fJ-IY2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2294" y="238"/>
+            <point key="canvasLocation" x="2294" y="243"/>
         </scene>
     </scenes>
 </document>
