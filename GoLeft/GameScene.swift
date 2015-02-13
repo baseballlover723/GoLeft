@@ -23,7 +23,8 @@ struct PhysicsCategory {
 // GLOBAL CONSTANTS
 var movingHero = false
 var GRAVITY = CGVector(dx: 0, dy: -1)
-
+var SPEED_SCALING = CGFloat(0.001)
+var THRESHHOLD_INCREMENT = CGFloat(0.00002)
 
 class GameScene: SKScene, SKPhysicsContactDelegate{
     var moveConstant = CGFloat(0.5)
@@ -177,7 +178,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         var rand = random()
         //        var threshhold = self.moveConstant * 0.0001 / CGFloat(self.children.count) + self.platformThreshhold
         var threshhold = self.platformThreshhold / CGFloat(self.platforms.count)
-        self.platformThreshhold += 0.00002 + self.moveConstant * 0.001
+        self.platformThreshhold += THRESHHOLD_INCREMENT + self.moveConstant * SPEED_SCALING
         //        var threshhold = self.moveConstant * 0.1
         //        println("rand = \(rand)")
         println("threshhold = \(threshhold)")
@@ -189,7 +190,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         rand = random()
         //        var threshhold = self.moveConstant * 0.0001 / CGFloat(self.children.count) + self.platformThreshhold
         threshhold = self.powerupThreshhold / CGFloat(self.powerups.count)
-        self.powerupThreshhold += 0.00002 + self.moveConstant * 0.001
+        self.powerupThreshhold += THRESHHOLD_INCREMENT + self.moveConstant * SPEED_SCALING
         //        var threshhold = self.moveConstant * 0.1
         //        println("rand = \(rand)")
         println("threshhold = \(threshhold)")
