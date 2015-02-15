@@ -1,6 +1,6 @@
 import UIKit
 import CoreData
-
+import SpriteKit
 class HighScoreMasterViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     //    var movieQuotes = [MovieQuote]()
     var MovieQuoteCount: Int{
@@ -10,10 +10,11 @@ class HighScoreMasterViewController: UITableViewController, NSFetchedResultsCont
         return fetchedResultsController.objectAtIndexPath(indexPath) as Score
     }
     var managedObjectContext : NSManagedObjectContext?
-    let movieQuoteCellIdentifier = "MovieQuoteCell"
+    let movieQuoteCellIdentifier = "HighScoreCell"
     let showDetailSegueIdentifier = "showDetailSegue"
-    let noMovieQuoteCellIdentifier = "NoMovieQuoteCell"
+    let noMovieQuoteCellIdentifier = "NoHighScoreCell"
     let movieQuoteEntityName = "MovieQuote"
+    var bestScore = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,13 +39,10 @@ class HighScoreMasterViewController: UITableViewController, NSFetchedResultsCont
             textField.placeholder = "Movie Title"
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { (action) -> Void in
-            println("you pressed cancel")
-        }
         
         let createQuoteAction = UIAlertAction(title: "Create Quote", style: UIAlertActionStyle.Default) { (action) -> Void in
             println("You pressed create quote")
-            
+        
             let quoteTextField = alertController.textFields![0] as UITextField
             let movieTextField = alertController.textFields![1] as UITextField
             
@@ -58,7 +56,6 @@ class HighScoreMasterViewController: UITableViewController, NSFetchedResultsCont
             self.saveManagedObjectContext()
             
         }
-        alertController.addAction(cancelAction)
         alertController.addAction(createQuoteAction)
         presentViewController(alertController, animated: true, completion: nil)
     }
@@ -167,17 +164,57 @@ class HighScoreMasterViewController: UITableViewController, NSFetchedResultsCont
     }
     
     
-    // MARK: - Navigation
+// func getScore(){
+//    var actionArray: NSMutableArray = NSMutableArray()
+//    actionArray.addObject(SKAction.runBlock({
+//    var transition:SKTransition = SKTransition.flipHorizontalWithDuration(0.5)
+//    
+//    //Use CoreData
+//    var appDel: AppDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
+//    var context:NSManagedObjectContext = appDel.managedObjectContext
+//    
+//    
+//    var request = NSFetchRequest(entityName:"Score")
+//    request.returnsObjectsAsFaults=false
+//    request.predicate = NSPredicate(format:"fetchScore = %@","fetchScore")
+//    
+//    var results:NSArray = context.executeFetchRequest(request, error: nil)!
+//    
+//    if (results.count > 0) {
+//    
+//    var compareBest:Int = 0
+//    
+//    var res = results[0] as NSManagedObject
+//    
+//    compareBest = res.valueForKey("bestScore") as Int
+//    
+//    if compareBest < Int(self.score){
+//    var newBestScore = NSEntityDescription.insertNewObjectForEntityForName("Score", inManagedObjectContext: context) as NSManagedObject
+//    
+//    newBestScore.setValue("fetchScore", forKey:"fetchScore")
+//    newBestScore.setValue(Int(self.score), forKey: "bestScore")
+//    
+//    context.save(nil)
+//    self.bestScore = self.score
+//    
+//    }else{
+//    self.bestScore = compareBest
+//    }
+//    
+//    
+//    }else{
+//    var newBestScore = NSEntityDescription.insertNewObjectForEntityForName("Score", inManagedObjectContext: context) as NSManagedObject
+//    
+//    newBestScore.setValue(Int(self.score), forKey: "bestScore")
+//    newBestScore.setValue("fetchScore", forKey:"fetchScore")
+//    context.save(nil)
+//    self.bestScore =
+//    }
+//    
+//       
+//    }))
+//    }
+//    
     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == showDetailSegueIdentifier{
-            if let selectedIndexPath = tableView.indexPathForSelectedRow(){
-                let movieQuote = getMovieQuoteAtIndexPath(selectedIndexPath)
-//                (segue.destinationViewController as HighScoreDetailViewController).movieQuote = movieQuote
-//                (segue.destinationViewController as HighScoreDetailViewController).managedObjectContext = managedObjectContext
-            }
-        }
-    }
     
 }
