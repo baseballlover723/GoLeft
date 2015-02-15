@@ -137,7 +137,7 @@ class HighScoreMasterViewController: UITableViewController, NSFetchedResultsCont
         }
         
         let fetchRequest = NSFetchRequest(entityName: movieQuoteEntityName)
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lastTouchDate", ascending: false)]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "Score", ascending: false)]
         fetchRequest.fetchBatchSize = 20
         let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext!, sectionNameKeyPath: nil, cacheName: "MovieQuoteCache")
         aFetchedResultsController.delegate = self
@@ -162,59 +162,6 @@ class HighScoreMasterViewController: UITableViewController, NSFetchedResultsCont
             saveManagedObjectContext()
         }
     }
-    
-    
-// func getScore(){
-//    var actionArray: NSMutableArray = NSMutableArray()
-//    actionArray.addObject(SKAction.runBlock({
-//    var transition:SKTransition = SKTransition.flipHorizontalWithDuration(0.5)
-//    
-//    //Use CoreData
-//    var appDel: AppDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
-//    var context:NSManagedObjectContext = appDel.managedObjectContext
-//    
-//    
-//    var request = NSFetchRequest(entityName:"Score")
-//    request.returnsObjectsAsFaults=false
-//    request.predicate = NSPredicate(format:"fetchScore = %@","fetchScore")
-//    
-//    var results:NSArray = context.executeFetchRequest(request, error: nil)!
-//    
-//    if (results.count > 0) {
-//    
-//    var compareBest:Int = 0
-//    
-//    var res = results[0] as NSManagedObject
-//    
-//    compareBest = res.valueForKey("bestScore") as Int
-//    
-//    if compareBest < Int(self.score){
-//    var newBestScore = NSEntityDescription.insertNewObjectForEntityForName("Score", inManagedObjectContext: context) as NSManagedObject
-//    
-//    newBestScore.setValue("fetchScore", forKey:"fetchScore")
-//    newBestScore.setValue(Int(self.score), forKey: "bestScore")
-//    
-//    context.save(nil)
-//    self.bestScore = self.score
-//    
-//    }else{
-//    self.bestScore = compareBest
-//    }
-//    
-//    
-//    }else{
-//    var newBestScore = NSEntityDescription.insertNewObjectForEntityForName("Score", inManagedObjectContext: context) as NSManagedObject
-//    
-//    newBestScore.setValue(Int(self.score), forKey: "bestScore")
-//    newBestScore.setValue("fetchScore", forKey:"fetchScore")
-//    context.save(nil)
-//    self.bestScore =
-//    }
-//    
-//       
-//    }))
-//    }
-//    
     
     
 }

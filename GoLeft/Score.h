@@ -12,8 +12,8 @@
 
 @interface Score : NSManagedObject
 
-@property (nonatomic, retain) NSNumber * score;
-@property (nonatomic, retain) NSString * userName;
+@property (nonatomic,retain) NSNumber * score;
+@property (nonatomic,retain) NSString * userName;
 
 - (id) initWithName:(NSString *)nameObj andScore:(NSNumber *)scoreObj;
 + (void) saveHighScore:(NSNumber *)score withName:(NSString *)score;
