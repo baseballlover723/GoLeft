@@ -1,272 +1,183 @@
-////
-////  HighScoreScene.swift
-////  GoLeft
-////
-////  Created by Ashok Vardhan Raja on 2/9/15.
-////  Copyright (c) 2015 Philip Ross. All rights reserved.
-////
-//
-//import Foundation
-//
-//class HighScore: NSObject {
-//    
-//    var highScore: Int = 0
-//    
-//    func encodeWithCoder(aCoder: NSCoder!) {
-//        aCoder.encodeInteger(highScore, forKey: "highScore")
-//    }
-//    
-//    init(coder aDecoder: NSCoder!) {
-//        highScore = aDecoder.decodeIntegerForKey("highScore")
-//    }
-//    
-//    override init() {
-//    }
-//}
-//
-//class SaveHighScore:NSObject {
-//    
-//    var documentDirectories:NSArray = []
-//    var documentDirectory:String = ""
-//    var path:String = ""
-//    
-//    func ArchiveHighScore(#highScore: HighScore) {
-//        documentDirectories = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-//        documentDirectory = documentDirectories.objectAtIndex(0) as String
-//        path = documentDirectory.stringByAppendingPathComponent("highScore.archive")
-//        
-//        if NSKeyedArchiver.archiveRootObject(highScore, toFile: path) {
-//            println("Success writing to file!")
-//        } else {
-//            println("Unable to write to file!")
-//        }
-//    } }
-
-//
-//  MasterViewController.swift
-//  jkj
-//
-//  Created by Ashok Vardhan Raja on 2/11/15.
-//  Copyright (c) 2015 Rose-Hulman. All rights reserved.
-//
-import Foundation
 import UIKit
 import CoreData
 
-//class HighScoreMasterViewController: UITableViewController, NSFetchedResultsControllerDelegate {
-//
-//    required init(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-//    
-//    var managedObjectContext: NSManagedObjectContext?
-//    let HighScoreCellIdentifier = "HighScoreCell"
-//    
-//    
-//    
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//    }
-//    
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        
-//        // Uncomment the following line to preserve selection between presentations
-//        // self.clearsSelectionOnViewWillAppear = false
-//        
-//        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-//        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-//        
-//        navigationItem.leftBarButtonItem = editButtonItem()
-//        
-//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "showAddQuoteDialog")
-//    }
-//    
-//    
-//        
-//    
-//    
-//    
-//    
-//    func insertNewObject(sender: AnyObject) {
-//        let context = self.fetchedResultsController.managedObjectContext
-//        let entity = self.fetchedResultsController.fetchRequest.entity!
-//        let newManagedObject = NSEntityDescription.insertNewObjectForEntityForName(entity.name!, inManagedObjectContext: context) as NSManagedObject
-//        
-//        // If appropriate, configure the new managed object.
-//        // Normally you should use accessor methods, but using KVC here avoids the need to add a custom class to the template.
-//        newManagedObject.setValue(NSDate(), forKey: "timeStamp")
-//        
-//        // Save the context.
-//        var error: NSError? = nil
-//        if !context.save(&error) {
-//            // Replace this implementation with code to handle the error appropriately.
-//            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-//            //println("Unresolved error \(error), \(error.userInfo)")
-//            abort()
-//        }
-//    }
-//    
-//    // MARK: - Segues
-//    
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if segue.identifier == "showDetail" {
-//            if let indexPath = self.tableView.indexPathForSelectedRow() {
-//                let object = self.fetchedResultsController.objectAtIndexPath(indexPath) as NSManagedObject
-//                (segue.destinationViewController as HighScoreDetailViewController).detailItem = object
-//            }
-//        }
-//    }
-//    
-//    // MARK: - Table View
-//    
-//    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-//        return self.fetchedResultsController.sections?.count ?? 0
-//    }
-//    
-//    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        let sectionInfo = self.fetchedResultsController.sections![section] as NSFetchedResultsSectionInfo
-//        return sectionInfo.numberOfObjects
-//    }
-//    
-//    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
-//        self.configureCell(cell, atIndexPath: indexPath)
-//        return cell
-//    }
-//    
-//    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-//        // Return false if you do not want the specified item to be editable.
-//        return true
-//    }
-//    
-//    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-//        if editingStyle == .Delete {
-//            let context = self.fetchedResultsController.managedObjectContext
-//            context.deleteObject(self.fetchedResultsController.objectAtIndexPath(indexPath) as NSManagedObject)
-//            
-//            var error: NSError? = nil
-//            if !context.save(&error) {
-//                // Replace this implementation with code to handle the error appropriately.
-//                // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-//                //println("Unresolved error \(error), \(error.userInfo)")
-//                abort()
-//            }
-//        }
-//    }
-//    
-//    func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
-//        let object = self.fetchedResultsController.objectAtIndexPath(indexPath) as NSManagedObject
-//        cell.textLabel!.text = object.valueForKey("timeStamp")!.description
-//    }
-//    
-//    // MARK: - Fetched results controller
-//    
-//    var fetchedResultsController: NSFetchedResultsController {
-//        if _fetchedResultsController != nil {
-//            return _fetchedResultsController!
-//        }
-//        
-//        let fetchRequest = NSFetchRequest()
-//        // Edit the entity name as appropriate.
-//        let entity = NSEntityDescription.entityForName("Event", inManagedObjectContext: self.managedObjectContext!)
-//        fetchRequest.entity = entity
-//        
-//        // Set the batch size to a suitable number.
-//        fetchRequest.fetchBatchSize = 20
-//        
-//        // Edit the sort key as appropriate.
-//        let sortDescriptor = NSSortDescriptor(key: "timeStamp", ascending: false)
-//        let sortDescriptors = [sortDescriptor]
-//        
-//        fetchRequest.sortDescriptors = [sortDescriptor]
-//        
-//        // Edit the section name key path and cache name if appropriate.
-//        // nil for section name key path means "no sections".
-//        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext!, sectionNameKeyPath: nil, cacheName: "Master")
-//        aFetchedResultsController.delegate = self
-//        _fetchedResultsController = aFetchedResultsController
-//        
-//        var error: NSError? = nil
-//        if !_fetchedResultsController!.performFetch(&error) {
-//            // Replace this implementation with code to handle the error appropriately.
-//            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-//            //println("Unresolved error \(error), \(error.userInfo)")
-//            abort()
-//        }
-//        
-//        return _fetchedResultsController!
-//    }
-//    var _fetchedResultsController: NSFetchedResultsController? = nil
-//    
-//    func controllerWillChangeContent(controller: NSFetchedResultsController) {
-//        self.tableView.beginUpdates()
-//    }
-//    
-//    func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
-//        switch type {
-//        case .Insert:
-//            self.tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
-//        case .Delete:
-//            self.tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
-//        default:
-//            return
-//        }
-//    }
-//    
-//    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
-//        switch type {
-//        case .Insert:
-//            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
-//        case .Delete:
-//            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-//        case .Update:
-//            self.configureCell(tableView.cellForRowAtIndexPath(indexPath!)!, atIndexPath: indexPath!)
-//        case .Move:
-//            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-//            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
-//        default:
-//            return
-//        }
-//    }
-//    
-//    func controllerDidChangeContent(controller: NSFetchedResultsController) {
-//        self.tableView.endUpdates()
-//    }
-//    
-//    /*
-//    // Implementing the above methods to update the table view in response to individual changes may have performance implications if a large number of changes are made simultaneously. If this proves to be an issue, you can instead just implement controllerDidChangeContent: which notifies the delegate that all section and object changes have been processed.
-//    
-//    func controllerDidChangeContent(controller: NSFetchedResultsController) {
-//    // In the simplest, most efficient, case, reload the table view.
-//    self.tableView.reloadData()
-//    }
-//    */
-//    
-//}
-
-class HighScore: NSObject, NSCoding {
-    let score:Int;
-    let dateOfScore:NSDate;
+class HighScoreMasterViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+    //    var movieQuotes = [MovieQuote]()
+    var MovieQuoteCount: Int{
+        return fetchedResultsController.sections![0].numberOfObjects
+    }
+    func getMovieQuoteAtIndexPath(indexPath: NSIndexPath) -> Score {
+        return fetchedResultsController.objectAtIndexPath(indexPath) as Score
+    }
+    var managedObjectContext : NSManagedObjectContext?
+    let movieQuoteCellIdentifier = "MovieQuoteCell"
+    let showDetailSegueIdentifier = "showDetailSegue"
+    let noMovieQuoteCellIdentifier = "NoMovieQuoteCell"
+    let movieQuoteEntityName = "MovieQuote"
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+        
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        navigationItem.leftBarButtonItem = editButtonItem()
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "showAddQuoteDialog")}
     
-    init(score:Int, dateOfScore:NSDate) {
-        self.score = score;
-        self.dateOfScore = dateOfScore;
+    func showAddQuoteDialog(){
+        let alertController = UIAlertController(title: "Create a new movie quote", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alertController.addTextFieldWithConfigurationHandler { (textField) -> Void in
+            textField.placeholder = "Quote"
+        }
+        
+        alertController.addTextFieldWithConfigurationHandler { (textField) -> Void in
+            textField.placeholder = "Movie Title"
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { (action) -> Void in
+            println("you pressed cancel")
+        }
+        
+        let createQuoteAction = UIAlertAction(title: "Create Quote", style: UIAlertActionStyle.Default) { (action) -> Void in
+            println("You pressed create quote")
+            
+            let quoteTextField = alertController.textFields![0] as UITextField
+            let movieTextField = alertController.textFields![1] as UITextField
+            
+            
+            let newMovieQuote = NSEntityDescription.insertNewObjectForEntityForName(self.movieQuoteEntityName, inManagedObjectContext: self.managedObjectContext!) as Score
+            
+            newMovieQuote.score = quoteTextField.tag
+            newMovieQuote.userName = movieTextField.text
+           // newMovieQuote.lastTouchDate = NSDate()
+            
+            self.saveManagedObjectContext()
+            
+        }
+        alertController.addAction(cancelAction)
+        alertController.addAction(createQuoteAction)
+        presentViewController(alertController, animated: true, completion: nil)
+    }
+    func saveManagedObjectContext(){
+        var error : NSError?
+        managedObjectContext?.save(&error)
+        if error != nil{
+            abort()
+        }
+        
     }
     
-    required init(coder: NSCoder) {
-        self.score = coder.decodeObjectForKey("score")! as Int;
-        self.dateOfScore = coder.decodeObjectForKey("dateOfScore")! as NSDate;
-        super.init()
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return max(MovieQuoteCount,1)
+    }
+    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+        switch type{
+        case .Insert:
+            if self.MovieQuoteCount == 1{
+                self.tableView.reloadData()
+            }else{
+                self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.Automatic)
+            }
+        case .Delete:
+            if MovieQuoteCount == 0{
+                tableView.reloadData()
+                setEditing(false, animated: true)
+            }
+            else{
+                tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
+            }
+        default:
+            return
+        }
+    }
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
     
-    func encodeWithCoder(coder: NSCoder) {
-        coder.encodeObject(self.score, forKey: "score")
-        coder.encodeObject(self.dateOfScore, forKey: "dateOfScore")
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell : UITableViewCell
+        
+        if MovieQuoteCount == 0 {
+            cell = tableView.dequeueReusableCellWithIdentifier(noMovieQuoteCellIdentifier, forIndexPath: indexPath) as UITableViewCell
+        }else{
+            cell = tableView.dequeueReusableCellWithIdentifier(movieQuoteCellIdentifier, forIndexPath: indexPath) as UITableViewCell
+            
+            let movieQuote = getMovieQuoteAtIndexPath(indexPath)
+          //  cell.textLabel?.text = movieQuote.score
+            cell.detailTextLabel?.text = movieQuote.userName
+        }
+        return cell
     }
+    
+    // Override to support conditional editing of the table view.
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return MovieQuoteCount > 0
+    }
+    
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        tableView.reloadData()
+    }
+    
+    override func setEditing(editing: Bool, animated: Bool) {
+        if MovieQuoteCount == 0{
+            super.setEditing(false, animated: false)
+        }
+        else{
+            super.setEditing(editing, animated: animated)
+        }
+    }
+    
+    // MARK: - Fetched results controller
+    
+    var fetchedResultsController: NSFetchedResultsController {
+        if _fetchedResultsController != nil {
+            return _fetchedResultsController!
+        }
+        
+        let fetchRequest = NSFetchRequest(entityName: movieQuoteEntityName)
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lastTouchDate", ascending: false)]
+        fetchRequest.fetchBatchSize = 20
+        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext!, sectionNameKeyPath: nil, cacheName: "MovieQuoteCache")
+        aFetchedResultsController.delegate = self
+        _fetchedResultsController = aFetchedResultsController
+        
+        var error: NSError? = nil
+        if !_fetchedResultsController!.performFetch(&error) {
+            abort()
+        }
+        
+        return _fetchedResultsController!
+    }
+    var _fetchedResultsController: NSFetchedResultsController? = nil
+    
+    
+    // Override to support editing the table view.
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            let movieQuoteToDelete = getMovieQuoteAtIndexPath(indexPath)
+            managedObjectContext?.deleteObject(movieQuoteToDelete)
+            
+            saveManagedObjectContext()
+        }
+    }
+    
+    
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == showDetailSegueIdentifier{
+            if let selectedIndexPath = tableView.indexPathForSelectedRow(){
+                let movieQuote = getMovieQuoteAtIndexPath(selectedIndexPath)
+//                (segue.destinationViewController as HighScoreDetailViewController).movieQuote = movieQuote
+//                (segue.destinationViewController as HighScoreDetailViewController).managedObjectContext = managedObjectContext
+            }
+        }
+    }
+    
 }
-
-
-
-
-
