@@ -2,18 +2,18 @@ import UIKit
 import CoreData
 import SpriteKit
 class HighScoreMasterViewController: UITableViewController, NSFetchedResultsControllerDelegate {
-    //    var movieQuotes = [MovieQuote]()
-    var MovieQuoteCount: Int{
+    
+    var HighScoreCount: Int{
         return fetchedResultsController.sections![0].numberOfObjects
     }
-    func getMovieQuoteAtIndexPath(indexPath: NSIndexPath) -> Score {
+    func getHighScoreAtIndexPath(indexPath: NSIndexPath) -> Score {
         return fetchedResultsController.objectAtIndexPath(indexPath) as Score
     }
     var managedObjectContext : NSManagedObjectContext?
     let movieQuoteCellIdentifier = "HighScoreCell"
     let showDetailSegueIdentifier = "showDetailSegue"
     let noMovieQuoteCellIdentifier = "NoHighScoreCell"
-    let movieQuoteEntityName = "MovieQuote"
+    let HighScoreEntityName = "HighScore"
     var bestScore = 0
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,31 +26,31 @@ class HighScoreMasterViewController: UITableViewController, NSFetchedResultsCont
         
         navigationItem.leftBarButtonItem = editButtonItem()
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "showAddQuoteDialog")}
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "showAddScoreDialog")}
     
-    func showAddQuoteDialog(){
-        let alertController = UIAlertController(title: "Create a new movie quote", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+    func showAddScoreDialog(){
+        let alertController = UIAlertController(title: "Create Score", message: "", preferredStyle: UIAlertControllerStyle.Alert)
         
         alertController.addTextFieldWithConfigurationHandler { (textField) -> Void in
-            textField.placeholder = "Quote"
+            textField.placeholder = "userName"
         }
         
         alertController.addTextFieldWithConfigurationHandler { (textField) -> Void in
-            textField.placeholder = "Movie Title"
+            textField.placeholder = "score"
         }
         
         
-        let createQuoteAction = UIAlertAction(title: "Create Quote", style: UIAlertActionStyle.Default) { (action) -> Void in
-            println("You pressed create quote")
+        let createQuoteAction = UIAlertAction(title: "Create Score", style: UIAlertActionStyle.Default) { (action) -> Void in
+            println("You pressed add score")
         
             let quoteTextField = alertController.textFields![0] as UITextField
             let movieTextField = alertController.textFields![1] as UITextField
             
             
-            let newMovieQuote = NSEntityDescription.insertNewObjectForEntityForName(self.movieQuoteEntityName, inManagedObjectContext: self.managedObjectContext!) as Score
+            let newHighScore = NSEntityDescription.insertNewObjectForEntityForName(self.HighScoreEntityName, inManagedObjectContext: self.managedObjectContext!) as Score
             
-            newMovieQuote.score = quoteTextField.tag
-            newMovieQuote.userName = movieTextField.text
+            newHighScore.score = quoteTextField.tag
+            newHighScore.userName = movieTextField.text
            // newMovieQuote.lastTouchDate = NSDate()
             
             self.saveManagedObjectContext()
@@ -69,18 +69,18 @@ class HighScoreMasterViewController: UITableViewController, NSFetchedResultsCont
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return max(MovieQuoteCount,1)
+        return max(HighScoreCount,1)
     }
     func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
         switch type{
         case .Insert:
-            if self.MovieQuoteCount == 1{
+            if self.HighScoreCount == 1{
                 self.tableView.reloadData()
             }else{
                 self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.Automatic)
             }
         case .Delete:
-            if MovieQuoteCount == 0{
+            if HighScoreCount == 0{
                 tableView.reloadData()
                 setEditing(false, animated: true)
             }
@@ -99,12 +99,12 @@ class HighScoreMasterViewController: UITableViewController, NSFetchedResultsCont
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell : UITableViewCell
         
-        if MovieQuoteCount == 0 {
+        if HighScoreCount == 0 {
             cell = tableView.dequeueReusableCellWithIdentifier(noMovieQuoteCellIdentifier, forIndexPath: indexPath) as UITableViewCell
         }else{
             cell = tableView.dequeueReusableCellWithIdentifier(movieQuoteCellIdentifier, forIndexPath: indexPath) as UITableViewCell
             
-            let movieQuote = getMovieQuoteAtIndexPath(indexPath)
+            let movieQuote = getHighScoreAtIndexPath(indexPath)
           //  cell.textLabel?.text = movieQuote.score
             cell.detailTextLabel?.text = movieQuote.userName
         }
@@ -113,7 +113,7 @@ class HighScoreMasterViewController: UITableViewController, NSFetchedResultsCont
     
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return MovieQuoteCount > 0
+        return HighScoreCount > 0
     }
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
@@ -121,7 +121,7 @@ class HighScoreMasterViewController: UITableViewController, NSFetchedResultsCont
     }
     
     override func setEditing(editing: Bool, animated: Bool) {
-        if MovieQuoteCount == 0{
+        if HighScoreCount == 0{
             super.setEditing(false, animated: false)
         }
         else{
@@ -136,7 +136,7 @@ class HighScoreMasterViewController: UITableViewController, NSFetchedResultsCont
             return _fetchedResultsController!
         }
         
-        let fetchRequest = NSFetchRequest(entityName: movieQuoteEntityName)
+        let fetchRequest = NSFetchRequest(entityName: HighScoreEntityName)
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "Score", ascending: false)]
         fetchRequest.fetchBatchSize = 20
         let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext!, sectionNameKeyPath: nil, cacheName: "MovieQuoteCache")
@@ -156,7 +156,7 @@ class HighScoreMasterViewController: UITableViewController, NSFetchedResultsCont
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            let movieQuoteToDelete = getMovieQuoteAtIndexPath(indexPath)
+            let movieQuoteToDelete = getHighScoreAtIndexPath(indexPath)
             managedObjectContext?.deleteObject(movieQuoteToDelete)
             
             saveManagedObjectContext()
