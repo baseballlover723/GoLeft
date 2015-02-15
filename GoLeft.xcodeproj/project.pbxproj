@@ -16,6 +16,7 @@
 		611BE7D11A7F2EF1000CF5B4 /* GoLeftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611BE7D01A7F2EF1000CF5B4 /* GoLeftTests.swift */; };
 		61469DFF1A88202300E3F202 /* SuperPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61469DFE1A88202300E3F202 /* SuperPlatform.swift */; };
 		61469E011A88204200E3F202 /* BrickPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61469E001A88204200E3F202 /* BrickPlatform.swift */; };
+		61DBDC4E1A90188400EB137D /* Porter_Robinson.png in Resources */ = {isa = PBXBuildFile; fileRef = 61DBDC4D1A90188400EB137D /* Porter_Robinson.png */; };
 		61DDC7191A8950B700420650 /* SuperPowerup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DDC7181A8950B700420650 /* SuperPowerup.swift */; };
 		61DDC71B1A8950D300420650 /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DDC71A1A8950D300420650 /* Coin.swift */; };
 		61DDC71D1A89526700420650 /* mariobroscoin.png in Resources */ = {isa = PBXBuildFile; fileRef = 61DDC71C1A89526700420650 /* mariobroscoin.png */; };
@@ -53,6 +54,7 @@
 		611BE7D01A7F2EF1000CF5B4 /* GoLeftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoLeftTests.swift; sourceTree = "<group>"; };
 		61469DFE1A88202300E3F202 /* SuperPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperPlatform.swift; sourceTree = "<group>"; };
 		61469E001A88204200E3F202 /* BrickPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrickPlatform.swift; sourceTree = "<group>"; };
+		61DBDC4D1A90188400EB137D /* Porter_Robinson.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Porter_Robinson.png; sourceTree = "<group>"; };
 		61DDC7181A8950B700420650 /* SuperPowerup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperPowerup.swift; sourceTree = "<group>"; };
 		61DDC71A1A8950D300420650 /* Coin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
 		61DDC71C1A89526700420650 /* mariobroscoin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mariobroscoin.png; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 			children = (
 				61DDC71C1A89526700420650 /* mariobroscoin.png */,
 				6DCC13121A86D2DF00F97D29 /* stick-man pro.png */,
+				61DBDC4D1A90188400EB137D /* Porter_Robinson.png */,
 				6DCC131A1A86DB0000F97D29 /* BrickPattern_0.png */,
 				611BE7B51A7F2EF1000CF5B4 /* Info.plist */,
 			);
@@ -243,6 +246,7 @@
 				6DCC131B1A86DB0000F97D29 /* BrickPattern_0.png in Resources */,
 				611BE7C51A7F2EF1000CF5B4 /* LaunchScreen.xib in Resources */,
 				611BE7C21A7F2EF1000CF5B4 /* Images.xcassets in Resources */,
+				61DBDC4E1A90188400EB137D /* Porter_Robinson.png in Resources */,
 				61DDC71D1A89526700420650 /* mariobroscoin.png in Resources */,
 				611BE7C01A7F2EF1000CF5B4 /* Main.storyboard in Resources */,
 				6DCC13131A86D2DF00F97D29 /* stick-man pro.png in Resources */,

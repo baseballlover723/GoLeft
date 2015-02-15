@@ -23,8 +23,9 @@ struct PhysicsCategory {
 // GLOBAL CONSTANTS
 var movingHero = false
 var GRAVITY = CGVector(dx: 0, dy: -1)
-var SPEED_SCALING = CGFloat(0.001)
-var THRESHHOLD_INCREMENT = CGFloat(0.00002)
+var SPEED_SCALING = CGFloat(0.005)
+var THRESHHOLD_INCREMENT = CGFloat(0.0000005)
+var MOVE_SPEEDUP = CGFloat(0.0001)
 
 class GameScene: SKScene, SKPhysicsContactDelegate{
     var moveConstant = CGFloat(0.5)
@@ -155,12 +156,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     }
     
     func movePlatformsAndPowerups() {
-        self.moveConstant += 0.00001
+        self.moveConstant += MOVE_SPEEDUP
         for platform in self.platforms  {
             if platform.isOnScreen() {
                 // if platform is on the screen move it to the left
                 platform.position = CGPoint(x: platform.position.x + self.moveConstant, y: platform.position.y)
             } else {
+                self.platforms.removeObject(platform)
                 platform.removeFromParent()
             }
         }
@@ -170,29 +172,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
                 // if the powerup is on the screen move it to the right
                 powerup.position = CGPoint(x: powerup.position.x + self.moveConstant, y: powerup.position.y)
             } else {
+                self.powerups.removeObject(powerup)
                 powerup.removeFromParent()
             }
         }
     }
     
     func maybeAddPlatformsAndPowerups() {
-        // TODO make platforms made up of unit platforms
-        // TODO make platforms be within a jump from the previous platform
         var rand = random()
         //        var threshhold = self.moveConstant * 0.0001 / CGFloat(self.children.count) + self.platformThreshhold
-        var threshhold = self.platformThreshhold / CGFloat(self.platforms.count)
+        var threshhold = self.platformThreshhold / CGFloat(self.platforms.count * self.platforms.count)
         self.platformThreshhold += THRESHHOLD_INCREMENT + self.moveConstant * SPEED_SCALING
         //        var threshhold = self.moveConstant * 0.1
         //        println("rand = \(rand)")
-//        println("threshhold = \(threshhold)")
-        if rand < threshhold || self.platforms.count < 4{
+        println("threshhold = \(threshhold)")
+//        println(self.platforms.count)
+        if (rand < threshhold) || (self.platforms.count < 4){
             self.platformThreshhold = CGFloat(0)
             addRandomPlatform()
         }
 
         rand = random()
         //        var threshhold = self.moveConstant * 0.0001 / CGFloat(self.children.count) + self.platformThreshhold
-        threshhold = self.powerupThreshhold / CGFloat(self.powerups.count)
+        threshhold = self.powerupThreshhold / CGFloat(self.powerups.count * self.powerups.count)
         self.powerupThreshhold += THRESHHOLD_INCREMENT + self.moveConstant * SPEED_SCALING
         //        var threshhold = self.moveConstant * 0.1
         //        println("rand = \(rand)")
@@ -296,7 +298,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         return platform.position - platform.size.width / 2
     }
     
+    
 }
+extension Array {
+    mutating func removeObject<U: Equatable>(object: U) {
+        var index: Int?
+        for (idx, objectToCompare) in enumerate(self) {
+            if let to = objectToCompare as? U {
+                if object == to {
+                    index = idx
+                }
+            }
+        }
+        
+        if(index != nil) {
+            self.removeAtIndex(index!)
+        }
+    }
+}
+
 func +(left: CGPoint, right: CGFloat) -> CGPoint {
     return CGPoint(x: left.x + right , y: left.y)
 }
