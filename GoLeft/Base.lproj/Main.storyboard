@@ -144,13 +144,20 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="1" green="0.78510443689158738" blue="0.22678093292776114" alpha="1" colorSpace="calibratedRGB"/>
                             </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" fixedFrame="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoHighScoreCell" rowHeight="39" translatesAutoresizingMaskIntoConstraints="NO" id="HWm-Yu-JJf">
+                                <rect key="frame" x="0.0" y="43" width="584" height="39"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HWm-Yu-JJf" id="e3y-9B-gTw">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="1" green="0.83426307830000002" blue="0.053021576440000003" alpha="1" colorSpace="calibratedRGB"/>
+                            </tableViewCell>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="46c-fJ-IY2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2294" y="243"/>
+            <point key="canvasLocation" x="2485" y="347"/>
         </scene>
     </scenes>
 </document>
