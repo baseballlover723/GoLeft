@@ -14,6 +14,10 @@ class Hero: SuperCharacter, RequiredCharacter {
         return CGVector(dx: 0, dy: 10)
     }
     
+    override var HERO_MASS : CGFloat {
+        return CGFloat(0.02)
+    }
+    
     init() {
         super.init(imageName: "Hero")
         initPhysics()

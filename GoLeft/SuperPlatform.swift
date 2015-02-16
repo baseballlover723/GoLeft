@@ -11,9 +11,10 @@ import SpriteKit
 
 protocol RequiredPlatform {
     func initPhysics()
-    func applyContactEffects(hero: (SuperCharacter))
+    func applyContactEffects(scene: (GameScene), hero: (SuperCharacter))
     func collisionConsumesSelf() -> Bool
     func isOnScreen() -> Bool
+    func getNew(lastPlatformRightAnchor: (CGPoint), heroJumpHeight: (CGFloat)) -> SuperPlatform
 }
 
 class SuperPlatform: SKSpriteNode, RequiredPlatform {
@@ -47,23 +48,23 @@ class SuperPlatform: SKSpriteNode, RequiredPlatform {
         
         self.xScale = CGFloat(arc4random_uniform(self.maxLength))
         
-        println("last plat Right Anchor = \(lastPlatformRightAnchor)")
+//        println("last plat Right Anchor = \(lastPlatformRightAnchor)")
         var deltaX = lastPlatformRightAnchor.x
         var heroJumpHeight = heroJumpHeight * 0.95
         var calc = deltaX > heroJumpHeight ? 0 : sqrt(heroJumpHeight * heroJumpHeight - deltaX * deltaX)
         var maxY = max(heroJumpHeight/3, calc) + lastPlatformRightAnchor.y
-        println("deltaX = \(deltaX), maxY = \(maxY), calc = \(calc)")
+//        println("deltaX = \(deltaX), maxY = \(maxY), calc = \(calc)")
         let bounds = UIScreen.mainScreen().bounds
         let screenWidth = bounds.width
         let screenHeight = bounds.height
         var boo = random() > ((4/3)*lastPlatformRightAnchor.y / screenHeight)
         let y = boo ? randomUpper(11 * lastPlatformRightAnchor.y / 10, max: maxY): random(min: 0, max: (9/10) * lastPlatformRightAnchor.y)
         if boo {
-            println("Went UP")
+//            println("Went UP")
         } else {
-            println("Went DOWN")
+//            println("Went DOWN")
         }
-        println("Y = \(y)")
+//        println("Y = \(y)")
 
         self.position = CGPoint(x: -self.size.width/2, y: y)
         initPhysics()
@@ -133,12 +134,16 @@ class SuperPlatform: SKSpriteNode, RequiredPlatform {
         return posX - width / 2 < edgeX
     }
 
-    func applyContactEffects(hero: (SuperCharacter)) {
+    func applyContactEffects(scene: (GameScene), hero: (SuperCharacter)) {
         assert(false, "SuperPlatform Contact Effects must be overidden")
     }
     
     func collisionConsumesSelf() -> Bool {
         assert(false, "SuperPlatform collisionConsumesSelf must be overridden")
+    }
+    
+    func getNew(lastPlatformRightAnchor: (CGPoint), heroJumpHeight: (CGFloat)) -> SuperPlatform {
+        assert(false, "SuperPlatform getNew must be overridden")
     }
 
     

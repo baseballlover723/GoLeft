@@ -7,6 +7,7 @@
 //
 
 import SpriteKit
+import CoreMotion
 
 //Physics
 struct PhysicsCategory {
@@ -26,6 +27,8 @@ var GRAVITY = CGVector(dx: 0, dy: -1)
 var SPEED_SCALING = CGFloat(0.005)
 var THRESHHOLD_INCREMENT = CGFloat(0.0000005)
 var MOVE_SPEEDUP = CGFloat(0.0001)
+var POINT_CYCLE = 30
+var DEAD_ZONE_THRESHHOLD = 0.2
 
 class GameScene: SKScene, SKPhysicsContactDelegate{
     var moveConstant = CGFloat(0.5)
@@ -36,6 +39,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     var platformThreshhold = CGFloat(0);
     var powerupThreshhold = CGFloat(0);
     var lastPlatform = SuperPlatform()
+    var scoreLabel = SKLabelNode(fontNamed: "Courier")
+    var addPointCounter = 0
+    let motionManager = CMMotionManager()
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -59,10 +65,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         for powerup in powerups {
             self.addChild(powerup)
         }
+
+        self.scoreLabel.name = "scoreLabel"
+        self.scoreLabel.fontSize = 20
+        self.scoreLabel.fontColor = SKColor.blackColor()
+        self.scoreLabel.text = NSString(format: "Score: %04u", 0)
+        self.scoreLabel.position = CGPoint(x: size.width - self.scoreLabel.frame.size.width / 2, y: size.height - self.scoreLabel.frame.size.height)
+        self.addChild(self.scoreLabel)
         
-    
         physicsWorld.gravity = GRAVITY
         physicsWorld.contactDelegate = self
+        motionManager.startAccelerometerUpdates()
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
@@ -139,6 +152,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
 //        println("hero y = \(hero.position.y)")
+        addPoints()
         maybeMoveHero()
         movePlatformsAndPowerups()
         maybeAddPlatformsAndPowerups()
@@ -148,10 +162,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
 //        plat.physicsBody?.applyForce(CGVector(dx: -0.1, dy: 0))
     }
     
+    func addPoints() {
+        addPointCounter++
+        println("addPointCounter = \(addPointCounter)")
+        if addPointCounter > POINT_CYCLE {
+            hero.score += 1
+            addPointCounter = 0
+            updateScore()
+        }
+    }
+    
     func maybeMoveHero() {
         if hero.canJump {
             // if the hero can jump, he's on a platform and should move with the platform
             hero.position = CGPoint(x: hero.position.x + self.moveConstant, y: hero.position.y)
+        }
+        // accelerameter stuff
+        if let data = motionManager.accelerometerData {
+            if fabs(data.acceleration.x) > DEAD_ZONE_THRESHHOLD {
+                hero.physicsBody!.applyForce(CGVectorMake(40.0 * CGFloat(data.acceleration.x), 0))
+            }
         }
     }
     
@@ -185,7 +215,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         self.platformThreshhold += THRESHHOLD_INCREMENT + self.moveConstant * SPEED_SCALING
         //        var threshhold = self.moveConstant * 0.1
         //        println("rand = \(rand)")
-        println("threshhold = \(threshhold)")
+//        println("threshhold = \(threshhold)")
 //        println(self.platforms.count)
         if (rand < threshhold) || (self.platforms.count < 4){
             self.platformThreshhold = CGFloat(0)
@@ -206,8 +236,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     }
     
     func addRandomPlatform() {
-        println("\nstart")
-        println("last platform position (before) = \(self.lastPlatform.position)")
+//        println("\nstart")
+//        println("last platform position (before) = \(self.lastPlatform.position)")
         var newPlatform = BrickPlatform(lastPlatformRightAnchor: getPlatformRightAnchor(self.lastPlatform), heroJumpHeight: getHeroJumpHeight())
         self.platforms.append(newPlatform)
         self.addChild(newPlatform)
@@ -216,7 +246,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     }
     
     func addRandomPowerup() {
-        var newPowerup = Coin()
+        var newPowerup = SuperPowerupFactory.getRandomPowerup()
         self.powerups.append(newPowerup)
         self.addChild(newPowerup)
 //        println("added new powerup")
@@ -275,7 +305,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     
     func characterDidCollideWithPlatform(hero: (SuperCharacter), platform: (SuperPlatform)) {
 //        println("A Character hit a Platform")
-        platform.applyContactEffects(hero)
+        platform.applyContactEffects(self, hero: hero)
         if platform.collisionConsumesSelf() {
             platform.removeFromParent()
         }
@@ -284,7 +314,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     
     func characterDidCollideWithPowerup(hero: (SuperCharacter), powerup: (SuperPowerup)) {
 //        println("Character hit a powerup")
-        powerup.applyPowerupTo(hero)
+        powerup.applyPowerupTo(self, hero: hero)
         if powerup.collisionConsumesSelf() {
             powerup.removeFromParent()
         }
@@ -298,7 +328,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         return platform.position - platform.size.width / 2
     }
     
-    
+    func updateScore() {
+        self.scoreLabel.text = NSString(format: "Score: %04u", hero.score)
+    }
 }
 extension Array {
     mutating func removeObject<U: Equatable>(object: U) {

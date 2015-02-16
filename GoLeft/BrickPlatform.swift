@@ -34,10 +34,14 @@ class BrickPlatform: SuperPlatform, RequiredPlatform {
         fatalError("init(coder:) has not been implemented")
     }
         
-    override func applyContactEffects(hero: (SuperCharacter)) {
+    override func applyContactEffects(scene: (GameScene), hero: (SuperCharacter)) {
 //        println("Applyed brick effects")
     }
     override func collisionConsumesSelf() -> Bool {
         return false
+    }
+    
+    override func getNew(lastPlatformRightAnchor: (CGPoint), heroJumpHeight: (CGFloat)) -> SuperPlatform {
+        return BrickPlatform(lastPlatformRightAnchor: lastPlatformRightAnchor, heroJumpHeight: heroJumpHeight)
     }
 }

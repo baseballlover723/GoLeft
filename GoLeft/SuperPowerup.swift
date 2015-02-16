@@ -11,9 +11,10 @@ import SpriteKit
 
 protocol RequiredPowerup {
     func initPhysics()
-    func applyPowerupTo(hero: SuperCharacter)
+    func applyPowerupTo(scene: (GameScene), hero: SuperCharacter)
     func collisionConsumesSelf() -> Bool
     func isOnScreen() -> Bool
+    func getNew() -> SuperPowerup
 }
 
 class SuperPowerup: SKSpriteNode, RequiredPowerup {
@@ -68,7 +69,7 @@ class SuperPowerup: SKSpriteNode, RequiredPowerup {
         self.physicsBody?.collisionBitMask = PhysicsCategory.SuperCharacter | PhysicsCategory.SuperPlatform
     }
     
-    func applyPowerupTo(hero: SuperCharacter) {
+    func applyPowerupTo(scene: (GameScene), hero: SuperCharacter) {
         assert(false, "SuperPowerup applyPowerupTo must be overriden")
     }
     
@@ -82,5 +83,9 @@ class SuperPowerup: SKSpriteNode, RequiredPowerup {
         var width = self.size.width
         var edgeX = UIScreen.mainScreen().bounds.width
         return posX - width / 2 < edgeX
+    }
+    
+    func getNew() -> SuperPowerup {
+        assert(false, "SuperPowerup getNew must be overriden")
     }
 }

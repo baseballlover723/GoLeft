@@ -14,13 +14,18 @@ protocol RequiredCharacter {
     func jump()
     func applyJumpEffects()
     var HERO_JUMP_FORCE : CGVector { get }
+    var HERO_MASS : CGFloat { get }
 //    func GET_HERO_JUMP_FORCE() -> CGVector
 }
 
 class SuperCharacter: SKSpriteNode, RequiredCharacter {
-
+    var score : Int32
     var HERO_JUMP_FORCE : CGVector{
         assert(false, "HERO JUMP FORCE must be overriden")
+    }
+    
+    var HERO_MASS : CGFloat {
+        assert(false, "Supercharacter HERO_MASS must be overriden")
     }
     
     var canJump : Bool {
@@ -38,7 +43,7 @@ class SuperCharacter: SKSpriteNode, RequiredCharacter {
 //        println("isPlatform = \(isPlatform), isBelow = \(isBelow)")
         return self.physicsBody?.velocity.dy <= CGFloat(abs(0.01)) && inContact!.count == 1 && isPlatform && isBelow
     }
-    var score : Int32
+
     
     init(imageName: (String)) {
         let texture = SKTexture(imageNamed: imageName)
@@ -55,6 +60,7 @@ class SuperCharacter: SKSpriteNode, RequiredCharacter {
         self.physicsBody?.contactTestBitMask = PhysicsCategory.SuperPlatform
         self.physicsBody?.collisionBitMask = PhysicsCategory.SuperPlatform
         self.physicsBody?.allowsRotation = false
+        self.physicsBody?.mass = HERO_MASS
     }
     
     func applyJumpEffects() {
