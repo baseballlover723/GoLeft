@@ -176,11 +176,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         if hero.canJump {
             // if the hero can jump, he's on a platform and should move with the platform
             hero.position = CGPoint(x: hero.position.x + self.moveConstant, y: hero.position.y)
-        }
+        } else {
         // accelerameter stuff
-        if let data = motionManager.accelerometerData {
-            if fabs(data.acceleration.x) > DEAD_ZONE_THRESHHOLD {
-                hero.physicsBody!.applyForce(CGVectorMake(40.0 * CGFloat(data.acceleration.x), 0))
+            if let data = motionManager.accelerometerData {
+                if fabs(data.acceleration.y) > DEAD_ZONE_THRESHHOLD {
+                    hero.physicsBody!.applyForce(CGVectorMake(40.0 * CGFloat(data.acceleration.y), 0))
+                }
             }
         }
     }
