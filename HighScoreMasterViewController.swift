@@ -28,7 +28,7 @@ class HighScoreMasterViewController: UITableViewController, NSFetchedResultsCont
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "showAddScoreDialog")}
     
-    func showAddScoreDialog(){
+    func showAddScoresDialog(){
         let alertController = UIAlertController(title: "Create Score", message: "", preferredStyle: UIAlertControllerStyle.Alert)
         
         alertController.addTextFieldWithConfigurationHandler { (textField) -> Void in
