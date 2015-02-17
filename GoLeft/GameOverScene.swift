@@ -35,7 +35,7 @@ class GameOverScene: SKScene {
         println("game OVER")
         addChild(label)
         
-        // 4
+        // change to ask for high score if in top 10 and insert into high score tabel
         runAction(SKAction.sequence([
             SKAction.waitForDuration(10.0),
             SKAction.runBlock() {
