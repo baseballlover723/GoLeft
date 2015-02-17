@@ -46,7 +46,7 @@ class BrickPlatform: SuperPlatform, RequiredPlatform {
     }
         
     override func applyContactEffects(scene: (GameScene), hero: (SuperCharacter)) {
-//        println("Applyed brick effects")
+//        println("Applied brick effects")
     }
     override func collisionConsumesSelf() -> Bool {
         return false
