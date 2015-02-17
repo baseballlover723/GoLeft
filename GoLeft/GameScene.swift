@@ -8,6 +8,7 @@
 
 import SpriteKit
 import CoreMotion
+import AVFoundation
 
 //Physics
 struct PhysicsCategory {
@@ -30,7 +31,7 @@ var MOVE_SPEEDUP = CGFloat(0.001)
 var POINT_CYCLE = 30
 var DEAD_ZONE_THRESHHOLD = 0.00
 
-class GameScene: SKScene, SKPhysicsContactDelegate{
+class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate{
     var moveConstant = CGFloat(1.0)
     let hero = Hero()
     var count = 1;
@@ -42,6 +43,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     var scoreLabel = SKLabelNode(fontNamed: "Courier")
     var addPointCounter = 0
     let motionManager = CMMotionManager()
+    var backgroundMusicPlayer : AVAudioPlayer!
+    
+    var songs = ["01 A Night Of Dizzy Spells.mp3", "04 All of Us.mp3", "10 Arpanauts.mp3", "Digital Native.mp3"]
+    var songIndex = 0
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -84,6 +89,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         
         physicsWorld.gravity = GRAVITY
         physicsWorld.contactDelegate = self
+        playNextSong()
         motionManager.startAccelerometerUpdates()
     }
     
@@ -356,7 +362,48 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     func updateScore() {
         self.scoreLabel.text = NSString(format: "Score: %04u", hero.score)
     }
+    
+    func playBackgroundMusic(filename: (String)) {
+        let url = NSBundle.mainBundle().URLForResource(filename, withExtension: nil)
+        if url == nil {
+            println("could not file file: \(filename)")
+            return
+        }
+        
+        var error: NSError? = nil
+        backgroundMusicPlayer = AVAudioPlayer(contentsOfURL: url, error: &error)
+        if backgroundMusicPlayer == nil {
+            println("could not create audio player: \(error)")
+            return
+        }
+        
+        backgroundMusicPlayer.numberOfLoops = 0
+        backgroundMusicPlayer.prepareToPlay()
+        backgroundMusicPlayer.play()
+        backgroundMusicPlayer.delegate = self
+    }
+    
+    func audioPlayerDidFinishPlaying(player: AVAudioPlayer!, successfully flag: Bool) {
+        println("done playing")
+        playNextSong()
+    }
+    
+    func audioPlayerDecodeErrorDidOccur(player: AVAudioPlayer!, error: NSError!) {
+        println("error")
+    }
+    
+    func playNextSong() {
+        var song = self.songs[songIndex]
+        songIndex++
+        if songIndex >= self.songs.count {
+            songIndex = 0
+        }
+        playBackgroundMusic(song)
+    }
+    
+    
 }
+
 extension Array {
     mutating func removeObject<U: Equatable>(object: U) {
         var index: Int?
