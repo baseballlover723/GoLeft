@@ -30,6 +30,7 @@ var THRESHHOLD_INCREMENT = CGFloat(0.0000005)
 var MOVE_SPEEDUP = CGFloat(0.0005)
 var POINT_CYCLE = 30
 var DEAD_ZONE_THRESHHOLD = 0.00
+var PORTER_ROBINSON_SONG_FILE = "Flicker.mp4"
 
 class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate{
     var moveConstant = CGFloat(0.75)
@@ -44,8 +45,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate{
     var addPointCounter = 0
     let motionManager = CMMotionManager()
     var backgroundMusicPlayer : AVAudioPlayer!
-    var song = "Digital Native.mp3"
-//    var songs = ["01 A Night Of Dizzy Spells.mp3", "04 All of Us.mp3", "10 Arpanauts.mp3", "Digital Native.mp3"]
+    var porterPlayer : AVPlayer!
+//    var song = "Digital Native.mp3"
+    var songs = ["01 A Night Of Dizzy Spells.mp3", "04 All of Us.mp3", "10 Arpanauts.mp3", "Digital Native.mp3"]
 //    var songIndex = 1
     
     override func didMoveToView(view: SKView) {
@@ -60,7 +62,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate{
         self.addChild(platform)
         platform = BrickPlatform(length: CGFloat(size.width / 60 + 1), x: 0, y: size.height + 5)
         self.addChild(platform)
+        playPorterRobinsonVideo()
         
+//        var url = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("Flicker", ofType: "mp4")!)
+//        var videoPlayer = AVPlayer(URL: url)
+//        
+//        var videoNode = SKVideoNode(AVPlayer: videoPlayer)
+//        videoNode.position = CGPoint(x: size.width / 2, y: size.height / 2)
+//        videoNode.size = CGSize(width: size.width, height: size.height)
+//        self.addChild(videoNode)
+//        videoNode.play()
         
         self.addChild(hero)
 //        platforms.append(BrickPlatform(length: 8, x: 0, y: 10))
@@ -90,6 +101,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate{
         physicsWorld.gravity = GRAVITY
         physicsWorld.contactDelegate = self
 //        playBackgroundMusic(songs[0])
+        var song = songs[Int(arc4random_uniform(UInt32(songs.count - 1)))]
         playBackgroundMusic(song)
         motionManager.startAccelerometerUpdates()
     }
@@ -381,7 +393,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate{
         backgroundMusicPlayer.numberOfLoops = -1
         backgroundMusicPlayer.prepareToPlay()
         backgroundMusicPlayer.volume = 1.0
-//        setSessionPlayer()
         backgroundMusicPlayer.delegate = self
         backgroundMusicPlayer.play()
         println("PLAYING MUSIC")
@@ -390,13 +401,37 @@ class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate{
         }
     }
     
-    func setSessionPlayer() {
-        let session: AVAudioSession = AVAudioSession.sharedInstance()
-        var error : NSError?
-        if !session.setCategory(AVAudioSessionCategoryPlayback, error: &error) {
-
+    func playPorterRobinsonVideo() {
+        let url = NSBundle.mainBundle().URLForResource(PORTER_ROBINSON_SONG_FILE, withExtension: nil)
+        if url == nil {
+            println("could not file file: \(PORTER_ROBINSON_SONG_FILE)")
+            return
         }
+        
+        var error: NSError? = nil
+        self.porterPlayer = AVPlayer(URL: url)
+        if self.porterPlayer == nil {
+            println("could not create audio player: \(error)")
+            return
+        }
+        
+        var video = SKVideoNode(AVPlayer: self.porterPlayer)
+        video.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
+        video.size = CGSize(width: self.size.width, height: self.size.height)
+        self.addChild(video)
+        video.play()
+        println("video -> \(video)")
+//        self.porterPlayer = 0
+//        backgroundMusicPlayer.prepareToPlay()
+//        backgroundMusicPlayer.volume = 1.0
+//        backgroundMusicPlayer.delegate = self
+//        backgroundMusicPlayer.play()
+//        println("PLAYING MUSIC")
+//        if backgroundMusicPlayer.playing {
+//            println("playing = true")
+//        }
     }
+    
     
 //    func audioPlayerDidFinishPlaying(player: AVAudioPlayer!, successfully flag: Bool) {
 //        println("done playing")

@@ -70,6 +70,7 @@
 		619108001A93088600051A8E /* 10 Arpanauts.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "10 Arpanauts.mp3"; sourceTree = "<group>"; };
 		619108011A93088600051A8E /* 04 All of Us.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "04 All of Us.mp3"; sourceTree = "<group>"; };
 		619108021A93088600051A8E /* 01 A Night Of Dizzy Spells.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "01 A Night Of Dizzy Spells.mp3"; sourceTree = "<group>"; };
+		619337841A939C560045BA85 /* Flicker.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Flicker.mp4; sourceTree = "<group>"; };
 		61C8793B1A91607A00FC7BAC /* SuperPlatformFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperPlatformFactory.swift; sourceTree = "<group>"; };
 		61DBDC4D1A90188400EB137D /* Porter_Robinson.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Porter_Robinson.png; sourceTree = "<group>"; };
 		61DBDC511A901DCF00EB137D /* SuperPowerupFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperPowerupFactory.swift; sourceTree = "<group>"; };
@@ -160,6 +161,7 @@
 		611BE7B41A7F2EF1000CF5B4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				619337841A939C560045BA85 /* Flicker.mp4 */,
 				619107FF1A93088600051A8E /* Digital Native.mp3 */,
 				619108001A93088600051A8E /* 10 Arpanauts.mp3 */,
 				619108011A93088600051A8E /* 04 All of Us.mp3 */,
