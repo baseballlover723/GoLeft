@@ -25,6 +25,9 @@ class PorterRobinson: SuperPowerup, RequiredPowerup {
     }
     
     override func applyPowerupTo(scene: (GameScene), hero: SuperCharacter) {
+        scene.playPorterRobinsonVideo()
+        hero.score += 100
+        scene.powerupFactory.probability[1] = 0.0
         println("PORTER ROBINSON!!!")
     }
     

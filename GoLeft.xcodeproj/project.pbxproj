@@ -29,6 +29,7 @@
 		61DDC7191A8950B700420650 /* SuperPowerup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DDC7181A8950B700420650 /* SuperPowerup.swift */; };
 		61DDC71B1A8950D300420650 /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DDC71A1A8950D300420650 /* Coin.swift */; };
 		61DDC71D1A89526700420650 /* mariobroscoin.png in Resources */ = {isa = PBXBuildFile; fileRef = 61DDC71C1A89526700420650 /* mariobroscoin.png */; };
+		61DEBAA41A93B57C0018DD7C /* Flicker.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 61DEBAA31A93B57C0018DD7C /* Flicker.mp4 */; };
 		61E4AE6E1A86CEB200F81B74 /* SuperCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E4AE6D1A86CEB200F81B74 /* SuperCharacter.swift */; };
 		61E4AE701A86CEC800F81B74 /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E4AE6F1A86CEC800F81B74 /* Hero.swift */; };
 		6D2926731A92F2A800E679AB /* beach_background_by_deitz94-d5hpts8.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D2926721A92F2A800E679AB /* beach_background_by_deitz94-d5hpts8.png */; };
@@ -70,7 +71,6 @@
 		619108001A93088600051A8E /* 10 Arpanauts.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "10 Arpanauts.mp3"; sourceTree = "<group>"; };
 		619108011A93088600051A8E /* 04 All of Us.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "04 All of Us.mp3"; sourceTree = "<group>"; };
 		619108021A93088600051A8E /* 01 A Night Of Dizzy Spells.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "01 A Night Of Dizzy Spells.mp3"; sourceTree = "<group>"; };
-		619337841A939C560045BA85 /* Flicker.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Flicker.mp4; sourceTree = "<group>"; };
 		61C8793B1A91607A00FC7BAC /* SuperPlatformFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperPlatformFactory.swift; sourceTree = "<group>"; };
 		61DBDC4D1A90188400EB137D /* Porter_Robinson.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Porter_Robinson.png; sourceTree = "<group>"; };
 		61DBDC511A901DCF00EB137D /* SuperPowerupFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperPowerupFactory.swift; sourceTree = "<group>"; };
@@ -78,6 +78,7 @@
 		61DDC7181A8950B700420650 /* SuperPowerup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperPowerup.swift; sourceTree = "<group>"; };
 		61DDC71A1A8950D300420650 /* Coin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
 		61DDC71C1A89526700420650 /* mariobroscoin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mariobroscoin.png; sourceTree = "<group>"; };
+		61DEBAA31A93B57C0018DD7C /* Flicker.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Flicker.mp4; sourceTree = "<group>"; };
 		61E4AE6D1A86CEB200F81B74 /* SuperCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperCharacter.swift; sourceTree = "<group>"; };
 		61E4AE6F1A86CEC800F81B74 /* Hero.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
 		6D2926721A92F2A800E679AB /* beach_background_by_deitz94-d5hpts8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "beach_background_by_deitz94-d5hpts8.png"; sourceTree = "<group>"; };
@@ -161,7 +162,7 @@
 		611BE7B41A7F2EF1000CF5B4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				619337841A939C560045BA85 /* Flicker.mp4 */,
+				61DEBAA31A93B57C0018DD7C /* Flicker.mp4 */,
 				619107FF1A93088600051A8E /* Digital Native.mp3 */,
 				619108001A93088600051A8E /* 10 Arpanauts.mp3 */,
 				619108011A93088600051A8E /* 04 All of Us.mp3 */,
@@ -286,6 +287,7 @@
 				611BE7C01A7F2EF1000CF5B4 /* Main.storyboard in Resources */,
 				619108061A93088600051A8E /* 01 A Night Of Dizzy Spells.mp3 in Resources */,
 				6DCC13131A86D2DF00F97D29 /* stick-man pro.png in Resources */,
+				61DEBAA41A93B57C0018DD7C /* Flicker.mp4 in Resources */,
 				6D2926731A92F2A800E679AB /* beach_background_by_deitz94-d5hpts8.png in Resources */,
 				619108041A93088600051A8E /* 10 Arpanauts.mp3 in Resources */,
 			);

@@ -10,11 +10,10 @@ import UIKit
 
 class SuperPowerupFactory{
     
-    class func getRandomPowerup() -> SuperPowerup {
-        // init stuff, b/c class variables aren't supported :(
-        var powerups = [Coin(), PorterRobinson()]
-        var probability = [0.5, 0.1]
-        
+    var powerups = [Coin(), PorterRobinson()]
+    var probability = [0.5, 0.1]
+    
+    func getRandomPowerup() -> SuperPowerup {
         
         var total = Double(0)
         for (var k=0; k<probability.count; k++) {
@@ -37,7 +36,7 @@ class SuperPowerupFactory{
 //        return CGFloat(Float(arc4random())/0xFFFFFFFF)
 //    }
     
-    class func random() -> Double {
+    func random() -> Double {
         return Double(arc4random())/0xFFFFFFFF
     }
 

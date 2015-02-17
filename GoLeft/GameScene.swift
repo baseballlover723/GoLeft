@@ -46,9 +46,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate{
     let motionManager = CMMotionManager()
     var backgroundMusicPlayer : AVAudioPlayer!
     var porterPlayer : AVPlayer!
-//    var song = "Digital Native.mp3"
+    var powerupFactory = SuperPowerupFactory()
+    
+    //    var song = "Digital Native.mp3"
     var songs = ["01 A Night Of Dizzy Spells.mp3", "04 All of Us.mp3", "10 Arpanauts.mp3", "Digital Native.mp3"]
-//    var songIndex = 1
+    //    var songIndex = 1
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -62,19 +64,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate{
         self.addChild(platform)
         platform = BrickPlatform(length: CGFloat(size.width / 60 + 1), x: 0, y: size.height + 5)
         self.addChild(platform)
-        playPorterRobinsonVideo()
         
-//        var url = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("Flicker", ofType: "mp4")!)
-//        var videoPlayer = AVPlayer(URL: url)
-//        
-//        var videoNode = SKVideoNode(AVPlayer: videoPlayer)
-//        videoNode.position = CGPoint(x: size.width / 2, y: size.height / 2)
-//        videoNode.size = CGSize(width: size.width, height: size.height)
-//        self.addChild(videoNode)
-//        videoNode.play()
+        //        var url = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("Flicker", ofType: "mp4")!)
+        //        var videoPlayer = AVPlayer(URL: url)
+        //
+        //        var videoNode = SKVideoNode(AVPlayer: videoPlayer)
+        //        videoNode.position = CGPoint(x: size.width / 2, y: size.height / 2)
+        //        videoNode.size = CGSize(width: size.width, height: size.height)
+        //        self.addChild(videoNode)
+        //        videoNode.play()
         
         self.addChild(hero)
-//        platforms.append(BrickPlatform(length: 8, x: 0, y: 10))
+        //        platforms.append(BrickPlatform(length: 8, x: 0, y: 10))
         platforms.append(BrickPlatform(length: 6, x: 75, y: 50))
         platforms.append(BrickPlatform(length: 1, x: 75, y: 300))
         platforms.append(BrickPlatform(length: 3, x: 275, y: 300))
@@ -90,7 +91,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate{
         for powerup in powerups {
             self.addChild(powerup)
         }
-
+        
         self.scoreLabel.name = "scoreLabel"
         self.scoreLabel.fontSize = 20
         self.scoreLabel.fontColor = SKColor.blackColor()
@@ -100,10 +101,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate{
         
         physicsWorld.gravity = GRAVITY
         physicsWorld.contactDelegate = self
-//        playBackgroundMusic(songs[0])
+        //        playBackgroundMusic(songs[0])
         var song = songs[Int(arc4random_uniform(UInt32(songs.count - 1)))]
         playBackgroundMusic(song)
         motionManager.startAccelerometerUpdates()
+        //        playPorterRobinsonVideo()
+        
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
@@ -116,7 +119,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate{
         var heroXLocation = hero.position.x
         
         var delta = touchXLocation / heroXLocation
-//        println("moving at \(delta)")
+        //        println("moving at \(delta)")
         // start moving hero
         movingHero = true;
         //jump
@@ -125,36 +128,36 @@ class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate{
             hero.jump()
         }
         
-//        for touch: AnyObject in touches {
-//            let location = touch.locationInNode(self)
+        //        for touch: AnyObject in touches {
+        //            let location = touch.locationInNode(self)
         
-//            var rand = arc4random_uniform(2)
-//            var sprite = Hero()
-//            var sprite : SKSpriteNode
-//            switch (rand) {
-//            case 0:
-//                sprite = Hero()
-//            case 1:
-//                sprite = BrickPlatform()
-//           default:
-//                abort()
-//            }
-//            addPlatform(random(min: 1, max: 7))
-//            count++
-//            sprite.xScale = 0.5
-//            sprite.yScale = 0.5
-//            sprite.position = location
-            
-//            let action = SKAction.rotateByAngle(CGFloat(M_PI), duration:1)
-            
-//            sprite.runAction(SKAction.repeatActionForever(action))
-            
-//            self.addChild(sprite)
-            
-            
-//        }
-//    }
-    
+        //            var rand = arc4random_uniform(2)
+        //            var sprite = Hero()
+        //            var sprite : SKSpriteNode
+        //            switch (rand) {
+        //            case 0:
+        //                sprite = Hero()
+        //            case 1:
+        //                sprite = BrickPlatform()
+        //           default:
+        //                abort()
+        //            }
+        //            addPlatform(random(min: 1, max: 7))
+        //            count++
+        //            sprite.xScale = 0.5
+        //            sprite.yScale = 0.5
+        //            sprite.position = location
+        
+        //            let action = SKAction.rotateByAngle(CGFloat(M_PI), duration:1)
+        
+        //            sprite.runAction(SKAction.repeatActionForever(action))
+        
+        //            self.addChild(sprite)
+        
+        
+        //        }
+        //    }
+        
     }
     
     override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
@@ -163,7 +166,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate{
             var touch = touches.anyObject() as UITouch!
             var touchLocation =  touch.locationInNode(self)
             var previousLocation = touch.previousLocationInNode(self)
-        
+            
             var heroX = hero.position.x + (touchLocation.x - previousLocation.x)
             heroX = max(heroX, hero.size.width / 2)
             heroX = min(heroX, size.width - hero.size.width/2)
@@ -176,24 +179,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate{
     override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
         movingHero = false
     }
-
+    
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
-//        println("hero y = \(hero.position.y)")
+        //        println("hero y = \(hero.position.y)")
         addPoints()
         maybeMoveHero()
         movePlatformsAndPowerups()
         maybeAddPlatformsAndPowerups()
         checkIfHeroIsDead()
-//        println("*   \(self.children.count) *  \(self.moveConstant)")
+        //        println("*   \(self.children.count) *  \(self.moveConstant)")
         // TODO figure out how to remove things outside of the screen
-//        plat.position = CGPoint(x: plat.position.x - 0.5, y: plat.position.y)
-//        plat.physicsBody?.applyForce(CGVector(dx: -0.1, dy: 0))
+        //        plat.position = CGPoint(x: plat.position.x - 0.5, y: plat.position.y)
+        //        plat.physicsBody?.applyForce(CGVector(dx: -0.1, dy: 0))
     }
     
     func addPoints() {
         addPointCounter++
-//        println("addPointCounter = \(addPointCounter)")
+        //        println("addPointCounter = \(addPointCounter)")
         if addPointCounter > POINT_CYCLE {
             hero.score += 1
             addPointCounter = 0
@@ -207,19 +210,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate{
             hero.position = CGPoint(x: hero.position.x + self.moveConstant, y: hero.position.y)
         }
         // accelerameter stuff
-            if let data = motionManager.accelerometerData {
-                if fabs(data.acceleration.y) > DEAD_ZONE_THRESHHOLD {
-                    hero.position = CGPoint(x: hero.position.x + CGFloat(data.acceleration.y * 10), y: hero.position.y)
-//                    println("x = \(hero.position.x)")
-                }
+        if let data = motionManager.accelerometerData {
+            if fabs(data.acceleration.y) > DEAD_ZONE_THRESHHOLD {
+                hero.position = CGPoint(x: hero.position.x + CGFloat(data.acceleration.y * 10), y: hero.position.y)
+                //                    println("x = \(hero.position.x)")
             }
+        }
         
         if hero.position.x < hero.size.width / 2 {
             hero.position.x = hero.size.width / 2
         } else if hero.position.x > size.width - hero.size.width {
             hero.position.x = size.width - hero.size.width
         }
-
+        
     }
     
     func movePlatformsAndPowerups() {
@@ -252,20 +255,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate{
         self.platformThreshhold += THRESHHOLD_INCREMENT + self.moveConstant * SPEED_SCALING
         //        var threshhold = self.moveConstant * 0.1
         //        println("rand = \(rand)")
-//        println("threshhold = \(threshhold)")
-//        println(self.platforms.count)
+        //        println("threshhold = \(threshhold)")
+        //        println(self.platforms.count)
         if (rand < threshhold) || (self.platforms.count < 4){
             self.platformThreshhold = CGFloat(0)
             addRandomPlatform()
         }
-
+        
         rand = random()
         //        var threshhold = self.moveConstant * 0.0001 / CGFloat(self.children.count) + self.platformThreshhold
         threshhold = self.powerupThreshhold / CGFloat(self.powerups.count * self.powerups.count)
         self.powerupThreshhold += THRESHHOLD_INCREMENT + self.moveConstant * SPEED_SCALING
         //        var threshhold = self.moveConstant * 0.1
         //        println("rand = \(rand)")
-//        println("threshhold = \(threshhold)")
+        //        println("threshhold = \(threshhold)")
         if rand < threshhold {
             self.powerupThreshhold = CGFloat(0)
             addRandomPowerup()
@@ -273,9 +276,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate{
     }
     
     func addRandomPlatform() {
-//        println("\nstart")
-//        println("last platform position (before) = \(self.lastPlatform.position)")
-//        var newPlatform = BrickPlatform(lastPlatformRightAnchor: getPlatformRightAnchor(self.lastPlatform), heroJumpHeight: getHeroJumpHeight())
+        //        println("\nstart")
+        //        println("last platform position (before) = \(self.lastPlatform.position)")
+        //        var newPlatform = BrickPlatform(lastPlatformRightAnchor: getPlatformRightAnchor(self.lastPlatform), heroJumpHeight: getHeroJumpHeight())
         var newPlatform = SuperPlatformFactory.getRandomPlatform(getPlatformRightAnchor(self.lastPlatform), heroJumpHeight: getHeroJumpHeight())
         self.platforms.append(newPlatform)
         self.addChild(newPlatform)
@@ -284,10 +287,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate{
     }
     
     func addRandomPowerup() {
-        var newPowerup = SuperPowerupFactory.getRandomPowerup()
+        var newPowerup = self.powerupFactory.getRandomPowerup()
         self.powerups.append(newPowerup)
         self.addChild(newPowerup)
-//        println("added new powerup")
+        //        println("added new powerup")
     }
     
     func getHeroJumpHeight() -> CGFloat {
@@ -308,22 +311,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate{
         return random() * (max - min) + min
     }
     
-//    func addPlatform(length: (CGFloat)) {
-//        let platform = BrickPlatform(length: length)
-//        self.addChild(platform)
-//        println("window = (\(size.width), \(size.height))")
-//        println("added platform \(platform.position.x), \(platform.position.y) length = \(platform.size.width)")
-//
-////        platform.physicsBody = SKPhysicsBody(rectangleOfSize: platform.size) // make rectangle aprox
-////        platform.physicsBody?.dynamic = false // no gravity
-////        platform.physicsBody?.categoryBitMask = PhysicsCategory.Platform
-////        platform.physicsBody?.contactTestBitMask = PhysicsCategory.Hero
-////        platform.physicsBody?.collisionBitMask = PhysicsCategory.Hero
-//
-//    }
+    //    func addPlatform(length: (CGFloat)) {
+    //        let platform = BrickPlatform(length: length)
+    //        self.addChild(platform)
+    //        println("window = (\(size.width), \(size.height))")
+    //        println("added platform \(platform.position.x), \(platform.position.y) length = \(platform.size.width)")
+    //
+    ////        platform.physicsBody = SKPhysicsBody(rectangleOfSize: platform.size) // make rectangle aprox
+    ////        platform.physicsBody?.dynamic = false // no gravity
+    ////        platform.physicsBody?.categoryBitMask = PhysicsCategory.Platform
+    ////        platform.physicsBody?.contactTestBitMask = PhysicsCategory.Hero
+    ////        platform.physicsBody?.collisionBitMask = PhysicsCategory.Hero
+    //
+    //    }
     
     func didBeginContact(contact: SKPhysicsContact) {
-//        println("contact")
+        //        println("contact")
         // get the bodies a predictible order
         var firstBody : SKPhysicsBody
         var secondBody : SKPhysicsBody
@@ -348,7 +351,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate{
     }
     
     func characterDidCollideWithPlatform(hero: (SuperCharacter), platform: (SuperPlatform)) {
-//        println("A Character hit a Platform")
+        //        println("A Character hit a Platform")
         platform.applyContactEffects(self, hero: hero)
         if platform.collisionConsumesSelf() {
             platform.removeFromParent()
@@ -357,7 +360,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate{
     }
     
     func characterDidCollideWithPowerup(hero: (SuperCharacter), powerup: (SuperPowerup)) {
-//        println("Character hit a powerup")
+        //        println("Character hit a powerup")
         powerup.applyPowerupTo(self, hero: hero)
         if powerup.collisionConsumesSelf() {
             powerup.removeFromParent()
@@ -414,49 +417,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate{
             println("could not create audio player: \(error)")
             return
         }
-        
         var video = SKVideoNode(AVPlayer: self.porterPlayer)
         video.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
         video.size = CGSize(width: self.size.width, height: self.size.height)
+        video.zPosition = -1
         self.addChild(video)
         video.play()
-        println("video -> \(video)")
-//        self.porterPlayer = 0
-//        backgroundMusicPlayer.prepareToPlay()
-//        backgroundMusicPlayer.volume = 1.0
-//        backgroundMusicPlayer.delegate = self
-//        backgroundMusicPlayer.play()
-//        println("PLAYING MUSIC")
-//        if backgroundMusicPlayer.playing {
-//            println("playing = true")
-//        }
+        self.backgroundMusicPlayer.pause()
+        
+        var actions = [SKAction.waitForDuration(214), SKAction.runBlock {
+            self.backgroundMusicPlayer.play()
+            return
+            }, SKAction.removeFromParent()
+        ]
+        video.runAction(SKAction.sequence(actions))
+        //        var videoLength = SKAction.waitForDuration(214)
+        //        var restartBackgroundMusic = SKAction.runBlock {
+        //            self.backgroundMusicPlayer.play()
+        //        }
+        println("video -> \(self.porterPlayer.status)")
     }
-    
-    
-//    func audioPlayerDidFinishPlaying(player: AVAudioPlayer!, successfully flag: Bool) {
-//        println("done playing")
-////        playNextSong()
-//    }
-//    
-//    func audioPlayerDecodeErrorDidOccur(player: AVAudioPlayer!, error: NSError!) {
-//        println("error")
-//    }
-//    
-//    func playNextSong() {
-//        if !self.backgroundMusicPlayer!.playing {
-//            println("NEXT SONG")
-//            var song = self.songs[songIndex]
-//            songIndex++
-//            if songIndex >= self.songs.count {
-//                songIndex = 0
-//            }
-//            playBackgroundMusic(song)
-//        } else {
-//            println("Don't play next song")
-//        }
-//    }
 }
-
 extension Array {
     mutating func removeObject<U: Equatable>(object: U) {
         var index: Int?
