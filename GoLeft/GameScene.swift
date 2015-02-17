@@ -165,6 +165,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         maybeMoveHero()
         movePlatformsAndPowerups()
         maybeAddPlatformsAndPowerups()
+        checkIfHeroIsDead()
 //        println("*   \(self.children.count) *  \(self.moveConstant)")
         // TODO figure out how to remove things outside of the screen
 //        plat.position = CGPoint(x: plat.position.x - 0.5, y: plat.position.y)
@@ -264,6 +265,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     
     func getHeroJumpHeight() -> CGFloat {
         return hero.HERO_JUMP_FORCE.dy * hero.HERO_JUMP_FORCE.dy / -GRAVITY.dy
+    }
+    
+    func checkIfHeroIsDead() {
+        if hero.position.y + hero.size.height/2 < 0 {
+            hero.die(self)
+        }
     }
     
     func random() -> CGFloat {

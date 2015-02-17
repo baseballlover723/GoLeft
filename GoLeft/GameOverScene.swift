@@ -11,27 +11,33 @@ import SpriteKit
 
 class GameOverScene: SKScene {
     
-    init(size: CGSize, won:Bool) {
+    init(size: CGSize, score: Int) {
         
         super.init(size: size)
         
-        // 1
         backgroundColor = SKColor.whiteColor()
-        
-        // 2
-        var message = won ? "You Won!" : "You Lose :["
-        
-        // 3
-        let label = SKLabelNode(fontNamed: "Chalkduster")
-        label.text = message
+
+        var label = SKLabelNode(fontNamed: "Chalkduster")
+        label.text = "You Died! :("
         label.fontSize = 40
         label.fontColor = SKColor.blackColor()
-        label.position = CGPoint(x: size.width/2, y: size.height/2)
+        label.position = CGPoint(x: size.width/2, y: size.height/2 + label.frame.size.height/2)
+        self.addChild(label)
+        
+        label = SKLabelNode(fontNamed: "Chalkduster")
+        label.text = "You scored \(score) points"
+        label.fontSize = 40
+        label.fontColor = SKColor.blackColor()
+        label.position = CGPoint(x: size.width/2, y: size.height/2 - label.frame.size.height/2)
+        while (label.frame.width > self.size.width) {
+            label.fontSize--
+        }
+        println("game OVER")
         addChild(label)
         
         // 4
         runAction(SKAction.sequence([
-            SKAction.waitForDuration(3.0),
+            SKAction.waitForDuration(10.0),
             SKAction.runBlock() {
                 // 5
                 let reveal = SKTransition.flipHorizontalWithDuration(0.5)
