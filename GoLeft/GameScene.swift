@@ -256,7 +256,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     func addRandomPlatform() {
 //        println("\nstart")
 //        println("last platform position (before) = \(self.lastPlatform.position)")
-        var newPlatform = SuperPlatformFactory.getRandomPlatform(self.lastPlatform.position, heroJumpHeight: getHeroJumpHeight())
+//        var newPlatform = BrickPlatform(lastPlatformRightAnchor: getPlatformRightAnchor(self.lastPlatform), heroJumpHeight: getHeroJumpHeight())
+        var newPlatform = SuperPlatformFactory.getRandomPlatform(getPlatformRightAnchor(self.lastPlatform), heroJumpHeight: getHeroJumpHeight())
         self.platforms.append(newPlatform)
         self.addChild(newPlatform)
         self.lastPlatform = newPlatform
