@@ -160,7 +160,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
 
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
-        println("hero y = \(hero.position.y)")
+//        println("hero y = \(hero.position.y)")
         addPoints()
         maybeMoveHero()
         movePlatformsAndPowerups()

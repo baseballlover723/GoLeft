@@ -53,18 +53,18 @@ class SuperPlatform: SKSpriteNode, RequiredPlatform {
         var heroJumpHeight = heroJumpHeight * 0.95
         var calc = deltaX > heroJumpHeight ? 0 : sqrt(heroJumpHeight * heroJumpHeight - deltaX * deltaX)
         var maxY = max(heroJumpHeight/3, calc) + lastPlatformRightAnchor.y
-//        println("deltaX = \(deltaX), maxY = \(maxY), calc = \(calc)")
+        println("deltaX = \(deltaX), maxY = \(maxY), calc = \(calc)")
         let bounds = UIScreen.mainScreen().bounds
         let screenWidth = bounds.width
         let screenHeight = bounds.height
         var boo = random() > ((4/3)*lastPlatformRightAnchor.y / screenHeight)
         let y = boo ? randomUpper(11 * lastPlatformRightAnchor.y / 10, max: maxY): random(min: 0, max: (9/10) * lastPlatformRightAnchor.y)
         if boo {
-//            println("Went UP")
+            println("Went UP")
         } else {
-//            println("Went DOWN")
+            println("Went DOWN")
         }
-//        println("Y = \(y)")
+        println("Y = \(y)")
 
         self.position = CGPoint(x: -self.size.width/2, y: y)
         initPhysics()
