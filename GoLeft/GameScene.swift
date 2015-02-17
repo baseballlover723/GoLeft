@@ -192,14 +192,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
                 if fabs(data.acceleration.y) > DEAD_ZONE_THRESHHOLD {
                     hero.position = CGPoint(x: hero.position.x + CGFloat(data.acceleration.y * 10), y: hero.position.y)
                     println("x = \(hero.position.x)")
-                    if hero.position.x < 0 {
-                        hero.position.x = 0
-                    } else if hero.position.x > size.width {
-                        hero.position.x = size.width
-                    }
                 }
             }
         }
+        if hero.position.x < hero.size.width / 2 {
+            hero.position.x = hero.size.width / 2
+        } else if hero.position.x > size.width - hero.size.width {
+            hero.position.x = size.width - hero.size.width
+        }
+
     }
     
     func movePlatformsAndPowerups() {
