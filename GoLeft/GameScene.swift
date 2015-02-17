@@ -28,7 +28,7 @@ var SPEED_SCALING = CGFloat(0.005)
 var THRESHHOLD_INCREMENT = CGFloat(0.0000005)
 var MOVE_SPEEDUP = CGFloat(0.0001)
 var POINT_CYCLE = 30
-var DEAD_ZONE_THRESHHOLD = 0.2
+var DEAD_ZONE_THRESHHOLD = 0.05
 
 class GameScene: SKScene, SKPhysicsContactDelegate{
     var moveConstant = CGFloat(0.5)
