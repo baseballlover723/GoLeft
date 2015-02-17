@@ -189,7 +189,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         // accelerameter stuff
             if let data = motionManager.accelerometerData {
                 if fabs(data.acceleration.y) > DEAD_ZONE_THRESHHOLD {
-                    hero.physicsBody!.applyForce(CGVectorMake(40.0 * CGFloat(data.acceleration.y), 0))
+                    hero.position.x += CGFloat(data.acceleration.y * 10)
                 }
             }
         }
@@ -263,7 +263,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     }
     
     func getHeroJumpHeight() -> CGFloat {
-        return hero.HERO_JUMP_FORCE.dy * hero.HERO_JUMP_FORCE.dy / GRAVITY.dy
+        return sqrt(hero.HERO_MASS) * hero.HERO_JUMP_FORCE.dy * hero.HERO_JUMP_FORCE.dy / GRAVITY.dy
     }
     
     func random() -> CGFloat {
