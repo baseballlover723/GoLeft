@@ -26,12 +26,12 @@ var movingHero = false
 var GRAVITY = CGVector(dx: 0, dy: -1)
 var SPEED_SCALING = CGFloat(0.005)
 var THRESHHOLD_INCREMENT = CGFloat(0.0000005)
-var MOVE_SPEEDUP = CGFloat(0.0001)
+var MOVE_SPEEDUP = CGFloat(0.001)
 var POINT_CYCLE = 30
 var DEAD_ZONE_THRESHHOLD = 0.00
 
 class GameScene: SKScene, SKPhysicsContactDelegate{
-    var moveConstant = CGFloat(0.5)
+    var moveConstant = CGFloat(1.0)
     let hero = Hero()
     var count = 1;
     var platforms = [SuperPlatform]()
@@ -186,7 +186,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         if hero.canJump {
             // if the hero can jump, he's on a platform and should move with the platform
             hero.position = CGPoint(x: hero.position.x + self.moveConstant, y: hero.position.y)
-        } else {
+        }
         // accelerameter stuff
             if let data = motionManager.accelerometerData {
                 if fabs(data.acceleration.y) > DEAD_ZONE_THRESHHOLD {
@@ -194,7 +194,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
                     println("x = \(hero.position.x)")
                 }
             }
-        }
+        
         if hero.position.x < hero.size.width / 2 {
             hero.position.x = hero.size.width / 2
         } else if hero.position.x > size.width - hero.size.width {
