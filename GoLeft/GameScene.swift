@@ -364,16 +364,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate{
     }
     
     func playBackgroundMusic(filename: (String)) {
-//        let url = NSBundle.mainBundle().URLForResource(filename, withExtension: nil)
-//        if url == nil {
-//            println("could not file file: \(filename)")
-//            return
-//        }
+        let url = NSBundle.mainBundle().URLForResource(filename, withExtension: nil)
+        if url == nil {
+            println("could not file file: \(filename)")
+            return
+        }
         
         var error: NSError? = nil
-        backgroundMusicPlayer = AVAudioPlayer()
-        let audioPath = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource(filename, ofType: "mp3")!)
-        backgroundMusicPlayer = AVAudioPlayer(contentsOfURL: audioPath, error: &error)
+        backgroundMusicPlayer = AVAudioPlayer(contentsOfURL: url, error: &error)
         if backgroundMusicPlayer == nil {
             println("could not create audio player: \(error)")
             return
@@ -382,9 +380,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate{
         backgroundMusicPlayer.numberOfLoops = 0
         backgroundMusicPlayer.prepareToPlay()
         backgroundMusicPlayer.volume = 1.0
-        setSessionPlayer()
-        backgroundMusicPlayer.play()
+//        setSessionPlayer()
         backgroundMusicPlayer.delegate = self
+        backgroundMusicPlayer.play()
         println("PLAYING MUSIC")
     }
     
