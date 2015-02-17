@@ -16,6 +16,8 @@
 		611BE7D11A7F2EF1000CF5B4 /* GoLeftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611BE7D01A7F2EF1000CF5B4 /* GoLeftTests.swift */; };
 		61469DFF1A88202300E3F202 /* SuperPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61469DFE1A88202300E3F202 /* SuperPlatform.swift */; };
 		61469E011A88204200E3F202 /* BrickPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61469E001A88204200E3F202 /* BrickPlatform.swift */; };
+		619107FC1A92FCF600051A8E /* coal_0.png in Resources */ = {isa = PBXBuildFile; fileRef = 619107FB1A92FCF600051A8E /* coal_0.png */; };
+		619107FE1A92FD4F00051A8E /* LavaPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619107FD1A92FD4F00051A8E /* LavaPlatform.swift */; };
 		61C8793C1A91607A00FC7BAC /* SuperPlatformFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C8793B1A91607A00FC7BAC /* SuperPlatformFactory.swift */; };
 		61DBDC4E1A90188400EB137D /* Porter_Robinson.png in Resources */ = {isa = PBXBuildFile; fileRef = 61DBDC4D1A90188400EB137D /* Porter_Robinson.png */; };
 		61DBDC521A901DCF00EB137D /* SuperPowerupFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DBDC511A901DCF00EB137D /* SuperPowerupFactory.swift */; };
@@ -58,6 +60,8 @@
 		611BE7D01A7F2EF1000CF5B4 /* GoLeftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoLeftTests.swift; sourceTree = "<group>"; };
 		61469DFE1A88202300E3F202 /* SuperPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperPlatform.swift; sourceTree = "<group>"; };
 		61469E001A88204200E3F202 /* BrickPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrickPlatform.swift; sourceTree = "<group>"; };
+		619107FB1A92FCF600051A8E /* coal_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coal_0.png; sourceTree = "<group>"; };
+		619107FD1A92FD4F00051A8E /* LavaPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LavaPlatform.swift; sourceTree = "<group>"; };
 		61C8793B1A91607A00FC7BAC /* SuperPlatformFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperPlatformFactory.swift; sourceTree = "<group>"; };
 		61DBDC4D1A90188400EB137D /* Porter_Robinson.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Porter_Robinson.png; sourceTree = "<group>"; };
 		61DBDC511A901DCF00EB137D /* SuperPowerupFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperPowerupFactory.swift; sourceTree = "<group>"; };
@@ -128,6 +132,7 @@
 				61DBDC511A901DCF00EB137D /* SuperPowerupFactory.swift */,
 				61469DFE1A88202300E3F202 /* SuperPlatform.swift */,
 				61C8793B1A91607A00FC7BAC /* SuperPlatformFactory.swift */,
+				619107FD1A92FD4F00051A8E /* LavaPlatform.swift */,
 				61469E001A88204200E3F202 /* BrickPlatform.swift */,
 				611BE7BE1A7F2EF1000CF5B4 /* Main.storyboard */,
 				611BE7C11A7F2EF1000CF5B4 /* Images.xcassets */,
@@ -147,6 +152,7 @@
 		611BE7B41A7F2EF1000CF5B4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				619107FB1A92FCF600051A8E /* coal_0.png */,
 				6D2926721A92F2A800E679AB /* beach_background_by_deitz94-d5hpts8.png */,
 				61DDC71C1A89526700420650 /* mariobroscoin.png */,
 				6DCC13121A86D2DF00F97D29 /* stick-man pro.png */,
@@ -258,6 +264,7 @@
 				6DCC131B1A86DB0000F97D29 /* BrickPattern_0.png in Resources */,
 				611BE7C51A7F2EF1000CF5B4 /* LaunchScreen.xib in Resources */,
 				611BE7C21A7F2EF1000CF5B4 /* Images.xcassets in Resources */,
+				619107FC1A92FCF600051A8E /* coal_0.png in Resources */,
 				61DBDC4E1A90188400EB137D /* Porter_Robinson.png in Resources */,
 				61DDC71D1A89526700420650 /* mariobroscoin.png in Resources */,
 				611BE7C01A7F2EF1000CF5B4 /* Main.storyboard in Resources */,
@@ -287,6 +294,7 @@
 				61DDC7191A8950B700420650 /* SuperPowerup.swift in Sources */,
 				61DBDC541A901E7C00EB137D /* PorterRobinson.swift in Sources */,
 				611BE7BB1A7F2EF1000CF5B4 /* GameScene.swift in Sources */,
+				619107FE1A92FD4F00051A8E /* LavaPlatform.swift in Sources */,
 				6DCC13231A88382500F97D29 /* Score.m in Sources */,
 				61469DFF1A88202300E3F202 /* SuperPlatform.swift in Sources */,
 				611BE7BD1A7F2EF1000CF5B4 /* GameViewController.swift in Sources */,
