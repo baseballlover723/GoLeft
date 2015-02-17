@@ -139,7 +139,7 @@ class HighScoreMasterViewController: UITableViewController, NSFetchedResultsCont
         let fetchRequest = NSFetchRequest(entityName: HighScoreEntityName)
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "Score", ascending: false)]
         fetchRequest.fetchBatchSize = 20
-        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext!, sectionNameKeyPath: nil, cacheName: "MovieQuoteCache")
+        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext!, sectionNameKeyPath: nil, cacheName: "HighScoreCache")
         aFetchedResultsController.delegate = self
         _fetchedResultsController = aFetchedResultsController
         
