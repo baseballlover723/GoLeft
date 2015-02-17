@@ -27,12 +27,12 @@ var movingHero = false
 var GRAVITY = CGVector(dx: 0, dy: -1)
 var SPEED_SCALING = CGFloat(0.005)
 var THRESHHOLD_INCREMENT = CGFloat(0.0000005)
-var MOVE_SPEEDUP = CGFloat(0.001)
+var MOVE_SPEEDUP = CGFloat(0.0005)
 var POINT_CYCLE = 30
 var DEAD_ZONE_THRESHHOLD = 0.00
 
 class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate{
-    var moveConstant = CGFloat(1.0)
+    var moveConstant = CGFloat(0.75)
     let hero = Hero()
     var count = 1;
     var platforms = [SuperPlatform]()
@@ -44,9 +44,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate{
     var addPointCounter = 0
     let motionManager = CMMotionManager()
     var backgroundMusicPlayer : AVAudioPlayer!
-    
-    var songs = ["01 A Night Of Dizzy Spells.mp3", "04 All of Us.mp3", "10 Arpanauts.mp3", "Digital Native.mp3"]
-    var songIndex = 0
+    var song = "Digital Native.mp3"
+//    var songs = ["01 A Night Of Dizzy Spells.mp3", "04 All of Us.mp3", "10 Arpanauts.mp3", "Digital Native.mp3"]
+//    var songIndex = 1
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -89,7 +89,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate{
         
         physicsWorld.gravity = GRAVITY
         physicsWorld.contactDelegate = self
-        playNextSong()
+//        playBackgroundMusic(songs[0])
+        playBackgroundMusic(song)
         motionManager.startAccelerometerUpdates()
     }
     
@@ -371,13 +372,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate{
         }
         
         var error: NSError? = nil
-        backgroundMusicPlayer = AVAudioPlayer(contentsOfURL: url, error: &error)
+        self.backgroundMusicPlayer = AVAudioPlayer(contentsOfURL: url, error: &error)
         if backgroundMusicPlayer == nil {
             println("could not create audio player: \(error)")
             return
         }
         
-        backgroundMusicPlayer.numberOfLoops = 0
+        backgroundMusicPlayer.numberOfLoops = -1
         backgroundMusicPlayer.prepareToPlay()
         backgroundMusicPlayer.volume = 1.0
 //        setSessionPlayer()
@@ -397,25 +398,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate{
         }
     }
     
-    func audioPlayerDidFinishPlaying(player: AVAudioPlayer!, successfully flag: Bool) {
-        println("done playing")
-        playNextSong()
-    }
-    
-    func audioPlayerDecodeErrorDidOccur(player: AVAudioPlayer!, error: NSError!) {
-        println("error")
-    }
-    
-    func playNextSong() {
-        var song = self.songs[songIndex]
-        songIndex++
-        if songIndex >= self.songs.count {
-            songIndex = 0
-        }
-        playBackgroundMusic(song)
-    }
-    
-    
+//    func audioPlayerDidFinishPlaying(player: AVAudioPlayer!, successfully flag: Bool) {
+//        println("done playing")
+////        playNextSong()
+//    }
+//    
+//    func audioPlayerDecodeErrorDidOccur(player: AVAudioPlayer!, error: NSError!) {
+//        println("error")
+//    }
+//    
+//    func playNextSong() {
+//        if !self.backgroundMusicPlayer!.playing {
+//            println("NEXT SONG")
+//            var song = self.songs[songIndex]
+//            songIndex++
+//            if songIndex >= self.songs.count {
+//                songIndex = 0
+//            }
+//            playBackgroundMusic(song)
+//        } else {
+//            println("Don't play next song")
+//        }
+//    }
 }
 
 extension Array {

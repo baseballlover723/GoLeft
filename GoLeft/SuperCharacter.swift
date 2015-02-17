@@ -82,6 +82,7 @@ class SuperCharacter: SKSpriteNode, RequiredCharacter {
             scene.view?.presentScene(gameOverScene, transition: reveal)
         }
         self.runAction(dieAction)
+        scene.backgroundMusicPlayer.stop()
     }
     
     required init?(coder aDecoder: NSCoder) {
