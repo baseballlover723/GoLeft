@@ -77,12 +77,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate{
         
         self.addChild(hero)
         //        platforms.append(BrickPlatform(length: 8, x: 0, y: 10))
-        platforms.append(BrickPlatform(length: 6, x: 75, y: 50))
+        platforms.append(BrickPlatform(length: 6, x: 175, y: 50))
         platforms.append(BrickPlatform(length: 1, x: 75, y: 300))
         platforms.append(BrickPlatform(length: 3, x: 275, y: 300))
         platforms.append(BrickPlatform(length: 1, x: 35, y: 150))
         platforms.append(BrickPlatform(length: 1, x: 350, y: 150))
         platforms.append(BrickPlatform(length: 2, x: 200, y: 225))
+        platforms.append(BrickPlatform(length: 4, x: 300, y: 225))
+        platforms.append(BrickPlatform(length: 3, x: 550, y: 125))
+        
         powerups.append(Coin(x: 350, y: 50))
         
         self.lastPlatform = platforms[0]
