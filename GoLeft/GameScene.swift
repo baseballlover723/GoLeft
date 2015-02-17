@@ -190,7 +190,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         // accelerameter stuff
             if let data = motionManager.accelerometerData {
                 if fabs(data.acceleration.y) > DEAD_ZONE_THRESHHOLD {
-                    hero.position.x += CGFloat(data.acceleration.y * 20)
+                    hero.position = CGPointMake(CGFloat(data.acceleration.y * 10), hero.position.y)
                     println("x = \(hero.position.x)")
                 }
             }
