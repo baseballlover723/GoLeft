@@ -24,7 +24,7 @@ struct PhysicsCategory {
 
 // GLOBAL CONSTANTS
 var movingHero = false
-var GRAVITY = CGVector(dx: 0, dy: -1)
+var GRAVITY = CGVector(dx: 0, dy: -2)
 var SPEED_SCALING = CGFloat(0.005)
 var THRESHHOLD_INCREMENT = CGFloat(0.0000005)
 var MOVE_SPEEDUP = CGFloat(0.0005)
@@ -306,7 +306,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate{
     }
     
     func getHeroJumpHeight() -> CGFloat {
-        return hero.HERO_JUMP_FORCE.dy * hero.HERO_JUMP_FORCE.dy / -GRAVITY.dy
+        return hero.jumpForce.dy * hero.jumpForce.dy / -GRAVITY.dy
     }
     
     func checkIfHeroIsDead() {

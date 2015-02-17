@@ -10,9 +10,8 @@ import UIKit
 import SpriteKit
 
 class Hero: SuperCharacter, RequiredCharacter {
-    override var HERO_JUMP_FORCE : CGVector {
-        return CGVector(dx: 0, dy: 10)
-    }
+    var heroJumpForce = CGVector(dx: 0, dy: 25)
+    
     
     override var HERO_MASS : CGFloat {
         return CGFloat(0.55)
@@ -21,6 +20,7 @@ class Hero: SuperCharacter, RequiredCharacter {
     init() {
         super.init(imageName: "Hero")
         initPhysics()
+        super.jumpForce = heroJumpForce
     }
 
     required init?(coder aDecoder: NSCoder) {

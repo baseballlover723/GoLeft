@@ -13,7 +13,8 @@ protocol RequiredCharacter {
     func initPhysics()
     func jump()
     func applyJumpEffects()
-    var HERO_JUMP_FORCE : CGVector { get }
+    func setHeroJumpForce(newJumpForce: (CGVector))
+//    var HERO_JUMP_FORCE : CGVector { get }
     var HERO_MASS : CGFloat { get }
 //    func GET_HERO_JUMP_FORCE() -> CGVector
 }
@@ -21,10 +22,7 @@ protocol RequiredCharacter {
 class SuperCharacter: SKSpriteNode, RequiredCharacter {
     var score : Int
     var coinMagnet = false
-    var HERO_JUMP_FORCE : CGVector{
-        assert(false, "HERO JUMP FORCE must be overriden")
-    }
-    
+    var jumpForce = CGVector(dx: 0, dy: 0)
     var HERO_MASS : CGFloat {
         // not yet implemented
         assert(false, "Supercharacter HERO_MASS must be overriden")
@@ -70,8 +68,12 @@ class SuperCharacter: SKSpriteNode, RequiredCharacter {
         assert(false, "Jump Effects must be overriden")
     }
     
+    func setHeroJumpForce(newJumpForce: (CGVector)) {
+        self.jumpForce = newJumpForce
+    }
+    
     func jump() {
-        self.physicsBody?.applyImpulse(HERO_JUMP_FORCE)
+        self.physicsBody?.applyImpulse(self.jumpForce)
         self.applyJumpEffects()
     }
     
