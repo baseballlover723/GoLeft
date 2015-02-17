@@ -34,7 +34,7 @@ class BrickPlatform: SuperPlatform, RequiredPlatform {
     init(x: (CGFloat), y: (CGFloat), vertical_length: (CGFloat)) {
         super.init(imageName: "BrickPlatform", length: CGFloat(1), x: x, y: y)
         self.yScale = vertical_length / self.size.height
-        self.xScale = 0.01
+        self.xScale = 0.1
         self.position = CGPoint(x: x, y: y)
         self.physicsBody?.categoryBitMask = PhysicsCategory.None
         self.physicsBody?.collisionBitMask = PhysicsCategory.SuperCharacter
