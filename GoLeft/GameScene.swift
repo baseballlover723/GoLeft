@@ -372,7 +372,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate{
         
         var error: NSError? = nil
         backgroundMusicPlayer = AVAudioPlayer()
-        let audioPath = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource(filename, ofType: "mp3"))
+        let audioPath = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource(filename, ofType: "mp3")!)
         backgroundMusicPlayer = AVAudioPlayer(contentsOfURL: audioPath, error: &error)
         if backgroundMusicPlayer == nil {
             println("could not create audio player: \(error)")
