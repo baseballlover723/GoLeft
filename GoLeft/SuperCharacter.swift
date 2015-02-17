@@ -19,7 +19,7 @@ protocol RequiredCharacter {
 }
 
 class SuperCharacter: SKSpriteNode, RequiredCharacter {
-    var score : Int32
+    var score : Int
     var HERO_JUMP_FORCE : CGVector{
         assert(false, "HERO JUMP FORCE must be overriden")
     }
@@ -71,6 +71,16 @@ class SuperCharacter: SKSpriteNode, RequiredCharacter {
     func jump() {
         self.physicsBody?.applyImpulse(HERO_JUMP_FORCE)
         self.applyJumpEffects()
+    }
+    
+    func die(scene: GameScene) {
+        println("YOU DIED")
+        let dieAction = SKAction.runBlock() {
+            let reveal = SKTransition.fadeWithColor(UIColor.blackColor(), duration: 1.0)
+            let gameOverScene = GameOverScene(size: scene.size, score: self.score)
+            scene.view?.presentScene(gameOverScene, transition: reveal)
+        }
+        self.runAction(dieAction)
     }
     
     required init?(coder aDecoder: NSCoder) {
