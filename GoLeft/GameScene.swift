@@ -215,9 +215,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate{
         }
         // accelerameter stuff
         if let data = motionManager.accelerometerData {
-            if fabs(data.acceleration.y) > DEAD_ZONE_THRESHHOLD {
+            if UIApplication.sharedApplication().statusBarOrientation == UIInterfaceOrientation.LandscapeLeft {
                 hero.position = CGPoint(x: hero.position.x + CGFloat(data.acceleration.y * 10), y: hero.position.y)
-                //                    println("x = \(hero.position.x)")
+            } else {
+                hero.position = CGPoint(x: hero.position.x - CGFloat(data.acceleration.y * 10), y: hero.position.y)
             }
         }
         

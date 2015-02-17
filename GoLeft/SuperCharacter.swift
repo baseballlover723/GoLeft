@@ -84,8 +84,8 @@ class SuperCharacter: SKSpriteNode, RequiredCharacter {
             let gameOverScene = GameOverScene(size: scene.size, score: self.score)
             scene.view?.presentScene(gameOverScene, transition: reveal)
         }
-//        self.runAction(dieAction)
-//        scene.backgroundMusicPlayer.stop()
+        self.runAction(dieAction)
+        scene.backgroundMusicPlayer.stop()
     }
     
     func applyMagnet(lengthOfEffect: (NSTimeInterval)) {
