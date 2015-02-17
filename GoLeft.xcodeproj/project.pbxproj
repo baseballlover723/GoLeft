@@ -38,6 +38,8 @@
 		61E6FEC31A93DE5100F6F1BD /* JumpHigher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E6FEC21A93DE5100F6F1BD /* JumpHigher.swift */; };
 		6D2926731A92F2A800E679AB /* beach_background_by_deitz94-d5hpts8.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D2926721A92F2A800E679AB /* beach_background_by_deitz94-d5hpts8.png */; };
 		6D2926751A93EB4800E679AB /* Mario.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D2926741A93EB4800E679AB /* Mario.png */; };
+		6D2926771A93EF7F00E679AB /* stick-man.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D2926761A93EF7F00E679AB /* stick-man.png */; };
+		6D2926791A93EF8500E679AB /* Big Mario.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D2926781A93EF8500E679AB /* Big Mario.png */; };
 		6DA58D5D1A899D3400CF0A07 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA58D5C1A899D3400CF0A07 /* GameOverScene.swift */; };
 		6DA58D5F1A89A28900CF0A07 /* HighScoreMasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA58D5E1A89A28900CF0A07 /* HighScoreMasterViewController.swift */; };
 		6DCC13131A86D2DF00F97D29 /* stick-man pro.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DCC13121A86D2DF00F97D29 /* stick-man pro.png */; };
@@ -92,6 +94,8 @@
 		61E6FEC21A93DE5100F6F1BD /* JumpHigher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpHigher.swift; sourceTree = "<group>"; };
 		6D2926721A92F2A800E679AB /* beach_background_by_deitz94-d5hpts8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "beach_background_by_deitz94-d5hpts8.png"; sourceTree = "<group>"; };
 		6D2926741A93EB4800E679AB /* Mario.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Mario.png; sourceTree = "<group>"; };
+		6D2926761A93EF7F00E679AB /* stick-man.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stick-man.png"; sourceTree = "<group>"; };
+		6D2926781A93EF8500E679AB /* Big Mario.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Big Mario.png"; sourceTree = "<group>"; };
 		6DA58D5C1A899D3400CF0A07 /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		6DA58D5E1A89A28900CF0A07 /* HighScoreMasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HighScoreMasterViewController.swift; path = ../HighScoreMasterViewController.swift; sourceTree = "<group>"; };
 		6DCC13121A86D2DF00F97D29 /* stick-man pro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stick-man pro.png"; sourceTree = "<group>"; };
@@ -174,6 +178,8 @@
 		611BE7B41A7F2EF1000CF5B4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6D2926781A93EF8500E679AB /* Big Mario.png */,
+				6D2926761A93EF7F00E679AB /* stick-man.png */,
 				6D2926741A93EB4800E679AB /* Mario.png */,
 				61DEBAA31A93B57C0018DD7C /* Flicker.mp4 */,
 				619107FF1A93088600051A8E /* Digital Native.mp3 */,
@@ -292,6 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				61E6FEC11A93DE2300F6F1BD /* Arrow-jump-icon.png in Resources */,
+				6D2926791A93EF8500E679AB /* Big Mario.png in Resources */,
 				619108051A93088600051A8E /* 04 All of Us.mp3 in Resources */,
 				6DCC131B1A86DB0000F97D29 /* BrickPattern_0.png in Resources */,
 				611BE7C51A7F2EF1000CF5B4 /* LaunchScreen.xib in Resources */,
@@ -304,6 +311,7 @@
 				611BE7C01A7F2EF1000CF5B4 /* Main.storyboard in Resources */,
 				619108061A93088600051A8E /* 01 A Night Of Dizzy Spells.mp3 in Resources */,
 				6DCC13131A86D2DF00F97D29 /* stick-man pro.png in Resources */,
+				6D2926771A93EF7F00E679AB /* stick-man.png in Resources */,
 				61DEBAA41A93B57C0018DD7C /* Flicker.mp4 in Resources */,
 				6D2926731A92F2A800E679AB /* beach_background_by_deitz94-d5hpts8.png in Resources */,
 				6D2926751A93EB4800E679AB /* Mario.png in Resources */,
