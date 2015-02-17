@@ -30,6 +30,16 @@ class BrickPlatform: SuperPlatform, RequiredPlatform {
         super.init(imageName: "BrickPlatform", lastPlatformRightAnchor: lastPlatformRightAnchor, heroJumpHeight: heroJumpHeight)
     }
     
+    // boundry platforms
+    init(x: (CGFloat), y: (CGFloat), vertical_length: (CGFloat)) {
+        super.init(imageName: "BrickPlatform", length: CGFloat(1), x: x, y: y)
+        self.yScale = vertical_length / self.size.height
+        self.xScale = 0.01
+        self.position = CGPoint(x: x, y: y)
+        self.physicsBody?.categoryBitMask = PhysicsCategory.None
+        self.physicsBody?.collisionBitMask = PhysicsCategory.SuperCharacter
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

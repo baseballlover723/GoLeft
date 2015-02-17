@@ -48,6 +48,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         backgroundColor = SKColor.whiteColor()
         hero.position = CGPoint(x: size.width * 0.9, y: size.height * 0.9)
         
+        //boundry platforms
+        var platform = BrickPlatform(x: -1, y: size.height / 2, vertical_length: size.height)
+        self.addChild(platform)
+        platform = BrickPlatform(x: size.width + 1, y: size.height / 2, vertical_length: size.height)
+        self.addChild(platform)
+        platform = BrickPlatform(length: CGFloat(size.width / 60 + 1), x: 0, y: size.height + 5)
+        self.addChild(platform)
+        
+        
         self.addChild(hero)
 //        platforms.append(BrickPlatform(length: 8, x: 0, y: 10))
         platforms.append(BrickPlatform(length: 6, x: 75, y: 50))
@@ -151,7 +160,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
 
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
-//        println("hero y = \(hero.position.y)")
+        println("hero y = \(hero.position.y)")
         addPoints()
         maybeMoveHero()
         movePlatformsAndPowerups()
@@ -164,7 +173,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     
     func addPoints() {
         addPointCounter++
-        println("addPointCounter = \(addPointCounter)")
+//        println("addPointCounter = \(addPointCounter)")
         if addPointCounter > POINT_CYCLE {
             hero.score += 1
             addPointCounter = 0
@@ -254,7 +263,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     }
     
     func getHeroJumpHeight() -> CGFloat {
-        return hero.HERO_JUMP_FORCE.dy * hero.HERO_JUMP_FORCE.dy
+        return hero.HERO_JUMP_FORCE.dy * hero.HERO_JUMP_FORCE.dy / GRAVITY.dy
     }
     
     func random() -> CGFloat {

@@ -25,6 +25,7 @@ class SuperCharacter: SKSpriteNode, RequiredCharacter {
     }
     
     var HERO_MASS : CGFloat {
+        // not yet implemented
         assert(false, "Supercharacter HERO_MASS must be overriden")
     }
     
@@ -48,7 +49,7 @@ class SuperCharacter: SKSpriteNode, RequiredCharacter {
     init(imageName: (String)) {
         let texture = SKTexture(imageNamed: imageName)
         self.score = 0
-        // default jump force
+        // default jump forces
         super.init(texture: texture, color: UIColor.clearColor(), size: texture.size())
     }
     
@@ -60,7 +61,7 @@ class SuperCharacter: SKSpriteNode, RequiredCharacter {
         self.physicsBody?.contactTestBitMask = PhysicsCategory.SuperPlatform
         self.physicsBody?.collisionBitMask = PhysicsCategory.SuperPlatform
         self.physicsBody?.allowsRotation = false
-        self.physicsBody?.mass = HERO_MASS
+//        self.physicsBody?.mass = HERO_MASS
     }
     
     func applyJumpEffects() {

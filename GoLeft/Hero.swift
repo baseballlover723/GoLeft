@@ -15,7 +15,7 @@ class Hero: SuperCharacter, RequiredCharacter {
     }
     
     override var HERO_MASS : CGFloat {
-        return CGFloat(0.02)
+        return CGFloat(0.1)
     }
     
     init() {
