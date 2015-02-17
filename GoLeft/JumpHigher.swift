@@ -11,7 +11,7 @@ import SpriteKit
 
 class JumpHigher: SuperPowerup {
     var lengthOfEffect = NSTimeInterval(10)
-    var jumpMultiplier = 1.75
+    var jumpMultiplier = 1.33
     
     init() {
         super.init(imageName: "JumpHigher")

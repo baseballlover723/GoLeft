@@ -10,7 +10,7 @@ import UIKit
 import SpriteKit
 
 class Hero: SuperCharacter, RequiredCharacter {
-    var heroJumpForce = CGVector(dx: 0, dy: 25)
+    var heroJumpForce = CGVector(dx: 0, dy: 15)
     
     
     override var HERO_MASS : CGFloat {
