@@ -197,7 +197,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate{
             if let data = motionManager.accelerometerData {
                 if fabs(data.acceleration.y) > DEAD_ZONE_THRESHHOLD {
                     hero.position = CGPoint(x: hero.position.x + CGFloat(data.acceleration.y * 10), y: hero.position.y)
-                    println("x = \(hero.position.x)")
+//                    println("x = \(hero.position.x)")
                 }
             }
         
@@ -379,8 +379,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate{
         
         backgroundMusicPlayer.numberOfLoops = 0
         backgroundMusicPlayer.prepareToPlay()
+        backgroundMusicPlayer.volume = 1.0
+        setSessionPlayer()
         backgroundMusicPlayer.play()
         backgroundMusicPlayer.delegate = self
+        println("PLAYING MUSIC")
+    }
+    
+    func setSessionPlayer() {
+        let session: AVAudioSession = AVAudioSession.sharedInstance()
     }
     
     func audioPlayerDidFinishPlaying(player: AVAudioPlayer!, successfully flag: Bool) {
