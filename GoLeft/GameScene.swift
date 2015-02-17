@@ -263,7 +263,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     }
     
     func getHeroJumpHeight() -> CGFloat {
-        return hero.HERO_JUMP_FORCE.dy * hero.HERO_JUMP_FORCE.dy / GRAVITY.dy
+        return hero.HERO_JUMP_FORCE.dy * hero.HERO_JUMP_FORCE.dy / -GRAVITY.dy
     }
     
     func random() -> CGFloat {

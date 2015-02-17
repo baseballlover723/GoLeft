@@ -53,7 +53,8 @@ class SuperPlatform: SKSpriteNode, RequiredPlatform {
         var heroJumpHeight = heroJumpHeight * 0.95
         var calc = deltaX > heroJumpHeight ? 0 : sqrt(heroJumpHeight * heroJumpHeight - deltaX * deltaX)
         var maxY = max(heroJumpHeight/3, calc) + lastPlatformRightAnchor.y
-        println("deltaX = \(deltaX), maxY = \(maxY), calc = \(calc)")
+        println("\ndeltaX = \(deltaX), maxY = \(maxY), calc = \(calc)")
+println("max jump = \(heroJumpHeight)")
         let bounds = UIScreen.mainScreen().bounds
         let screenWidth = bounds.width
         let screenHeight = bounds.height
