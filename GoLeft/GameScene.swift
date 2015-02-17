@@ -47,6 +47,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate{
     var backgroundMusicPlayer : AVAudioPlayer!
     var porterPlayer : AVPlayer!
     var powerupFactory = SuperPowerupFactory()
+    var oldPorterProb = 0.1
     
     //    var song = "Digital Native.mp3"
     var songs = ["01 A Night Of Dizzy Spells.mp3", "04 All of Us.mp3", "10 Arpanauts.mp3", "Digital Native.mp3"]
@@ -239,8 +240,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate{
         
         for powerup in self.powerups {
             if powerup.isOnScreen() {
-                // if the powerup is on the screen move it to the right
-                powerup.position = CGPoint(x: powerup.position.x + self.moveConstant, y: powerup.position.y)
+                if hero.coinMagnet && powerup.dynamicType === Coin.self {
+                    // hero is attracting coins
+                    var heroPos = hero.position
+                    var coinPos = powerup.position
+                    var vector = CGPoint(x: heroPos.x - coinPos.x, y: heroPos.y - coinPos.y)
+                    var magnitude = sqrt(vector.x * vector.x + vector.y + vector.y)
+                    var unitForce = CGVector(dx: vector.x / magnitude, dy: vector.y / magnitude)
+                    powerup.physicsBody?.applyForce(unitForce)
+                    
+                } else {
+                    // if the powerup is on the screen move it to the right
+                    powerup.position = CGPoint(x: powerup.position.x + self.moveConstant, y: powerup.position.y)
+                }
             } else {
                 self.powerups.removeObject(powerup)
                 powerup.removeFromParent()
@@ -424,9 +436,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate{
         self.addChild(video)
         video.play()
         self.backgroundMusicPlayer.pause()
-        
+        self.oldPorterProb = self.powerupFactory.probability[1]
+        self.powerupFactory.probability[1] = 0
         var actions = [SKAction.waitForDuration(214), SKAction.runBlock {
             self.backgroundMusicPlayer.play()
+            self.powerupFactory.probability[1] = self.oldPorterProb
             return
             }, SKAction.removeFromParent()
         ]

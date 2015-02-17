@@ -20,6 +20,7 @@ protocol RequiredCharacter {
 
 class SuperCharacter: SKSpriteNode, RequiredCharacter {
     var score : Int
+    var coinMagnet = false
     var HERO_JUMP_FORCE : CGVector{
         assert(false, "HERO JUMP FORCE must be overriden")
     }
@@ -83,6 +84,16 @@ class SuperCharacter: SKSpriteNode, RequiredCharacter {
         }
 //        self.runAction(dieAction)
 //        scene.backgroundMusicPlayer.stop()
+    }
+    
+    func applyMagnet(lengthOfEffect: (NSTimeInterval)) {
+        coinMagnet = true
+        var actions = [SKAction.waitForDuration(lengthOfEffect), SKAction.runBlock {
+            self.coinMagnet = false
+            return
+            }
+        ]
+
     }
     
     required init?(coder aDecoder: NSCoder) {
