@@ -29,7 +29,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="BV1-FR-VrT" kind="show" id="Kuy-pe-CVp"/>
+                                    <segue destination="0ic-rg-3eo" kind="show" id="Yuj-UY-CKx"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7J7-Xp-KSJ">
@@ -55,7 +55,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rad-mC-SHI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="586" y="-505"/>
+            <point key="canvasLocation" x="470" y="-673"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
@@ -145,7 +145,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yRv-o9-PiM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1641" y="249"/>
+            <point key="canvasLocation" x="1777" y="229"/>
         </scene>
         <!--High Score Master View Controller-->
         <scene sceneID="BPH-FY-8Dn">
