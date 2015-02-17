@@ -9,7 +9,7 @@
 import UIKit
 
 class Magnet: SuperPowerup {
-    var lengthOfEffect = NSTimeInterval(10ß)
+    var lengthOfEffect = NSTimeInterval(10)
   
     init() {
         super.init(imageName: "Magnet")
