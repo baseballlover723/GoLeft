@@ -384,6 +384,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate{
         backgroundMusicPlayer.delegate = self
         backgroundMusicPlayer.play()
         println("PLAYING MUSIC")
+        if backgroundMusicPlayer.playing {
+            println("playing = true")
+        }
     }
     
     func setSessionPlayer() {
