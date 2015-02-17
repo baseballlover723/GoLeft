@@ -25,6 +25,7 @@
 		61DDC71D1A89526700420650 /* mariobroscoin.png in Resources */ = {isa = PBXBuildFile; fileRef = 61DDC71C1A89526700420650 /* mariobroscoin.png */; };
 		61E4AE6E1A86CEB200F81B74 /* SuperCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E4AE6D1A86CEB200F81B74 /* SuperCharacter.swift */; };
 		61E4AE701A86CEC800F81B74 /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E4AE6F1A86CEC800F81B74 /* Hero.swift */; };
+		6D2926731A92F2A800E679AB /* beach_background_by_deitz94-d5hpts8.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D2926721A92F2A800E679AB /* beach_background_by_deitz94-d5hpts8.png */; };
 		6DA58D5D1A899D3400CF0A07 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA58D5C1A899D3400CF0A07 /* GameOverScene.swift */; };
 		6DA58D5F1A89A28900CF0A07 /* HighScoreMasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA58D5E1A89A28900CF0A07 /* HighScoreMasterViewController.swift */; };
 		6DCC13131A86D2DF00F97D29 /* stick-man pro.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DCC13121A86D2DF00F97D29 /* stick-man pro.png */; };
@@ -66,6 +67,7 @@
 		61DDC71C1A89526700420650 /* mariobroscoin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mariobroscoin.png; sourceTree = "<group>"; };
 		61E4AE6D1A86CEB200F81B74 /* SuperCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperCharacter.swift; sourceTree = "<group>"; };
 		61E4AE6F1A86CEC800F81B74 /* Hero.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
+		6D2926721A92F2A800E679AB /* beach_background_by_deitz94-d5hpts8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "beach_background_by_deitz94-d5hpts8.png"; sourceTree = "<group>"; };
 		6DA58D5C1A899D3400CF0A07 /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		6DA58D5E1A89A28900CF0A07 /* HighScoreMasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HighScoreMasterViewController.swift; path = ../HighScoreMasterViewController.swift; sourceTree = "<group>"; };
 		6DCC13121A86D2DF00F97D29 /* stick-man pro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stick-man pro.png"; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 		611BE7B41A7F2EF1000CF5B4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6D2926721A92F2A800E679AB /* beach_background_by_deitz94-d5hpts8.png */,
 				61DDC71C1A89526700420650 /* mariobroscoin.png */,
 				6DCC13121A86D2DF00F97D29 /* stick-man pro.png */,
 				61DBDC4D1A90188400EB137D /* Porter_Robinson.png */,
@@ -259,6 +262,7 @@
 				61DDC71D1A89526700420650 /* mariobroscoin.png in Resources */,
 				611BE7C01A7F2EF1000CF5B4 /* Main.storyboard in Resources */,
 				6DCC13131A86D2DF00F97D29 /* stick-man pro.png in Resources */,
+				6D2926731A92F2A800E679AB /* beach_background_by_deitz94-d5hpts8.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
