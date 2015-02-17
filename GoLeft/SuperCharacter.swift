@@ -95,6 +95,7 @@ class SuperCharacter: SKSpriteNode, RequiredCharacter {
             return
             }
         ]
+        self.runAction(SKAction.sequence(actions))
 
     }
     

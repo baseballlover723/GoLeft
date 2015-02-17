@@ -414,43 +414,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate{
         if backgroundMusicPlayer.playing {
             println("playing = true")
         }
-    }
-    
-    func playPorterRobinsonVideo() {
-        let url = NSBundle.mainBundle().URLForResource(PORTER_ROBINSON_SONG_FILE, withExtension: nil)
-        if url == nil {
-            println("could not file file: \(PORTER_ROBINSON_SONG_FILE)")
-            return
-        }
-        
-        var error: NSError? = nil
-        self.porterPlayer = AVPlayer(URL: url)
-        if self.porterPlayer == nil {
-            println("could not create audio player: \(error)")
-            return
-        }
-        var video = SKVideoNode(AVPlayer: self.porterPlayer)
-        video.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
-        video.size = CGSize(width: self.size.width, height: self.size.height)
-        video.zPosition = -1
-        self.addChild(video)
-        video.play()
-        self.backgroundMusicPlayer.pause()
-        self.oldPorterProb = self.powerupFactory.probability[1]
-        self.powerupFactory.probability[1] = 0
-        var actions = [SKAction.waitForDuration(214), SKAction.runBlock {
-            self.backgroundMusicPlayer.play()
-            self.powerupFactory.probability[1] = self.oldPorterProb
-            return
-            }, SKAction.removeFromParent()
-        ]
-        video.runAction(SKAction.sequence(actions))
-        //        var videoLength = SKAction.waitForDuration(214)
-        //        var restartBackgroundMusic = SKAction.runBlock {
-        //            self.backgroundMusicPlayer.play()
-        //        }
-        println("video -> \(self.porterPlayer.status)")
-    }
+    }    
 }
 extension Array {
     mutating func removeObject<U: Equatable>(object: U) {
