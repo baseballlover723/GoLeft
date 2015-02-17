@@ -38,6 +38,7 @@ class BrickPlatform: SuperPlatform, RequiredPlatform {
         self.position = CGPoint(x: x, y: y)
         self.physicsBody?.categoryBitMask = PhysicsCategory.None
         self.physicsBody?.collisionBitMask = PhysicsCategory.SuperCharacter
+        self.physicsBody?.contactTestBitMask = PhysicsCategory.SuperCharacter
     }
     
     required init?(coder aDecoder: NSCoder) {
