@@ -10,8 +10,8 @@ import UIKit
 
 class SuperPowerupFactory{
     
-    var powerups = [Coin(), PorterRobinson()]
-    var probability = [0.5, 0.1]
+    var powerups = [Coin(), PorterRobinson(), Magnet()]
+    var probability = [0.5, 0.1, 0.1]
     
     func getRandomPowerup() -> SuperPowerup {
         
