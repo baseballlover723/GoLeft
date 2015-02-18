@@ -25,8 +25,8 @@
 		61C8793C1A91607A00FC7BAC /* SuperPlatformFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C8793B1A91607A00FC7BAC /* SuperPlatformFactory.swift */; };
 		61D7C93A1A943EB000FE83A9 /* gameOver.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 61D7C9391A943EB000FE83A9 /* gameOver.mp3 */; };
 		61D7C93E1A94442A00FE83A9 /* smb_jump-super.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 61D7C93B1A94442A00FE83A9 /* smb_jump-super.mp3 */; };
-		61D7C93F1A94442A00FE83A9 /* smb_powerup.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 61D7C93C1A94442A00FE83A9 /* smb_powerup.mp3 */; };
-		61D7C9401A94442A00FE83A9 /* smb_coin.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 61D7C93D1A94442A00FE83A9 /* smb_coin.mp3 */; };
+		61D7C93F1A94442A00FE83A9 /* powerupSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 61D7C93C1A94442A00FE83A9 /* powerupSound.mp3 */; };
+		61D7C9401A94442A00FE83A9 /* coinSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 61D7C93D1A94442A00FE83A9 /* coinSound.mp3 */; };
 		61DBDC4E1A90188400EB137D /* Porter_Robinson.png in Resources */ = {isa = PBXBuildFile; fileRef = 61DBDC4D1A90188400EB137D /* Porter_Robinson.png */; };
 		61DBDC521A901DCF00EB137D /* SuperPowerupFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DBDC511A901DCF00EB137D /* SuperPowerupFactory.swift */; };
 		61DBDC541A901E7C00EB137D /* PorterRobinson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DBDC531A901E7C00EB137D /* PorterRobinson.swift */; };
@@ -85,8 +85,8 @@
 		61C8793B1A91607A00FC7BAC /* SuperPlatformFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperPlatformFactory.swift; sourceTree = "<group>"; };
 		61D7C9391A943EB000FE83A9 /* gameOver.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameOver.mp3; sourceTree = "<group>"; };
 		61D7C93B1A94442A00FE83A9 /* smb_jump-super.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "smb_jump-super.mp3"; sourceTree = "<group>"; };
-		61D7C93C1A94442A00FE83A9 /* smb_powerup.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = smb_powerup.mp3; sourceTree = "<group>"; };
-		61D7C93D1A94442A00FE83A9 /* smb_coin.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = smb_coin.mp3; sourceTree = "<group>"; };
+		61D7C93C1A94442A00FE83A9 /* powerupSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = powerupSound.mp3; sourceTree = "<group>"; };
+		61D7C93D1A94442A00FE83A9 /* coinSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = coinSound.mp3; sourceTree = "<group>"; };
 		61DBDC4D1A90188400EB137D /* Porter_Robinson.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Porter_Robinson.png; sourceTree = "<group>"; };
 		61DBDC511A901DCF00EB137D /* SuperPowerupFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperPowerupFactory.swift; sourceTree = "<group>"; };
 		61DBDC531A901E7C00EB137D /* PorterRobinson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PorterRobinson.swift; sourceTree = "<group>"; };
@@ -187,8 +187,8 @@
 			isa = PBXGroup;
 			children = (
 				61D7C93B1A94442A00FE83A9 /* smb_jump-super.mp3 */,
-				61D7C93C1A94442A00FE83A9 /* smb_powerup.mp3 */,
-				61D7C93D1A94442A00FE83A9 /* smb_coin.mp3 */,
+				61D7C93C1A94442A00FE83A9 /* powerupSound.mp3 */,
+				61D7C93D1A94442A00FE83A9 /* coinSound.mp3 */,
 				61D7C9391A943EB000FE83A9 /* gameOver.mp3 */,
 				6D2926781A93EF8500E679AB /* Big Mario.png */,
 				6D2926761A93EF7F00E679AB /* stick-man.png */,
@@ -321,8 +321,8 @@
 				61E6FEBD1A93D3C000F6F1BD /* Magnet.png in Resources */,
 				61D7C93E1A94442A00FE83A9 /* smb_jump-super.mp3 in Resources */,
 				61DDC71D1A89526700420650 /* mariobroscoin.png in Resources */,
-				61D7C9401A94442A00FE83A9 /* smb_coin.mp3 in Resources */,
-				61D7C93F1A94442A00FE83A9 /* smb_powerup.mp3 in Resources */,
+				61D7C9401A94442A00FE83A9 /* coinSound.mp3 in Resources */,
+				61D7C93F1A94442A00FE83A9 /* powerupSound.mp3 in Resources */,
 				611BE7C01A7F2EF1000CF5B4 /* Main.storyboard in Resources */,
 				619108061A93088600051A8E /* 01 A Night Of Dizzy Spells.mp3 in Resources */,
 				6DCC13131A86D2DF00F97D29 /* stick-man pro.png in Resources */,
