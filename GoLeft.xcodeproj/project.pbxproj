@@ -46,6 +46,7 @@
 		6D2926771A93EF7F00E679AB /* stick-man.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D2926761A93EF7F00E679AB /* stick-man.png */; };
 		6D2926791A93EF8500E679AB /* Big Mario.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D2926781A93EF8500E679AB /* Big Mario.png */; };
 		6D29267B1A944F9A00E679AB /* BrokenPlatform.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D29267A1A944F9A00E679AB /* BrokenPlatform.png */; };
+		6D29267D1A94519300E679AB /* BrokenPlatform.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D29267C1A94519300E679AB /* BrokenPlatform.png */; };
 		6DA58D5D1A899D3400CF0A07 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA58D5C1A899D3400CF0A07 /* GameOverScene.swift */; };
 		6DA58D5F1A89A28900CF0A07 /* HighScoreMasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA58D5E1A89A28900CF0A07 /* HighScoreMasterViewController.swift */; };
 		6DCC13131A86D2DF00F97D29 /* stick-man pro.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DCC13121A86D2DF00F97D29 /* stick-man pro.png */; };
@@ -108,6 +109,7 @@
 		6D2926761A93EF7F00E679AB /* stick-man.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stick-man.png"; sourceTree = "<group>"; };
 		6D2926781A93EF8500E679AB /* Big Mario.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Big Mario.png"; sourceTree = "<group>"; };
 		6D29267A1A944F9A00E679AB /* BrokenPlatform.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BrokenPlatform.png; sourceTree = "<group>"; };
+		6D29267C1A94519300E679AB /* BrokenPlatform.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BrokenPlatform.png; sourceTree = "<group>"; };
 		6DA58D5C1A899D3400CF0A07 /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		6DA58D5E1A89A28900CF0A07 /* HighScoreMasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HighScoreMasterViewController.swift; path = ../HighScoreMasterViewController.swift; sourceTree = "<group>"; };
 		6DCC13121A86D2DF00F97D29 /* stick-man pro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stick-man pro.png"; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 				6D2926781A93EF8500E679AB /* Big Mario.png */,
 				6D2926761A93EF7F00E679AB /* stick-man.png */,
 				6D2926741A93EB4800E679AB /* Mario.png */,
+				6D29267C1A94519300E679AB /* BrokenPlatform.png */,
 				61DEBAA31A93B57C0018DD7C /* Flicker.mp4 */,
 				619107FF1A93088600051A8E /* Digital Native.mp3 */,
 				619108001A93088600051A8E /* 10 Arpanauts.mp3 */,
@@ -326,6 +329,7 @@
 				61E6FEBD1A93D3C000F6F1BD /* Magnet.png in Resources */,
 				61D7C93E1A94442A00FE83A9 /* jumpSound.mp3 in Resources */,
 				61DDC71D1A89526700420650 /* mariobroscoin.png in Resources */,
+				6D29267D1A94519300E679AB /* BrokenPlatform.png in Resources */,
 				61D7C9401A94442A00FE83A9 /* coinSound.mp3 in Resources */,
 				61D7C93F1A94442A00FE83A9 /* powerupSound.mp3 in Resources */,
 				611BE7C01A7F2EF1000CF5B4 /* Main.storyboard in Resources */,
