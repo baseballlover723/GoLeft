@@ -370,9 +370,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate{
     
     func characterDidCollideWithPlatform(hero: (SuperCharacter), platform: (SuperPlatform)) {
         //        println("A Character hit a Platform")
+        var oldVelocity = hero.physicsBody!.velocity
+        println("dy = \(hero.physicsBody!.velocity.dy)")
         platform.applyContactEffects(self, hero: hero)
         if platform.collisionConsumesSelf() {
             platform.removeFromParent()
+            hero.physicsBody!.velocity = CGVector(dx: oldVelocity.dx, dy: -oldVelocity.dy)
+        } else {
+            hero.physicsBody!.velocity = CGVector(dx: oldVelocity.dx, dy: 0)
         }
         
     }
