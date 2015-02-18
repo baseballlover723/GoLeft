@@ -28,7 +28,7 @@ class Coin: SuperPowerup, RequiredPowerup {
     override func applyPowerupTo(scene: (GameScene), hero: SuperCharacter) {
         hero.score += POINT_VALUE
         println(COIN_SOUND_FILE)
-        runAction(SKAction.playSoundFileNamed(COIN_SOUND_FILE, waitForCompletion: false))
+        scene.runAction(SKAction.playSoundFileNamed(COIN_SOUND_FILE, waitForCompletion: false))
 
 //        println("score = \(hero.score)")
         scene.updateScore()

@@ -27,7 +27,7 @@ class Magnet: SuperPowerup {
     
     override func applyPowerupTo(scene: (GameScene), hero: SuperCharacter) {
         hero.applyMagnet(lengthOfEffect)
-        runAction(SKAction.playSoundFileNamed(POWERUP_SOUND_FILE, waitForCompletion: false))
+        scene.runAction(SKAction.playSoundFileNamed(POWERUP_SOUND_FILE, waitForCompletion: false))
     }
     
     override func collisionConsumesSelf() -> Bool {

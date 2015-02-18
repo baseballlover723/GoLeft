@@ -28,7 +28,7 @@ class JumpHigher: SuperPowerup {
     
     override func applyPowerupTo(scene: (GameScene), hero: SuperCharacter) {
         hero.setHeroJumpForce(CGVector(dx: hero.jumpForce.dx * CGFloat(self.jumpMultiplier), dy: hero.jumpForce.dy * CGFloat(self.jumpMultiplier)))
-        runAction(SKAction.playSoundFileNamed(POWERUP_SOUND_FILE, waitForCompletion: false))
+        scene.runAction(SKAction.playSoundFileNamed(POWERUP_SOUND_FILE, waitForCompletion: false))
         var actions = [SKAction.waitForDuration(lengthOfEffect), SKAction.runBlock {
             hero.setHeroJumpForce(CGVector(dx: hero.jumpForce.dx / CGFloat(self.jumpMultiplier), dy: hero.jumpForce.dy / CGFloat(self.jumpMultiplier)))
             return
