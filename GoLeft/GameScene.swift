@@ -255,10 +255,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate{
                     var unitForce = CGVector(dx: vector.x / magnitude, dy: vector.y / magnitude)
                     powerup.physicsBody?.applyForce(unitForce)
                     
-                } else {
+                }
                     // if the powerup is on the screen move it to the right
                     powerup.position = CGPoint(x: powerup.position.x + self.moveConstant, y: powerup.position.y)
-                }
             } else {
                 self.powerups.removeObject(powerup)
                 powerup.removeFromParent()
