@@ -8,6 +8,7 @@
 
 import UIKit
 import SpriteKit
+
 class Coin: SuperPowerup, RequiredPowerup {
     var POINT_VALUE = 20
     init() {

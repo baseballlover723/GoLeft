@@ -109,7 +109,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate{
         physicsWorld.contactDelegate = self
         //        playBackgroundMusic(songs[0])
         var song = songs[Int(arc4random_uniform(UInt32(songs.count - 1)))]
-        playBackgroundMusic(song)
+//        playBackgroundMusic(song)
         motionManager.startAccelerometerUpdates()
         //        playPorterRobinsonVideo()
         
