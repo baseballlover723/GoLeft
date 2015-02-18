@@ -61,6 +61,7 @@ class SuperCharacter: SKSpriteNode, RequiredCharacter {
         self.physicsBody?.contactTestBitMask = PhysicsCategory.SuperPlatform
         self.physicsBody?.collisionBitMask = PhysicsCategory.SuperPlatform
         self.physicsBody?.allowsRotation = false
+        self.physicsBody?.restitution = 0
 //        self.physicsBody?.mass = HERO_MASS
     }
     
