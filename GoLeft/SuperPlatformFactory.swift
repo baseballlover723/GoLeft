@@ -13,7 +13,7 @@ class SuperPlatformFactory: NSObject {
     class func getRandomPlatform(lastPlatformRightAnchor: (CGPoint), heroJumpHeight: (CGFloat)) -> SuperPlatform {
         // init stuff, b/c class variables aren't supported :(
         var platforms = [BrickPlatform(), LavaPlatform(), BrokenPlatform()]
-        var probability = [0.7, 0.1, 0.2]
+        var probability = [0.7, 0.1, 0.7]
         
         
         var total = Double(0)
