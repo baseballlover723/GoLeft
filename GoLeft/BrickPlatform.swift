@@ -13,7 +13,7 @@ class BrickPlatform: SuperPlatform, RequiredPlatform {
    
     override init() {
         super.init(imageName: "BrickPlatform")
-        initPhysics()
+        initPhysics() 
     }
     
     // specify the location
