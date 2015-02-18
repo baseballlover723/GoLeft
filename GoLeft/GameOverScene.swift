@@ -34,12 +34,11 @@ class GameOverScene: SKScene {
         }
         println("game OVER")
         addChild(label)
-        
-        // change to ask for high score if in top 10 and insert into high score tabel
+        SKAction.playSoundFileNamed("gameOver.mp3", waitForCompletion: false)
+                // change to ask for high score if in top 10 and insert into high score tabel
         runAction(SKAction.sequence([
             SKAction.waitForDuration(10.0),
             SKAction.runBlock() {
-                // 5
                 let reveal = SKTransition.flipHorizontalWithDuration(0.5)
                 let scene = GameScene(size: size)
                 self.view?.presentScene(scene, transition:reveal)
