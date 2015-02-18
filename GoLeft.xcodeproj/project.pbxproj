@@ -28,6 +28,8 @@
 		61D7C93F1A94442A00FE83A9 /* powerupSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 61D7C93C1A94442A00FE83A9 /* powerupSound.mp3 */; };
 		61D7C9401A94442A00FE83A9 /* coinSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 61D7C93D1A94442A00FE83A9 /* coinSound.mp3 */; };
 		61D7C9421A944E2100FE83A9 /* Mario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D7C9411A944E2100FE83A9 /* Mario.swift */; };
+		61D7C9441A9451D500FE83A9 /* BrokenPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D7C9431A9451D500FE83A9 /* BrokenPlatform.swift */; };
+		61D7C9461A9457DB00FE83A9 /* BrokenPlatform.png in Resources */ = {isa = PBXBuildFile; fileRef = 61D7C9451A9457DB00FE83A9 /* BrokenPlatform.png */; };
 		61DBDC4E1A90188400EB137D /* Porter_Robinson.png in Resources */ = {isa = PBXBuildFile; fileRef = 61DBDC4D1A90188400EB137D /* Porter_Robinson.png */; };
 		61DBDC521A901DCF00EB137D /* SuperPowerupFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DBDC511A901DCF00EB137D /* SuperPowerupFactory.swift */; };
 		61DBDC541A901E7C00EB137D /* PorterRobinson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DBDC531A901E7C00EB137D /* PorterRobinson.swift */; };
@@ -93,6 +95,8 @@
 		61D7C93C1A94442A00FE83A9 /* powerupSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = powerupSound.mp3; sourceTree = "<group>"; };
 		61D7C93D1A94442A00FE83A9 /* coinSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = coinSound.mp3; sourceTree = "<group>"; };
 		61D7C9411A944E2100FE83A9 /* Mario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mario.swift; sourceTree = "<group>"; };
+		61D7C9431A9451D500FE83A9 /* BrokenPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrokenPlatform.swift; sourceTree = "<group>"; };
+		61D7C9451A9457DB00FE83A9 /* BrokenPlatform.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BrokenPlatform.png; sourceTree = "<group>"; };
 		61DBDC4D1A90188400EB137D /* Porter_Robinson.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Porter_Robinson.png; sourceTree = "<group>"; };
 		61DBDC511A901DCF00EB137D /* SuperPowerupFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperPowerupFactory.swift; sourceTree = "<group>"; };
 		61DBDC531A901E7C00EB137D /* PorterRobinson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PorterRobinson.swift; sourceTree = "<group>"; };
@@ -177,6 +181,7 @@
 				61DBDC511A901DCF00EB137D /* SuperPowerupFactory.swift */,
 				61469DFE1A88202300E3F202 /* SuperPlatform.swift */,
 				61C8793B1A91607A00FC7BAC /* SuperPlatformFactory.swift */,
+				61D7C9431A9451D500FE83A9 /* BrokenPlatform.swift */,
 				619107FD1A92FD4F00051A8E /* LavaPlatform.swift */,
 				61469E001A88204200E3F202 /* BrickPlatform.swift */,
 				611BE7BE1A7F2EF1000CF5B4 /* Main.storyboard */,
@@ -206,12 +211,12 @@
 				6D2926781A93EF8500E679AB /* Big Mario.png */,
 				6D2926761A93EF7F00E679AB /* stick-man.png */,
 				6D2926741A93EB4800E679AB /* Mario.png */,
-				6D29267C1A94519300E679AB /* BrokenPlatform.png */,
 				61DEBAA31A93B57C0018DD7C /* Flicker.mp4 */,
 				619107FF1A93088600051A8E /* Digital Native.mp3 */,
 				619108001A93088600051A8E /* 10 Arpanauts.mp3 */,
 				619108011A93088600051A8E /* 04 All of Us.mp3 */,
 				61E6FEBC1A93D3C000F6F1BD /* Magnet.png */,
+				61D7C9451A9457DB00FE83A9 /* BrokenPlatform.png */,
 				619108021A93088600051A8E /* 01 A Night Of Dizzy Spells.mp3 */,
 				619107FB1A92FCF600051A8E /* coal_0.png */,
 				6D2926721A92F2A800E679AB /* beach_background_by_deitz94-d5hpts8.png */,
@@ -380,6 +385,7 @@
 				61D7C9421A944E2100FE83A9 /* Mario.swift in Sources */,
 				61469DFF1A88202300E3F202 /* SuperPlatform.swift in Sources */,
 				611BE7BD1A7F2EF1000CF5B4 /* GameViewController.swift in Sources */,
+				61D7C9441A9451D500FE83A9 /* BrokenPlatform.swift in Sources */,
 				611BE7B71A7F2EF1000CF5B4 /* AppDelegate.swift in Sources */,
 				61C8793C1A91607A00FC7BAC /* SuperPlatformFactory.swift in Sources */,
 				61E6FEC31A93DE5100F6F1BD /* JumpHigher.swift in Sources */,
