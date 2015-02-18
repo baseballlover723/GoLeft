@@ -51,7 +51,7 @@ class BrokenPlatform: SuperPlatform {
         //        self.physicsBody?.affectedByGravity = false
         //        self.physicsBody?.allowsRotation = false
         self.physicsBody?.categoryBitMask = PhysicsCategory.BrickPlatform
-        self.physicsBody?.contactTestBitMask = PhysicsCategory.SuperCharacter
+        self.physicsBody?.contactTestBitMask = PhysicsCategory.None
         self.physicsBody?.collisionBitMask = PhysicsCategory.None
     }
 
