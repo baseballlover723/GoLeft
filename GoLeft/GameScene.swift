@@ -31,8 +31,8 @@ var MOVE_SPEEDUP = CGFloat(0.0005)
 var POINT_CYCLE = 30
 var DEAD_ZONE_THRESHHOLD = 0.00
 var PORTER_ROBINSON_SONG_FILE = "Flicker.mp4"
-var POWERUP_SOUND_FILE = "smb_powerup.wav"
-var COIN_SOUND_FILE = "smb_coin.wav"
+var POWERUP_SOUND_FILE = "smb_powerup.mp3"
+var COIN_SOUND_FILE = "smb_coin.mp3"
 
 class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate{
     var moveConstant = CGFloat(0.75)
