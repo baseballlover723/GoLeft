@@ -29,7 +29,6 @@
 		61D7C9401A94442A00FE83A9 /* coinSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 61D7C93D1A94442A00FE83A9 /* coinSound.mp3 */; };
 		61D7C9421A944E2100FE83A9 /* Mario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D7C9411A944E2100FE83A9 /* Mario.swift */; };
 		61D7C9441A9451D500FE83A9 /* BrokenPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D7C9431A9451D500FE83A9 /* BrokenPlatform.swift */; };
-		61D7C9461A9457DB00FE83A9 /* BrokenPlatform.png in Resources */ = {isa = PBXBuildFile; fileRef = 61D7C9451A9457DB00FE83A9 /* BrokenPlatform.png */; };
 		61DBDC4E1A90188400EB137D /* Porter_Robinson.png in Resources */ = {isa = PBXBuildFile; fileRef = 61DBDC4D1A90188400EB137D /* Porter_Robinson.png */; };
 		61DBDC521A901DCF00EB137D /* SuperPowerupFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DBDC511A901DCF00EB137D /* SuperPowerupFactory.swift */; };
 		61DBDC541A901E7C00EB137D /* PorterRobinson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DBDC531A901E7C00EB137D /* PorterRobinson.swift */; };
@@ -48,7 +47,6 @@
 		6D2926771A93EF7F00E679AB /* stick-man.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D2926761A93EF7F00E679AB /* stick-man.png */; };
 		6D2926791A93EF8500E679AB /* Big Mario.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D2926781A93EF8500E679AB /* Big Mario.png */; };
 		6D29267B1A944F9A00E679AB /* BrokenPlatform.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D29267A1A944F9A00E679AB /* BrokenPlatform.png */; };
-		6D29267D1A94519300E679AB /* BrokenPlatform.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D29267C1A94519300E679AB /* BrokenPlatform.png */; };
 		6D29267F1A94564000E679AB /* green.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6D29267E1A94564000E679AB /* green.jpg */; };
 		6D2926811A94564900E679AB /* aqua.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6D2926801A94564900E679AB /* aqua.jpg */; };
 		6DA58D5D1A899D3400CF0A07 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA58D5C1A899D3400CF0A07 /* GameOverScene.swift */; };
@@ -115,7 +113,6 @@
 		6D2926761A93EF7F00E679AB /* stick-man.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stick-man.png"; sourceTree = "<group>"; };
 		6D2926781A93EF8500E679AB /* Big Mario.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Big Mario.png"; sourceTree = "<group>"; };
 		6D29267A1A944F9A00E679AB /* BrokenPlatform.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BrokenPlatform.png; sourceTree = "<group>"; };
-		6D29267C1A94519300E679AB /* BrokenPlatform.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BrokenPlatform.png; sourceTree = "<group>"; };
 		6D29267E1A94564000E679AB /* green.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = green.jpg; sourceTree = "<group>"; };
 		6D2926801A94564900E679AB /* aqua.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = aqua.jpg; sourceTree = "<group>"; };
 		6DA58D5C1A899D3400CF0A07 /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
@@ -340,7 +337,6 @@
 				61E6FEBD1A93D3C000F6F1BD /* Magnet.png in Resources */,
 				61D7C93E1A94442A00FE83A9 /* jumpSound.mp3 in Resources */,
 				61DDC71D1A89526700420650 /* mariobroscoin.png in Resources */,
-				6D29267D1A94519300E679AB /* BrokenPlatform.png in Resources */,
 				6D29267F1A94564000E679AB /* green.jpg in Resources */,
 				61D7C9401A94442A00FE83A9 /* coinSound.mp3 in Resources */,
 				61D7C93F1A94442A00FE83A9 /* powerupSound.mp3 in Resources */,
