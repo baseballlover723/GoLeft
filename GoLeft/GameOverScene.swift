@@ -34,7 +34,7 @@ class GameOverScene: SKScene {
         }
         println("game OVER")
         addChild(label)
-        SKAction.playSoundFileNamed("gameOver.mp3", waitForCompletion: false)
+        runAction(SKAction.playSoundFileNamed("gameOver.mp3", waitForCompletion: false))
         println("playing sound")
                 // change to ask for high score if in top 10 and insert into high score tabel
         runAction(SKAction.sequence([
