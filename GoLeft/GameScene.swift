@@ -37,7 +37,7 @@ var JUMP_SOUND_FILE = "jumpSound.mp3"
 
 class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate{
     var moveConstant = CGFloat(0.75)
-    let hero = Hero()
+    let hero : SuperCharacter
     var count = 1;
     var platforms = [SuperPlatform]()
     var powerups = [SuperPowerup]()
@@ -55,6 +55,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate{
     //    var song = "Digital Native.mp3"
     var songs = ["01 A Night Of Dizzy Spells.mp3", "04 All of Us.mp3", "10 Arpanauts.mp3", "Digital Native.mp3"]
     //    var songIndex = 1
+    
+    init(size: (CGSize), hero: (SuperCharacter)) {
+        self.hero = hero
+        super.init(size: size)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */

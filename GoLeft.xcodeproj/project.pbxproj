@@ -30,6 +30,7 @@
 		61D7C9421A944E2100FE83A9 /* Mario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D7C9411A944E2100FE83A9 /* Mario.swift */; };
 		61D7C9441A9451D500FE83A9 /* BrokenPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D7C9431A9451D500FE83A9 /* BrokenPlatform.swift */; };
 		61D7C9481A945B8C00FE83A9 /* BrokenPlatform.png in Resources */ = {isa = PBXBuildFile; fileRef = 61D7C9471A945B8C00FE83A9 /* BrokenPlatform.png */; };
+		61D7C94A1A946A0E00FE83A9 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D7C9491A946A0E00FE83A9 /* SplashViewController.swift */; };
 		61DBDC4E1A90188400EB137D /* Porter_Robinson.png in Resources */ = {isa = PBXBuildFile; fileRef = 61DBDC4D1A90188400EB137D /* Porter_Robinson.png */; };
 		61DBDC521A901DCF00EB137D /* SuperPowerupFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DBDC511A901DCF00EB137D /* SuperPowerupFactory.swift */; };
 		61DBDC541A901E7C00EB137D /* PorterRobinson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DBDC531A901E7C00EB137D /* PorterRobinson.swift */; };
@@ -95,6 +96,7 @@
 		61D7C9411A944E2100FE83A9 /* Mario.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mario.swift; sourceTree = "<group>"; };
 		61D7C9431A9451D500FE83A9 /* BrokenPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrokenPlatform.swift; sourceTree = "<group>"; };
 		61D7C9471A945B8C00FE83A9 /* BrokenPlatform.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BrokenPlatform.png; sourceTree = "<group>"; };
+		61D7C9491A946A0E00FE83A9 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		61DBDC4D1A90188400EB137D /* Porter_Robinson.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Porter_Robinson.png; sourceTree = "<group>"; };
 		61DBDC511A901DCF00EB137D /* SuperPowerupFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperPowerupFactory.swift; sourceTree = "<group>"; };
 		61DBDC531A901E7C00EB137D /* PorterRobinson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PorterRobinson.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				61E6FEC21A93DE5100F6F1BD /* JumpHigher.swift */,
 				61DDC71A1A8950D300420650 /* Coin.swift */,
 				61DBDC511A901DCF00EB137D /* SuperPowerupFactory.swift */,
+				61D7C9491A946A0E00FE83A9 /* SplashViewController.swift */,
 				61469DFE1A88202300E3F202 /* SuperPlatform.swift */,
 				61C8793B1A91607A00FC7BAC /* SuperPlatformFactory.swift */,
 				61D7C9431A9451D500FE83A9 /* BrokenPlatform.swift */,
@@ -388,6 +391,7 @@
 				61DDC71B1A8950D300420650 /* Coin.swift in Sources */,
 				6DA58D5D1A899D3400CF0A07 /* GameOverScene.swift in Sources */,
 				61E4AE6E1A86CEB200F81B74 /* SuperCharacter.swift in Sources */,
+				61D7C94A1A946A0E00FE83A9 /* SplashViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

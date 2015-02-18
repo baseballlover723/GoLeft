@@ -41,7 +41,7 @@ class GameOverScene: SKScene {
             SKAction.waitForDuration(10.0),
             SKAction.runBlock() {
                 let reveal = SKTransition.flipHorizontalWithDuration(0.5)
-                let scene = GameScene(size: size)
+                let scene = GameScene(size: size, hero: Mario())
                 self.view?.presentScene(scene, transition:reveal)
             }
             ]))
