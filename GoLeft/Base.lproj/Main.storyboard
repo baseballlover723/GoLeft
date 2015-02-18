@@ -176,10 +176,10 @@
             </objects>
             <point key="canvasLocation" x="1550" y="-901"/>
         </scene>
-        <!--View Controller-->
+        <!--Splash View Controller-->
         <scene sceneID="fdD-dh-bZt">
             <objects>
-                <viewController id="0ic-rg-3eo" sceneMemberID="viewController">
+                <viewController id="0ic-rg-3eo" customClass="SplashViewController" customModule="GoLeft" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="m2H-rg-eg6"/>
                         <viewControllerLayoutGuide type="bottom" id="E41-kL-Xvi"/>
@@ -288,6 +288,6 @@
         <image name="stick-man.png" width="191" height="317"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Csu-8G-mia"/>
+        <segue reference="tA6-JF-q3h"/>
     </inferredMetricsTieBreakers>
 </document>

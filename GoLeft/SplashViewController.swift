@@ -29,13 +29,18 @@ class SplashViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        println("segue")
         if segue.identifier == "GameStartMario" {
+            println("Mario")
             var gameView = segue.destinationViewController as GameViewController
             gameView.hero = Mario()
         } else if segue.identifier == "GameStartLeftMan" {
+            println("Leftman")
             var gameView = segue.destinationViewController as GameViewController
             gameView.hero = Hero()
             
+        } else {
+            println("none")
         }
     }
 
