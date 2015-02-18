@@ -67,6 +67,7 @@ class SuperPowerup: SKSpriteNode, RequiredPowerup {
         self.physicsBody?.contactTestBitMask = PhysicsCategory.SuperCharacter
         // to avoid collisions with platforms
         self.physicsBody?.collisionBitMask = PhysicsCategory.SuperCharacter | PhysicsCategory.SuperPlatform
+        self.physicsBody?.usesPreciseCollisionDetection = true
     }
     
     func applyPowerupTo(scene: (GameScene), hero: SuperCharacter) {

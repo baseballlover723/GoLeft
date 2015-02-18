@@ -33,6 +33,7 @@ var DEAD_ZONE_THRESHHOLD = 0.00
 var PORTER_ROBINSON_SONG_FILE = "Flicker.mp4"
 var POWERUP_SOUND_FILE = "powerupSound.mp3"
 var COIN_SOUND_FILE = "coinSound.mp3"
+var JUMP_SOUND_FILE = "jumpSound.mp3"
 
 class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate{
     var moveConstant = CGFloat(0.75)
@@ -131,7 +132,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate{
         //jump
         println("jump = \(hero.canJump)")
         if hero.canJump {
-            hero.jump()
+            hero.jump(self)
         }
         
         //        for touch: AnyObject in touches {

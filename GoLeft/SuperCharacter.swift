@@ -11,8 +11,8 @@ import SpriteKit
 
 protocol RequiredCharacter {
     func initPhysics()
-    func jump()
-    func applyJumpEffects()
+    func jump(scene: (GameScene))
+    func applyJumpEffects(scene: (GameScene))
     func setHeroJumpForce(newJumpForce: (CGVector))
 //    var HERO_JUMP_FORCE : CGVector { get }
     var HERO_MASS : CGFloat { get }
@@ -64,7 +64,7 @@ class SuperCharacter: SKSpriteNode, RequiredCharacter {
 //        self.physicsBody?.mass = HERO_MASS
     }
     
-    func applyJumpEffects() {
+    func applyJumpEffects(scene: (GameScene)) {
         assert(false, "Jump Effects must be overriden")
     }
     
@@ -72,9 +72,9 @@ class SuperCharacter: SKSpriteNode, RequiredCharacter {
         self.jumpForce = newJumpForce
     }
     
-    func jump() {
+    func jump(scene: (GameScene)) {
         self.physicsBody?.applyImpulse(self.jumpForce)
-        self.applyJumpEffects()
+        self.applyJumpEffects(scene)
     }
     
     func die(scene: GameScene) {
