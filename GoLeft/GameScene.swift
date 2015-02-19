@@ -9,7 +9,10 @@
 import SpriteKit
 import CoreMotion
 import AVFoundation
-//http://themushroomkingdom.net/media/smb/wav
+
+// Credits
+// https://www.youtube.com/watch?v=D1sZ_vwqwcE porter robinson flicker
+// http://themushroomkingdom.net/media/smb/wav mario sound files
 //Physics
 struct PhysicsCategory {
     static let None : UInt32 = 0
