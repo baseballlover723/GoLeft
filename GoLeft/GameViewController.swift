@@ -13,6 +13,8 @@ class GameViewController: UIViewController {
         skView.showsNodeCount = true
         skView.ignoresSiblingOrder = true
         scene.scaleMode = .ResizeFill
+        scene.viewController = self
+        navigationController?.navigationBarHidden = true
         skView.presentScene(scene)
     }
     

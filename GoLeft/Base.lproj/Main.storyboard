@@ -127,10 +127,27 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="0YV-H5-9mJ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rad-mC-SHI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="648" y="-667"/>
+            <point key="canvasLocation" x="221" y="-827"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="tXB-D3-De6">
+            <objects>
+                <navigationController id="ZOc-ck-u5x" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Kkp-Uh-cup">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="eGW-lf-OO6" kind="relationship" relationship="rootViewController" id="Oia-DP-sH0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gGT-eL-Nkn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="221" y="-1591"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
@@ -145,15 +162,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="eGW-lf-OO6" kind="show" identifier="ToSplash" id="wUT-WL-nRq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="229" y="907"/>
         </scene>
-        <!--Table View Controller-->
+        <!--High Score View Controller-->
         <scene sceneID="afY-Qr-9Wr">
             <objects>
-                <tableViewController id="wLb-uV-2eX" sceneMemberID="viewController">
+                <tableViewController id="wLb-uV-2eX" customClass="HighScoreViewController" customModule="GoLeft" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Qzu-wu-k2s">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -278,7 +298,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yRv-o9-PiM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="229" y="55"/>
+            <point key="canvasLocation" x="229" y="7"/>
         </scene>
     </scenes>
     <resources>
@@ -289,5 +309,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="tA6-JF-q3h"/>
+        <segue reference="Oia-DP-sH0"/>
     </inferredMetricsTieBreakers>
 </document>

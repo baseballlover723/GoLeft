@@ -36,6 +36,7 @@ var COIN_SOUND_FILE = "coinSound.mp3"
 var JUMP_SOUND_FILE = "jumpSound.mp3"
 
 class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate{
+    var viewController : UIViewController?
     var moveConstant = CGFloat(0.75)
     let hero : SuperCharacter
     var count = 1;

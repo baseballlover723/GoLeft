@@ -82,7 +82,7 @@ class SuperCharacter: SKSpriteNode, RequiredCharacter {
         println("YOU DIED")
         let dieAction = SKAction.runBlock() {
             let reveal = SKTransition.fadeWithColor(UIColor.blackColor(), duration: 1.0)
-            let gameOverScene = GameOverScene(size: scene.size, score: self.score)
+            let gameOverScene = GameOverScene(size: scene.size, score: self.score, viewController: scene.viewController!)
             scene.view?.presentScene(gameOverScene, transition: reveal)
         }
         self.runAction(dieAction)

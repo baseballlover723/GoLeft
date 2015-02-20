@@ -9,10 +9,9 @@
 import Foundation
 import SpriteKit
 
-class GameOverScene: SKScene {
-    var segueID = "ToSplash"
+class GameOverSceneold: SKScene {
     
-    init(size: CGSize, score: Int, viewController : UIViewController) {
+    init(size: CGSize, score: Int) {
         
         super.init(size: size)
         
@@ -39,10 +38,8 @@ class GameOverScene: SKScene {
         println("playing sound")
                 // change to ask for high score if in top 10 and insert into high score tabel
         runAction(SKAction.sequence([
-            SKAction.waitForDuration(5.0),
+            SKAction.waitForDuration(10.0),
             SKAction.runBlock() {
-                viewController.performSegueWithIdentifier(self.segueID, sender: score)
-                return
 //                let reveal = SKTransition.flipHorizontalWithDuration(0.5)
 //                let scene = GameScene(size: size, hero: Mario())
 //                self.view?.presentScene(scene, transition:reveal)
